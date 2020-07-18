@@ -1,0 +1,16 @@
+.personal-info-card {
+  flex: 1;
+  background-color: #fff;
+  text-align: center;
+}
+.personal-info-card .personal-info-num {
+  font-weight: 700;
+  font-size: 0.5rem;
+  font-family: PingFangSC-medium;
+  color: #040818;
+}
+.personal-info-card .personal-info-num-name {
+  color: #3b445c;
+  font-size: 0.35rem;
+  font-weight: 700;
+}
