@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
-import { BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import My from './components/my/my';
+import Server from './components/server/Server';
+import Tabbuttom from './components/tabbuttom/Tabbuttom';
+
 
 
 
@@ -12,9 +15,10 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path='/home' component={My} />
-          <Route exact path='/server' component={My} />
-          <Redirect to='/home' />          
+          <Route exact path='/server' component={Server} />
+          <Redirect to='/home' />
         </Switch>
+      <Tabbuttom />
       </BrowserRouter>
     </div>
   );

@@ -1,25 +1,34 @@
-.Botton_warper {
-    position: fixed;
-    display: flex;
-    width: 100%;
-    height: 4rem;
-    bottom: 0px;
-    background-color: #fefefe;
+.Botton-warper {
+  position: fixed;
+  display: flex;
+  width: 10rem;
+  height: 1.5rem;
+  bottom: 0px;
+  background-color: white;
+  flex-wrap: wrap;
 }
-
-.Botton_warper .icon {
-    flex: 1;
+.Botton-warper li {
+  list-style: none;
+  text-align: center;
+  font-size: 0;
 }
-
-.Botton_warper .planet {
-    background: url('../../image/favicon_32.ico');
-    background-repeat: no-repeat;
-    background-position: 50% 30%;
+.Botton-warper .Botton-warper-warp {
+  flex: 1;
+  text-align: center;
+  margin-top: 4px;
 }
-
-.Botton_warper span {
-    color: #969494;
-    display: inline-block;
-    margin-top: 2.7rem;
-    font-size: 0.8rem;
+.Botton-warper .Botton-warper-warp .icon {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #fff;
+  background: url('../../resources/image/foot-v3.png');
+  background-repeat: no-repeat;
+  background-position: 1px 0px;
+  background-size: 650%;
+  overflow: hidden;
+}
+.Botton-warper .Botton-warper-warp .planet {
+  color: #969494;
+  font-size: 0.3rem;
 }

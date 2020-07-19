@@ -1,0 +1,38 @@
+.server {
+  display: flex;
+  height: 567px;
+  overflow: hidden;
+}
+.server .left {
+  width: 2.2rem;
+  overflow-y: scroll;
+}
+.server .left ul {
+  font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Heiti SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+}
+.server .left ul li {
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+.server .left ul li span {
+  padding-left: 7px;
+}
+.server .left ul .active {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: PingFangSC-Medium;
+  color: #e6454a;
+  background-color: #fff;
+}
+.server .left ul .active span {
+  border-left: 2px solid #e6454a;
+}
+.server .right {
+  width: 7.8rem;
+  background-color: pink;
+  overflow-y: scroll;
+}
+.server .right li {
+  height: 567px;
+  background-color: yellowgreen;
+}

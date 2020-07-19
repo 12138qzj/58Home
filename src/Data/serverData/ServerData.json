@@ -1,0 +1,63 @@
+[{
+        "item": "热门",
+        "anchor": "#hot",
+        "conten": ""
+    },
+    {
+        "item": "保洁清洗",
+        "anchor": "#bjqx",
+        "conten": ""
+    },
+    {
+        "item": "保姆月嫂",
+        "anchor": "#bmys",
+        "conten": ""
+    },
+    {
+        "item": "搬家",
+        "anchor": "#bj",
+
+        "conten": ""
+    },
+    {
+        "item": "房屋维修",
+        "anchor": "#fwwx",
+        "conten": ""
+    },
+    {
+        "item": "家电维修",
+        "anchor": "#jdwx",
+
+        "conten": ""
+    },
+    {
+        "item": "上门安装",
+        "anchor": "#smaz",
+
+        "conten": ""
+    },
+    {
+        "item": "鲜花美食",
+        "anchor": "#xhms",
+
+        "conten": ""
+    },
+    {
+        "item": "丽人",
+        "anchor": "#lr",
+
+        "conten": ""
+    },
+    {
+        "item": "家庭洗护",
+        "anchor": "#jtxh",
+
+        "conten": ""
+    },
+    {
+        "item": "便民服务",
+        "anchor": "#bmfw",
+
+        "conten": ""
+    }
+]
