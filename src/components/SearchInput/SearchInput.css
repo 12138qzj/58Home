@@ -1,0 +1,50 @@
+.search{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex; 
+    padding: .1759rem /* 19/108 */ 0;   
+}
+.search .search-input{
+    position: relative;
+    height: 0.9629rem;
+    width:8.1944rem /* 885/108 */;
+    background-color: #fff;
+    border-radius: 30px;
+}
+.search .search-input .search-place{
+    position: absolute;
+    width: 8.1944rem /* 885/108 */;
+    height: .4167rem /* 45/108 */ ;
+    padding: .2685rem /* 29/108 */;
+    display: flex;
+    line-height:.4167rem ;
+}
+.search .search-input .search-place .location-img{
+    width: .3519rem /* 38/108 */;
+    height: .3981rem /* 43/108 */;
+}
+.search .search-input .search-place .location{
+    font-size: .3611rem /* 39/108 */;
+}
+.search .search-input .search-place .search-border{
+    display: inline-block;
+    width: .6759rem /* 73/108 */ ;
+    height: .3704rem /* 40/108 */;
+    margin-left: .3333rem /* 36/108 */;
+    padding-left: 0.287rem;
+    border-left: 1px solid #ececec;
+}
+.search .search-input .search-place .search-img{
+    width: 0.3703rem;
+    height: 0.3703rem;
+}
+.search .search-input input{
+    border: none;
+}
+.search .search-jiahao{
+    width: .7315rem /* 79/108 */;
+    height: .7315rem /* 79/108 */;
+    margin-left: .3889rem /* 42/108 */;
+    margin-top: .1204rem /* 13/108 */;
+}

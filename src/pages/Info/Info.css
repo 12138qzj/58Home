@@ -1,0 +1,67 @@
+/* 消息 */
+.infomation{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.infomation .header{
+    position: fixed;
+    top: 0;
+    text-align: center;
+    line-height: 44px;
+    font-size: 0.4537rem;
+    font-weight: bold;
+    width: 100%;
+    height: 44px;
+    background-color: #fff;
+}
+.infomation .header p{
+    text-align: center;
+}
+.infomation .header span{
+    right: 0.4256rem;
+    font-size: 0.3796rem;
+    font-weight: normal;
+    top: 2px;
+    position: absolute;
+}
+.infomation .content{
+    border-top: 1px solid #e5e5e5;
+}
+.infomation .content .info-item{
+    height: 2.2222rem;
+    padding: 0 0.4166rem;
+    box-sizing: border-box;
+    display: flex;
+}
+.infomation .content .info-item .item-img{
+    display: inline-block;    
+    width: 1.1203rem;
+    height: 1.1203rem;
+    margin-top: .5740rem;
+}
+.infomation .content .info-item .item-info{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-top: 0.6666rem;
+    padding-left: 0.1666rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.infomation .content .info-item .item-info .item-top{
+    display: flex;
+}
+.infomation .content .info-item .item-info .item-top .title{
+    font-weight: bold;
+    font-size: 0.3888rem;
+}
+.infomation .content .info-item .item-info .item-top .time{
+    font-size: .2962rem;
+    position: absolute;
+    right: 0.4166rem;
+    color: #838d97;
+}
+.infomation .content .info-item .item-info .item-msg{
+    font-size: .2962rem;
+    color: #838d97;
+}
