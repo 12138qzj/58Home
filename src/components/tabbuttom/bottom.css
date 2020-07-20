@@ -1,0 +1,34 @@
+.Botton-warper {
+  position: fixed;
+  display: flex;
+  width: 10rem;
+  height: 1.5rem;
+  bottom: 0px;
+  background-color: white;
+  flex-wrap: wrap;
+}
+.Botton-warper li {
+  list-style: none;
+  text-align: center;
+  font-size: 0;
+}
+.Botton-warper .Botton-warper-warp {
+  flex: 1;
+  text-align: center;
+  margin-top: 4px;
+}
+.Botton-warper .Botton-warper-warp .icon {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #fff;
+  background: url('../../resources/image/foot-v3.png');
+  background-repeat: no-repeat;
+  background-position: 1px 0px;
+  background-size: 650%;
+  overflow: hidden;
+}
+.Botton-warper .Botton-warper-warp .planet {
+  color: #969494;
+  font-size: 0.3rem;
+}
