@@ -1,0 +1,89 @@
+.head {
+  position: fixed;
+  top: 0;
+  line-height: 44px;
+  width: 100vw;
+  background-color: white;
+}
+.head .shezhi {
+  width: 100%;
+  text-align: end;
+}
+.head .shezhi::after {
+  display: inline-block;
+  content: "\e618";
+  font-family: "iconfont";
+  transform: translateX(-0.5rem);
+}
+.center .info {
+  background-color: white;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+.center .info img {
+  width: 1.6rem;
+  margin-left: 0.66rem;
+  margin-right: 0.45rem;
+}
+.center .info .personal .personal-name {
+  font-weight: 700;
+  font-size: 0.5rem;
+  color: #040818;
+  font-family: PingFangSC-medium;
+}
+.center .info .personal .personal-info {
+  color: #888b99;
+  font-size: 0.35rem;
+  font-weight: 400;
+}
+.center .info-card {
+  display: flex;
+  padding: 0 0.5rem;
+}
+.center .order {
+  background-color: #fff;
+  border-radius: 3px ;
+  margin: 0.34rem;
+  height: 3.3rem;
+  padding: 0.36rem;
+}
+.center .order .order-warp-head {
+  display: flex;
+  justify-content: space-between;
+}
+.center .order .order-warp-head .order-warp-head-R {
+  font-size: 0.5rem;
+  font-weight: 700;
+  font-family: PingFangSC-medium;
+}
+.center .order .order-warp-head .order-warp-head-L {
+  color: #3b445c;
+  font-size: 0.36rem;
+  font-weight: 700;
+}
+.center .order .order-warp-head .order-warp-head-L::after {
+  margin-left: 0.2rem;
+  content: "\e618";
+  font-family: "iconfont";
+}
+.center .order .warp-content {
+  display: flex;
+  background-color: #fff;
+  margin: 0.5rem 0;
+}
+.center .tool-server {
+  background-color: #fff;
+  border-radius: 3px ;
+  margin: 0.34rem;
+  padding: 0.36rem;
+}
+.center .tool-server .tool-server-head {
+  font-size: 0.5rem;
+  font-weight: 700;
+  font-family: PingFangSC-medium;
+}
+.center .tool-server-icon {
+  display: flex;
+  flex-wrap: wrap;
+}
