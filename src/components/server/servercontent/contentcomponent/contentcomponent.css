@@ -1,0 +1,21 @@
+.right-item__content {
+  margin-top: 0.759259rem /* 82/108 */;
+}
+.right-item__content .right-item__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.3rem;
+}
+.right-item__content .right-item__title span {
+  display: inline-block;
+  height: 2px;
+  background-color: #eff1f5;
+  width: 0.68rem;
+}
+.right-item__content .right-item__title span:nth-child(1) {
+  margin-right: 0.29rem;
+}
+.right-item__content .right-item__title span:nth-child(2) {
+  margin-left: 0.29rem;
+}
