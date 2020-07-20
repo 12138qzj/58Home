@@ -8,9 +8,6 @@ import Tabbuttom from './components/tabbuttom/Tabbuttom';
 import Main from './pages/Main/Main'
 import Info from './pages/Info/Info'
 
-
-
-
 function App() {
   return (
     <div className="App">
