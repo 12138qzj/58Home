@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ServerLeftData from '../../../Data/serverData/ServerData.json';
-import ContentCompont from '../servercontent/contentcomponent/ContentCompont';
+import ContentCompont from './contentcomponent/ContentCompoent';
 import  './servercontent.css';
 class ServerContent extends PureComponent {
     state = {  }

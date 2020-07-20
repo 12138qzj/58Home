@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import  './toolservercard.css';
-import loaction from '../../../resources/image/loaction.png';
+///resources/image/loaction.png
+import loaction from '../../../assets/images/loaction.png';
 class ToolserverCard extends PureComponent {
     state = {  }
     render() { 

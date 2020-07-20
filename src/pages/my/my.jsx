@@ -3,7 +3,8 @@ import InfoCard from './infocard/InfoCard';
 import Ordercard from './ordercard/Ordercard';
 import ToolserverCard from './toolservercard/ToolserverCard'
 import './my.css';
-import head_icon from '../../resources/image/temp-head_c43dfad.png';
+///image/temp-head_c43dfad.png
+import head_icon from '../../assets/images/temp-head_c43dfad.png'
 class My extends PureComponent {
     state = {  }
     render() { 

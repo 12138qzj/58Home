@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
-import My from './components/my/my';
-import Server from './components/server/Server';
+import My from './pages/my/my';
+import Server from './pages/server/Server';
 import Tabbuttom from './components/tabbuttom/Tabbuttom';
 
 

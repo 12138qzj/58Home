@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import ServerrightImg from '../../../../publiccomponent/serverrightimg/ServerrightImg';
+import ServerrightImg from '../../../../common/serverrightimg/ServerrightImg';
 import './contentcomponent.css';
 class ContentComponent extends PureComponent {
     state = {  }
