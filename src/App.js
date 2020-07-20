@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path='/home' component={My} />
-          <Route exact path='/server' component={Server} />
+          <Route  path='/home' component={My} />
+          <Route  path='/server' component={Server} />
           <Redirect to='/home' />
         </Switch>
       <Tabbuttom />

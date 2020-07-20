@@ -35,4 +35,11 @@
 .server .right li {
   height: 567px;
   background-color: yellowgreen;
+  font-size: 0;
+}
+.server .right li img {
+  margin-top: 0.13rem;
+  margin-left: 0.44rem;
+  width: 7rem;
+  border-radius: 0.1rem;
 }
