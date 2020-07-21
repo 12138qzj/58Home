@@ -34,16 +34,21 @@ class ServerContent extends PureComponent {
                 <div className="right">
                 <ul>
                 <li >
-                    <img src="https://images.daojia.com/dop/custom/9ae5199ea57920870ee5fd1a215ab9d6.png" alt=""/>
+                    <img src="https://images.daojia.com/dop/custom/9ae5199ea57920870ee5fd1a215ab9d6.png" alt="" className="right-top__img"/>
                       <ContentCompont/>
+                      
                 </li>
                     {
                         ServerLeftData.map((item,index)=>{
                             return (
                                    
                                 <li key={index} id={item.anchor.substring(1)}>
+                                    <img src={item.item_imgsrc} alt="" className="right-top__img"/>
+
                                     <span>
-                                        {item.conten}
+                                        {/* {item.conten} */}
+                                        <ContentCompont content={item.conten}/>
+
                                     </span>
                                         
                                 </li>
