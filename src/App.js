@@ -12,20 +12,21 @@ import './App.css';
 import My from './pages/my/my';
 import Server from './pages/server/Server';
 import Tabbuttom from './components/tabbuttom/Tabbuttom';
-import Info from './pages/Info/Info'
 import Main from './pages/Main/Main'
-
-
+import Info from './pages/Info/Info'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
-        <Route  path='/info' component={Info} />
-          <Route  path='/main' component={Main} />
-          <Route  path='/home' component={My} />
+        <Route  path='/main' component={Main} />
+
           <Route  path='/server' component={Server} />
+        <Route  path='/info' component={Info} />
+        <Route  path='/home' component={My} />
+
+
           <Redirect to='/home' />
         </Switch>
       <Tabbuttom />
