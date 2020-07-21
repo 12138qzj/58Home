@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import './ordercard.css'
 class Ordercaed extends PureComponent {
     state = {  }
-    render() { 
+    render() {
+        const {bgp,bgptext}=this.props;
         return ( 
             <div className="order-icon">
-                <div className="img"></div>     
-                <div className="text">待确认</div>           
+                <div className="img" style={{backgroundPosition:`${bgp}`}}></div>     
+                <div className="text">{bgptext}</div>           
             </div>
          );
     }
