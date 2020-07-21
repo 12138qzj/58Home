@@ -18,7 +18,7 @@ class Bottom extends Component {
                 this.ChanegPage(event);
             }}>
                 <li className="Botton-warper-warp" key="1">
-                <Link to='/home'>
+                <Link to='/main'>
                     
                     <div className="icon" style={{backgroundPosition:"1px 0px"}} ></div>
                     <div className="planet">
@@ -38,16 +38,24 @@ class Bottom extends Component {
 
                 </li>
                 <li className="Botton-warper-warp" key="3">
+                <Link to='/info'>
+
                     <div className="icon" style={{backgroundPosition:"-93px 0px"}}></div>
                     <div className="planet">
                             消息
                     </div>
+                </Link>
+
                 </li>
                 <li className="Botton-warper-warp" key="4">
+                <Link to='/my'>
+
                     <div className="icon" style={{backgroundPosition:"-125px 0px"}}></div>
                     <div className="planet">
                             我的
                     </div>
+                </Link>
+
                 </li>
                 {/* <Tab text=/>
                 <Tab/>

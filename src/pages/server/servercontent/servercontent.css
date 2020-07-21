@@ -29,15 +29,14 @@
 }
 .server .right {
   width: 7.8rem;
-  background-color: pink;
+  background-color: white;
   overflow-y: scroll;
 }
 .server .right li {
   height: 567px;
-  background-color: yellowgreen;
   font-size: 0;
 }
-.server .right li img {
+.server .right li .right-top__img {
   margin-top: 0.13rem;
   margin-left: 0.44rem;
   width: 7rem;
