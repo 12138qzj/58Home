@@ -1,0 +1,12 @@
+.box {
+  width: 9.388rem /* 1014/108 */;
+  height: 2.6759rem /* 289/108 */;
+  overflow: hidden;
+  font-size: 0;
+}
+img {
+  display: inline-block;
+  width: 100%;
+  height: 2.6759rem /* 289/108 */;
+  border-radius: 10px;
+}
