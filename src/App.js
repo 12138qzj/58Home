@@ -6,9 +6,6 @@ import My from './pages/my/my';
 import Server from './pages/server/Server';
 import Tabbuttom from './components/tabbuttom/Tabbuttom';
 
-
-
-
 function App() {
   return (
     <div className="App">
