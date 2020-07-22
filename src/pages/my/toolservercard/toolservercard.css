@@ -17,4 +17,5 @@
 .tool-server-card-warp .tool-server-card-text {
   margin-top: 1px;
   font-size: 0.33rem;
+  width: 1.389rem /* 150/108 */;
 }

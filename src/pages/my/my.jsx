@@ -15,15 +15,15 @@ class My extends PureComponent {
                 bgptext:"待确认"
             }, 
             { 
-                bgp: "0 -36px",
+                bgp: "0 -0.954rem",
                 bgptext:"待服务" 
             }, 
             { 
-                bgp: "0 -74px",
+                bgp: "0 -2rem",
                 bgptext:"待支付" 
             }, 
             { 
-                bgp: "0 -111px",
+                bgp: "0 -2.981rem",
                 bgptext:"待评价" 
             }
         ];
@@ -64,7 +64,7 @@ class My extends PureComponent {
         return (
             <div>
                 <div className="head">
-                    <div className="shezhi"></div>
+                    <div className="shezhi "></div>
                 </div>
                 <div className="center">
                     <div className="info">
@@ -98,7 +98,7 @@ class My extends PureComponent {
                                     <Ordercard key={index} bgp={item.bgp} bgptext={item.bgptext} />
                                 )
                             })}
-                            {/* <Ordercard style={{b}}/>
+                            {/* <Ordercard/>
                             
                             <Ordercard/>
                             <Ordercard/> */}
