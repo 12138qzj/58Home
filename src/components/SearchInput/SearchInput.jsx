@@ -7,7 +7,7 @@ class SearchInput extends Component {
     state = {}
     render() {
         return (
-            <div className="search">
+            <div className="search" >
                 <div className="search-input">
                     <div className="search-place">
                         <img className='location-img' src={imgPlace}></img>
