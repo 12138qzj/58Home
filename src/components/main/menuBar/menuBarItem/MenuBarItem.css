@@ -1,0 +1,17 @@
+.server-right__img {
+  height: 1.8333rem /* 198/108 */;
+  width: 1.3056rem /* 141/108 */;
+  background-color: #f8f8f8;
+  text-align: center;
+  margin-right: 0.6111rem /* 66/108 */;
+}
+.server-right__img .server-right-img__img {
+  width: 1.3056rem /* 141/108 */;
+  height: 1.3056rem /* 141/108 */;
+}
+.server-right__img .server-right__text {
+  height: 0.5093rem /* 55/108 */;
+  margin: auto 0;
+  font-size: 0.287rem /* 31/108 */;
+  font-family: \.PingFangSC-Light;
+}

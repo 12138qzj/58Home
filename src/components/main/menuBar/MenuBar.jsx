@@ -1,18 +1,32 @@
 import React from 'react';
-// import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
-import './menuBar.css';
+import MenuBarItem from './menuBarItem/MenuBarItem';
+import './MenuBar.css';
+import { menuBarData2 } from '../../../Data/mainData/index'
 
 function MenuBar(props) {
-    return (    
-        <div className="menu-bar">
-            
+    return (
+        <div className='menu-bar'>
+            <div className="menu-bar1">
+                <MenuBarItem />
+                <MenuBarItem />
+            </div>
+            <div className="menu-bar2">
+                {
+                    menuBarData2.map((item, index) => {
+                        return (
+                            <div className="menu-bar2__box" key={index}>
+                                <img src={item.picUrl} alt="" className="menu-bar2-box__img" />
+                                <div className="menu-bar2-box__text">{item.type}</div>
+                            </div>
+                            // bar2图片 宽高
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
 
-Forum.propTypes = {
-    
-}
 
-export default Forums
+
+export default MenuBar
