@@ -1,22 +1,27 @@
 .server{
     // background-color: pink;
     display: flex;
-    height: 567px;
+    height: 15.093rem /* 1800/108 *//* 1700/108 */ /* 2000/108 */ /* 1000/108 */;
     overflow: hidden;
     .left{
         // background-color: yellowgreen;
         width: 2.2rem;
         overflow-y: scroll;
+        overflow:-moz-scrollbars-none;
         // overflow: hidden;
         // white-space: nowrap;
         ul{
             font-family:Helvetica Neue,Helvetica,Arial,PingFang SC,Heiti SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+            a{
+                text-decoration: none;            
+            }
             li{
                 height: 1.5rem;
                 line-height: 1.5rem;
                 // text-align: center;
                 span{
                     padding-left: 7px;
+                   
                     
                 }
                 
@@ -35,13 +40,21 @@
             }
         }
     }
+    .left::-webkit-scrollbar{
+        display:none;
+    }
     .right{
         width: 7.8rem;
         // height: 100vh;
         background-color: white;
         overflow-y: scroll;
+        // overflow:-moz-scrollbars-none;
+        
+        
+ 
         li{
-            height: 567px;
+            // height: 567px;
+            height: 15.093rem /* 1630/108 */ /* 1650/108 */ /* 1600/108 */ /* 1700/108 */;
             // background-color: yellowgreen;
             font-size: 0;
 
@@ -52,5 +65,8 @@
                 border-radius: 0.1rem;
             }
         }
+    }
+    .right::-webkit-scrollbar{
+        display:none;
     }
 }

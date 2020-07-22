@@ -44,21 +44,21 @@ class RotationChart extends Component {
     render() {
         return (
             <div className="box">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper ">
+                <div className="swiper-container">
+                    <div className="swiper-wrapper ">
                         {
-                            this.state.img.map((item) => {
+                            this.state.img.map((item,index) => {
                                 return (
                                     <div className="swiper-slide" key={item.id}>
                                         <a href={item.linkUrl} >
-                                            <img src={item.picUrl} alt="" width="100%" height="100%" />
+                                            <img src={item.picUrl} alt="" width="100%" height="100%" className="rotationChart-img"/>
                                         </a> 
                                     </div>
                                 )
                             })
                         }
                     </div>
-                    <div class="swiper-pagination"></div>
+                    <div className="swiper-pagination"></div>
                 </div>
             </div>
         );

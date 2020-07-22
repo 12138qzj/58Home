@@ -4,20 +4,29 @@ import ContentCompont from './contentcomponent/ContentCompoent';
 import  './servercontent.css';
 class ServerContent extends PureComponent {
     state = {  }
+    onClickServer=(event)=>{
+        console.log("object",event.view);
+
+        console.log("target",event.target);
+
+    }
     render() { 
     console.log(ServerLeftData);
 
+    
         return ( 
             <div className="server">
                 <div className="left">
-                    <ul>
+                    <ul onClick={(event)=>{
+                        this.onClickServer(event);
+                    }}>
                         <li className="active">
                             <span >模板演示</span> 
                         </li>
                         {
                             ServerLeftData.map((item,index)=>{
                                 return (
-                                    <a href={item.anchor} key={index}>
+                                    <a href={item.anchor} key={index} >
                                         <li >
                                             <span>
                                                 {item.item}

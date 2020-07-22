@@ -10,7 +10,7 @@ class Classify extends Component {
                     {
                         classify.map((item, index) => {
                             return (
-                                <span className="classify-item">
+                                <span className="classify-item" key={index}>
                                     {item}
                                 </span>
                             )

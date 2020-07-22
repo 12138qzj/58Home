@@ -1,14 +1,18 @@
 .server {
   display: flex;
-  height: 567px;
+  height: 15.093rem /* 1800/108 */ /* 1700/108 */ /* 2000/108 */ /* 1000/108 */;
   overflow: hidden;
 }
 .server .left {
   width: 2.2rem;
   overflow-y: scroll;
+  overflow: -moz-scrollbars-none;
 }
 .server .left ul {
   font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Heiti SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+}
+.server .left ul a {
+  text-decoration: none;
 }
 .server .left ul li {
   height: 1.5rem;
@@ -27,13 +31,16 @@
 .server .left ul .active span {
   border-left: 2px solid #e6454a;
 }
+.server .left::-webkit-scrollbar {
+  display: none;
+}
 .server .right {
   width: 7.8rem;
   background-color: white;
   overflow-y: scroll;
 }
 .server .right li {
-  height: 567px;
+  height: 15.093rem /* 1630/108 */ /* 1650/108 */ /* 1600/108 */ /* 1700/108 */;
   font-size: 0;
 }
 .server .right li .right-top__img {
@@ -41,4 +48,7 @@
   margin-left: 0.44rem;
   width: 7rem;
   border-radius: 0.1rem;
+}
+.server .right::-webkit-scrollbar {
+  display: none;
 }
