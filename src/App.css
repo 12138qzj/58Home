@@ -119,3 +119,7 @@ body {
 button {
     -webkit-appearance: none;
 }
+
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
