@@ -3,6 +3,7 @@
   height: 2.0741rem /* 224/108 */;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 0.2778rem /* 30/108 */;
 }
 .imgList-one {
   width: 4.5926rem /* 496/108 */;

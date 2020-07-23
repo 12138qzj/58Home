@@ -15,7 +15,9 @@ function MenuBar(props) {
                     menuBarData2.map((item, index) => {
                         return (
                             <div className="menu-bar2__box" key={index}>
-                                <img src={item.picUrl} alt="" className="menu-bar2-box__img" />
+                                {/* {`${item.icon}`} */}
+                                <span className="iconfont menu-bar2__icon" style={{color: `${item.color}`}}>{`${item.icon}`}</span>
+                                {/* <img src={item.picUrl} alt="" className="menu-bar2-box__img" /> */}
                                 <div className="menu-bar2-box__text">{item.type}</div>
                             </div>
                             // bar2图片 宽高

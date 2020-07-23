@@ -88,25 +88,35 @@ export const menuBarData2 = [
     {
         id:1,
         picUrl:'https://images.daojia.com/dop/custom/4847e41c9c4c23b11c252815df12d42a.png?x-oss-process=image/auto-orient,0/format,webp',
-        type:'购卡有礼'
+        type:'购卡有礼',
+        icon:'\ue613',
+        color:'#ff6174'
     },{
         id:1,
         picUrl:'https://images.daojia.com/dop/custom/64b0a24bebec5e986b7523d24f38c9e8.png',
-        type:'空调清洗'
+        type:'空调清洗',
+        icon:'\ue73a',
+        color:'#3289ff'
     },
     {
         id:1,
         picUrl:'https://images.daojia.com/dop/custom/9b04c448bf5a2e53407227abb39b27dc.png',
-        type:'除菌保洁'
+        type:'除菌保洁',
+        icon:'\ue647',
+        color:'#ef9973'
     },
     {
         id:1,
         picUrl:'https://images.daojia.com/dop/custom/c16a42b496dad271fc602eae789ce1bf.png',
-        type:'领优惠券'
+        type:'领优惠券',
+        icon:'\ue63e',
+        color:'#2868f0'
     },
     {
         id:1,
         picUrl:'https://images.daojia.com/dop/custom/c16a42b496dad271fc602eae789ce1bf.png',
-        type:'全部服务 '
+        type:'全部服务 ',
+        icon:'\ue6c0',
+        color:'#fe4d1e'
     }
 ]
