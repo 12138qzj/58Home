@@ -12,15 +12,32 @@ export const Top = styled.div `
     display:flex;
     flex-direction:row;
     justify-content:space-around;
-
+    border-bottom:1px solid #ececec;
+    z-index:2;
     a{
-      
       justify-content:center;
-      /* &.selected{
+      color:blue;
+      &.selected{
           color:red;
           background:white;
-
-        }    */
+          .personal-info-num{
+                font-weight: 700;
+                font-size: 0.4rem;
+                font-family: PingFangSC-medium;
+                color: #ff4d4c; 
+                
+            }
+            .personal-info-num-name{
+                display:inline;
+                padding:0.05rem 0.18rem;
+                border-radius:0.25rem;
+                color:white;
+                font-size: 0.3rem;
+                font-family: PingFangSC-medium;
+                font-weight: 400;
+                background-color:#ff4d4c;
+            }
+        }   
     }
       
 `;
@@ -37,7 +54,7 @@ export const TopItem = styled.div `
 
     .personal-info-num{
         font-weight: 700;
-        font-size: 0.5rem;
+        font-size: 0.4rem;
         font-family: PingFangSC-medium;
         color: #040818; 
           

@@ -1,4 +1,9 @@
 import React, { PureComponent } from 'react';
+import axios from 'axios';
+
+import '../../../api/mock.js';
+import {reqserver} from '../../../api/index.js';
+
 import ServerLeftData from '../../../Data/serverData/ServerData.json';
 import ContentCompont from './contentcomponent/ContentCompoent';
 import  './servercontent.css';
@@ -9,10 +14,53 @@ class ServerContent extends PureComponent {
 
         console.log("target",event.target);
 
+    } 
+    componentDidMount(){
+        reqserver().then((res)=>{
+            if (res.data.success) {
+                console.log("成功", res.data);
+            }
+            else
+            {
+                console.log("失败", res.data);
+            }
+            console.log("object",res);
+        })
+        // axios.get("/server").then((res)=>{
+        //     if (res.data.success) {
+        //         console.log("成功", res.data);
+        //         // this.setState({
+        //         //     dataSource: res.data.list.map((item)=>{
+        //         //         if(item.all<=item.already){
+        //         //             item.study='3';
+        //         //         }else{
+        //         //             item.study='2';
+        //         //         }
+        //         //         return item
+        //         //     }),
+        //         //     count: res.data.list.length,
+        //         //     // loading: false,
+        //         // })
+        //         // this.props.funcount(res.data.list.length)
+        //     } else {
+        //         // this.setState({
+        //         //     dataSource: [],
+        //         //     // loading: false,
+        //         // })
+        //         console.log("失败");
+
+        //     }
+            
+        //     // this.initData();
+        //     // console.log("******componentDidMount结束",this.state.newdataSource,this.state.fartherkey,this.state.tabkey);
+        // })
     }
     render() { 
     console.log(ServerLeftData);
 
+
+
+   
     
         return ( 
             <div className="server">

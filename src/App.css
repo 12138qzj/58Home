@@ -121,5 +121,11 @@ button {
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
+    display: none;
+    /* Chrome Safari */
+}
+
+.spanblack {
+    height: 5rem;
+    width: 100%;
 }

@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import {NavLink} from 'react-router-dom';
+import ListItemcomponent from './listitem/ListItemcomponent';
 import PropTypes from 'prop-types';
 
 
@@ -23,7 +24,7 @@ const MainBottomChoose=(props)=>{
                 </TopItem>
             </NavLink>
             {/*  */}
-            <NavLink to="/main" activeClassName="selected">
+            <NavLink to="/a" activeClassName="selected">
             <TopItem>
                     <div className="personal-info-card">
                         <div className="personal-info-num">健康生活</div>
@@ -31,7 +32,7 @@ const MainBottomChoose=(props)=>{
                     </div>
                 </TopItem>
             </NavLink>
-            <NavLink to="/main" activeClassName="selected">
+            <NavLink to="/b" activeClassName="selected">
             <TopItem>
                     <div className="personal-info-card">
                         <div className="personal-info-num">宝爸宝妈</div>
@@ -39,7 +40,7 @@ const MainBottomChoose=(props)=>{
                     </div>
                 </TopItem>
             </NavLink>
-            <NavLink to="/main" activeClassName="selected">
+            <NavLink to="/c" activeClassName="selected">
             <TopItem>
                     <div className="personal-info-card">
                         <div className="personal-info-num">家居改造</div>
@@ -48,6 +49,8 @@ const MainBottomChoose=(props)=>{
                 </TopItem>
             </NavLink>
             </Top>
+
+            <ListItemcomponent/>
         </>
         // <div>
         //     <header className="main-header__title">fadsfe</header>
@@ -55,6 +58,7 @@ const MainBottomChoose=(props)=>{
     )
 }
 export default MainBottomChoose;
+
 MainBottomChoose.prototype={
     // title:PropTypes.string.isRequired,
     // onBack:PropTypes.func.isRequired,
