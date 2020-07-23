@@ -3,9 +3,13 @@
     top: 0;
     width: 100%;
     display: flex;
-    padding: .1759rem/* 19/108 */
-    0;
+    padding: .1944rem/* 21/108 */
+    .3889rem/* 42/108 */
+    .1944rem/* 21/108 */
+    .3333rem/* 36/108 */
+    ;
     z-index: 2;
+    background-image: linear-gradient(#f33727, #f36b42);
 }
 
 .search .search-input {
