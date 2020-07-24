@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+
 import Tab from './tab/Tab';
 import './bottom.css';
 class Bottom extends Component {
@@ -12,12 +14,19 @@ class Bottom extends Component {
             current:e
         })
     }
+
+    
     render() {
+        const {route}=this.props;
+
+        console.log("route",this.props);
+        console.log("route",route);
         return (
+            <>
             <ul className="Botton-warper" >
                 <li className="Botton-warper-warp" key="1" 
                 onClick={this.ChanegPage.bind(this,0)}>
-                <Link to='/main' style={{textDecoration:"none"}}>
+                <Link to='/home/main' style={{textDecoration:"none"}}>
                     {/*  */}
                     <div >
                         <div className="icon" style={
@@ -33,7 +42,7 @@ class Bottom extends Component {
                 </li>
                 <li className="Botton-warper-warp" key="2"
                 onClick={this.ChanegPage.bind(this,1)}>
-                    <Link to='/server' style={{textDecoration:"none"}}>
+                    <Link to='/home/server' style={{textDecoration:"none"}}>
                         {/* style={{ backgroundPosition: "-1.685rem 0px" }} */}
                         <div className="icon" style={
                             this.state.current===1?
@@ -47,7 +56,7 @@ class Bottom extends Component {
                 </li>
                 <li className="Botton-warper-warp" key="3"
                 onClick={this.ChanegPage.bind(this,2)}>
-                <Link to='/info' style={{textDecoration:"none"}}>
+                <Link to='/home/info' style={{textDecoration:"none"}}>
                 {/* style={{backgroundPosition:"-93px 0px"}} */}
                     <div className="icon" 
                     style={
@@ -63,7 +72,7 @@ class Bottom extends Component {
 
                 <li className="Botton-warper-warp" key="4"
                 onClick={this.ChanegPage.bind(this,3)}>
-                <Link to='/my' style={{textDecoration:"none"}}>
+                <Link to='/home/my' style={{textDecoration:"none"}}>
 
                     <div className="icon" 
                     style={
@@ -81,6 +90,9 @@ class Bottom extends Component {
                 <Tab/>
                 <Tab/> */}
             </ul>
+            {renderRoutes(route.routes)}
+
+            </>
         );
     }
 }

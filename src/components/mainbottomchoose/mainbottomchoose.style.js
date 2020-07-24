@@ -8,7 +8,7 @@ export const Top = styled.div `
     background : white;
     height: 1.78rem;
     position:sticky;
-    top:1.375rem;
+    top:1.3rem;
     display:flex;
     flex-direction:row;
     justify-content:space-around;

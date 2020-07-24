@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Frame = styled.div`
+export const Frame = styled.div `
     width:100%;
-    height: 15rem /* 13.0648rem 1411/108 */;
     background-color: #fff;
     margin-top: .2778rem /* 30/108 */;
+    margin-bottom: .2778rem /* 30/108 */;
     border-radius:10px;
     box-sizing:border-box;
     & .frame-top{
@@ -13,7 +13,7 @@ export const Frame = styled.div`
     }
 `
 
-export const FrameSale = styled.div`
+export const FrameSale = styled.div `
         display:flex;
         justify-content:flex-start;
         align-items: center;
@@ -46,7 +46,7 @@ export const FrameSale = styled.div`
         }
 `
 
-export const FrameAd = styled.div`
+export const FrameAd = styled.div `
     height: 4.9259rem /* 532/108 */;
     margin-top:.2222rem /* 24/108 */;
     display:flex;
@@ -63,7 +63,7 @@ export const FrameAd = styled.div`
         }
 `
 
-export const FrameImgView = styled.div`
+export const FrameImgView = styled.div `
     display:flex;
     justify-content:space-between;
     padding-top:.5278rem /* 57/108 */;
@@ -88,7 +88,7 @@ export const FrameImgView = styled.div`
 
 `
 
-export const More = styled.div`
+export const More = styled.div `
         display:flex;
         padding: 0 0 .537rem /* 58/108 */ .3056rem /* 33/108 */;
     & .more-left{

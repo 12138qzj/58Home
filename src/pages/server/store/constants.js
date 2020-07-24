@@ -1,0 +1,1 @@
+export const CHANGE_SERVER_DATA = "CHANGE_SERVER_DATA"
