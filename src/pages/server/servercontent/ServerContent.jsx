@@ -15,7 +15,7 @@ class ServerContent extends PureComponent {
         console.log("target",event.target);
 
     } 
-    componentDidMount(){
+    componentDidMount(){  
         reqserver().then((res)=>{
             if (res.data.success) {
                 console.log("成功", res.data);

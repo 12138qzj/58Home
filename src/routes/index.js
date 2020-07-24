@@ -8,8 +8,9 @@ import Mian from '../pages/Main/Main';
 import Server from '../pages/server/Server';
 import Info from '../pages/Info/Info';
 import My from '../pages/my/my';
-
 import Detail from '../pages/details/Detail';
+import Order from '../pages/order/Order'
+// import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
 
 
@@ -41,6 +42,12 @@ export default [{
                 {
                     path: '/home/my',
                     component: My,
+                    routes: [ // 嵌套路由
+                        {
+                            path: '/home/my/order',
+                            component: Order,
+                        }
+                    ]
                 },
             ],
 
