@@ -11,9 +11,9 @@ class MenuBarItem extends Component {
             {
                 menuBarData.map((item,index) => {
                     return (
-                        <div className="server-right__img" key={index}>
-                            <img src={item.picUrl} alt="" className="server-right-img__img"/>
-                            <div className="server-right__text">{item.type}</div>
+                        <div className="item-box" key={index}>
+                            <img src={item.picUrl} alt="" className="item-box__img"/>
+                            <div className="item-box__text">{item.type}</div>
                         </div>
                     )
                 })

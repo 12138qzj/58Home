@@ -5,6 +5,7 @@ import Mian from '../pages/Main/Main';
 import Server from '../pages/server/Server';
 import Info from '../pages/Info/Info';
 import My from '../pages/my/my';
+import Order from '../pages/order/Order'
 // import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
 
@@ -12,28 +13,33 @@ import My from '../pages/my/my';
 export default [{
     component: BlankLayout,
     routes: [{
-            path: '/',
-            exact: true,
-            render: () => < Redirect to = { "/main" }
-            />
-        },
-        {
-            path: '/main',
-            component: Mian,
-        },
-        {
-            path: '/server',
-            component: Server,
-        },
-        {
-            path: '/info',
-            component: Info,
-        },
-        {
-            path: '/my',
-            component: My,
-        },
-
+        path: '/',
+        exact: true,
+        render: () => < Redirect to={"/main"}
+        />
+    },
+    {
+        path: '/main',
+        component: Mian,
+    },
+    {
+        path: '/server',
+        component: Server,
+    },
+    {
+        path: '/info',
+        component: Info,
+    },
+    {
+        path: '/my',
+        component: My,
+        routes: [ // 嵌套路由
+            {
+                path: '/order',
+                component: Order,
+            }
+        ]
+    },
     ]
 }]
 

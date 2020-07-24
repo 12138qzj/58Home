@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "167196",
+      "name": "价格",
+      "font_class": "jiage",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "584241",
+      "name": "右箭头",
+      "font_class": "iconfonti",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "3020037",
+      "name": "二级-定时任务",
+      "font_class": "erji-dingshirenwu",
+      "unicode": "eaae",
+      "unicode_decimal": 60078
+    },
+    {
+      "icon_id": "3550768",
+      "name": "左箭头",
+      "font_class": "ico_leftarrow",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "4933144",
+      "name": "加号",
+      "font_class": "jiahao2",
+      "unicode": "e6c3",
+      "unicode_decimal": 59075
+    },
+    {
+      "icon_id": "7556166",
+      "name": "减号",
+      "font_class": "jianhao",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "12754143",
+      "name": "下箭头",
+      "font_class": "xiajiantou_huaban",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "13168407",
+      "name": "价格",
+      "font_class": "jiage1",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
       "icon_id": "1221891",
       "name": "火焰",
       "font_class": "hot",
@@ -17,7 +73,7 @@
       "name": "礼物",
       "font_class": "liwu",
       "unicode": "e613",
-      "unicode_decimal": 58899,
+      "unicode_decimal": 58899
     },
     {
       "icon_id": "5175465",

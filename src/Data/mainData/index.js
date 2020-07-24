@@ -120,3 +120,4 @@ export const menuBarData2 = [
         color:'#fe4d1e'
     }
 ]
+export default {classify, rotationImg, menuBarData, menuBarData2 }
