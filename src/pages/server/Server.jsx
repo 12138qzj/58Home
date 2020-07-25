@@ -9,7 +9,7 @@ class Server extends PureComponent {
         return ( 
             <div>
                 <ServerSearchInput/>
-                <ServerContentHSS/>
+                <ServerContent/>
             </div>
          );
     }

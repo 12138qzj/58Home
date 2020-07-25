@@ -12,7 +12,7 @@ export default function Ajax(url, data = {}, type) {
             })
         }
         Promise.then((response) => {
-            console.log("object数据response加载", response);
+            // console.log("object数据response加载", response);
             resolve(response);
         }).catch((error) => {
             console.error("数据请求异常！", error)
