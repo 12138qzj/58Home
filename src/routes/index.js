@@ -42,10 +42,11 @@ export default [{
                 {
                     path: '/home/my',
                     component: My,
-                    routes: [ // 嵌套路由
+                    routes: [ 
                         {
                             path: '/home/my/order',
-                            component: Order,
+                            render:()=><Redirect to="/order"/>
+
                         }
                     ]
                 },
@@ -56,6 +57,12 @@ export default [{
             path: '/detail',
             exact: true,
             component: Detail,
+        }
+        ,
+        {
+            path: '/order',
+            exact: true,
+            component: Order
         }
 
     ]
