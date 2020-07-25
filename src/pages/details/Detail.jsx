@@ -5,7 +5,7 @@ import HeadComponent from '../../common/headcomponent/HeadComponent';
 
 // ../../../Data/mainData/index
 import { rotationImg } from '../../Data/mainData/index'
-import {Rotation,Title} from './detail.js'
+import {Rotation,Title} from './detail.style.js'
 
 const Detail=(props)=>{
 
@@ -18,9 +18,9 @@ const Detail=(props)=>{
         <>
             <HeadComponent title="擦玻璃" handleback={()=>{handleback()}}/>
             <div>
-            <Rotation>
+                <Rotation>
 
-                <div className="swiper-container">
+                    <div className="swiper-container">
                     <div className="swiper-wrapper ">
                         {
                             rotationImg.map((item, index) => {
@@ -36,7 +36,7 @@ const Detail=(props)=>{
                     </div>
                     <div className="swiper-pagination"></div>
                 </div>
-            </Rotation>
+                </Rotation>
 
             </div>
                      
@@ -66,15 +66,15 @@ const Detail=(props)=>{
     )
 }
 
-Detail.mySwiper= memo(()=>{
-    return new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 1000,
-        },
-        pagination: {
-            el: '.swiper-pagination'
-        }
-    })
-})
+// Detail.mySwiper= memo(()=>{
+//     return new Swiper('.swiper-container', {
+//         loop: true,
+//         autoplay: {
+//             delay: 1000,
+//         },
+//         pagination: {
+//             el: '.swiper-pagination'
+//         }
+//     })
+// })
 export default Detail;
