@@ -9,18 +9,24 @@ class Bottom extends Component {
         current:0
     }
     ChanegPage(e,index,a) {
-        console.log(this.state, index,e);
         this.setState({
             current:e
         })
     }
 
-    
+    componentDidMount(){
+        const url=this.props.history.location.pathname
+        console.log("history",this.props.history.location.pathname);
+        if(url==="/home/server"){
+            this.setState({
+                current:1
+            })
+        }
+    }
     render() {
         const {route}=this.props;
 
-        console.log("route",this.props);
-        console.log("route",route);
+
         return (
             <>
             <ul className="Botton-warper" >
