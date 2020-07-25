@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
-import {classify} from '../../../Data/mainData/index'
 import './Classify.css';
 class Classify extends Component {
-    state = {  }
+    state={}
     render() { 
+        const classifyData =  this.props.classify || [];
         return ( 
             <div className="classify">
                     <div className="classify-box">
                     {
-                        classify.map((item, index) => {
+                        classifyData.map((item, index) => {
                             return (
                                 <span className="classify-item" key={index}>
                                     {item}
@@ -21,5 +21,4 @@ class Classify extends Component {
          );
     }
 }
- 
 export default Classify;

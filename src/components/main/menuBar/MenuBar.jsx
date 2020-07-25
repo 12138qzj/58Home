@@ -1,14 +1,18 @@
 import React from 'react';
 import MenuBarItem from './menuBarItem/MenuBarItem';
 import './MenuBar.css';
-import { menuBarData2 } from '../../../Data/mainData/index'
+// import { menuBarData2 } from '../../../Data/mainData/index'
 
 function MenuBar(props) {
+    
+    const menuBarData2 =  props.menuBarData2 ? props.menuBarData2  :[];
+    const menuBarData = props.menuBarData || [];
+    console.log(menuBarData2,'?????????????????????????')
     return (
         <div className='menu-bar'>
             <div className="menu-bar1">
-                <MenuBarItem />
-                <MenuBarItem />
+                <MenuBarItem menuBarData={menuBarData}/>
+                <MenuBarItem menuBarData={menuBarData}/>
             </div>
             <div className="menu-bar2">
                 {

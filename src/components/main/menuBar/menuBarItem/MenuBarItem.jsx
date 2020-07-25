@@ -1,10 +1,11 @@
 import React, {  Component } from 'react';
 import './MenuBarItem.css';
-import {menuBarData} from '../../../../Data/mainData/index'
+// import {menuBarData} from '../../../../Data/mainData/index'
 
 class MenuBarItem extends Component {
     state = {  }
     render() {
+        const menuBarData = this.props.menuBarData || [];
         console.log(menuBarData)
         return ( 
             <div className='menu-item__box'>

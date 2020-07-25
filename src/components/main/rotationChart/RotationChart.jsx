@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './RotationChart.css';
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
-import { rotationImg } from '../../../Data/mainData/index'
+// import { rotationImg } from '../../../Data/mainData/index'
 
 class RotationChart extends Component {
     componentDidMount() {
@@ -17,6 +17,7 @@ class RotationChart extends Component {
         })
     }
     render() {
+        const rotationImg = this.props.rotationImg || [];
         return (
             <div className="rotation-box">
                 <div className="swiper-container">

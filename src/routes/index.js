@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Redirect } from 'react-router-dom';
 import BlankLayout from '../layouts/BlankLayout';
 
 import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
-import Mian from '../pages/Main/Main';
-import Server from '../pages/server/Server';
-import Info from '../pages/Info/Info';
-import My from '../pages/my/my';
-import Detail from '../pages/details/Detail';
-import Order from '../pages/order/Order'
-// import Tabbuttom from '../components/tabbuttom/Tabbuttom';
+// import Main from '../pages/Main/Main';
+// import Server from '../pages/server/Server';
+// import Info from '../pages/Info/Info';
+// import My from '../pages/my/my';
+// import Detail from '../pages/details/Detail';
+// import Order from '../pages/order/Order';
+// import OrderItem from '../pages/order/OrderItem';
 
-
+const Main = lazy(()=> import('../pages/Main/Main'));
+const Server = lazy(()=> import('../pages/server/Server'));
+const Info = lazy(()=> import('../pages/Info/Info'));
+const My = lazy(()=> import('../pages/my/my'));
+const Detail = lazy(()=> import('../pages/details/Detail'));
+const Order = lazy(()=> import('../pages/order/Order'));
+const OrderItem = lazy(()=> import('../pages/order/OrderItem'));
+// const RecommendComponent = lazy(()=> import('../pages/Main/Main'))
+// 把即将要加载的东西解冻 
+const SuspenseComponent = Component => props => {
+    return (
+      <Suspense fallback={null}>
+        <Component {...props}></Component>
+      </Suspense>
+    )
+  }
 
 export default [{
     component: BlankLayout,
-    routes: [{
-            path: '/home',
-            // exact: true,
+    routes: [
+        {
+            path:'/home',
             component: Tabbuttom,
             routes: [{
                     path: '/home',
@@ -27,72 +42,67 @@ export default [{
                     />,
                 },
                 {
-                    path: '/home/main/',
-                    component: Mian,
+                    path: '/home/main',
+                    component: SuspenseComponent(Main),
                 },
 
                 {
                     path: '/home/server',
-                    component: Server,
+                    component: SuspenseComponent(Server),
                 },
                 {
                     path: '/home/info',
-                    component: Info,
+                    component: SuspenseComponent(Info),
                 },
                 {
                     path: '/home/my',
-                    component: My,
+                    component: SuspenseComponent(My),
                     routes: [ 
                         {
                             path: '/home/my/order',
                             render:()=><Redirect to="/order"/>
-
                         }
                     ]
                 },
             ],
-
         },
         {
             path: '/detail',
             exact: true,
-            component: Detail,
-        }
-        ,
+            component: SuspenseComponent(Detail),
+        },
         {
             path: '/order',
-            exact: true,
-            component: Order
+            component: SuspenseComponent(Order),
+            routes: [
+                {
+                    path: '/order',
+                    exact: true,
+                    render: () => <Redirect to={"/order/comfirm"} />
+                },
+                {
+                path: '/order/comfirm',
+                exact: true,
+                component: SuspenseComponent(OrderItem)
+                },
+                {
+                path: '/order/service',
+                component: SuspenseComponent(OrderItem)
+                },
+                {
+                path: '/order/paid',
+                component: SuspenseComponent(OrderItem)
+                },
+                {
+                path: '/order/evaluated',
+                component: SuspenseComponent(OrderItem)
+                },
+                {
+                path: '/order/all',
+                component: SuspenseComponent(OrderItem)
+                }
+
+            ]
         }
-
     ]
-}]
-
-
-// export default [{
-//     component: BlankLayout,
-//     routes: [
-//         {
-//             path: '/',
-//             exact: true,
-//             render: () => < Redirect to = { "/main" }
-//             />
-//         },
-//         {
-//             path: '/main',
-//             component: Mian,
-//         },
-//         {
-//             path: '/server',
-//             component: Server,
-//         },
-//         {
-//             path: '/info',
-//             component: Info,
-//         },
-//         {
-//             path: '/my',
-//             component: My,
-//         },
-//     ]
-// }]
+}];

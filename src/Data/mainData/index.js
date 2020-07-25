@@ -120,4 +120,30 @@ export const menuBarData2 = [
         color:'#fe4d1e'
     }
 ]
-export default {classify, rotationImg, menuBarData, menuBarData2 }
+export const serviceData = [
+    {
+        id: 1,
+        title: '管道疏通',
+        img: 'https://img.58cdn.com.cn/ds/app/hydalei/shutong_wntj1.png?v=7'
+    },
+    {
+        id: 2,
+        title: '开换锁',
+        img: 'https://img.58cdn.com.cn/ds/app/hydalei/kaisuo_rm.png?v=5'
+    },
+    {
+        id: 3,
+        title: '修水电',
+        img: 'https://img.58cdn.com.cn/ds/app/hydalei/dianqi_wntj1.png?v=7'
+    },
+    {
+        id: 4,
+        title: '修电脑',
+        img: 'https://img.58cdn.com.cn/ds/app/hydalei/weixiu_rm.png?v=5'
+    }, {
+        id: 5,
+        title: '灯具维修',
+        img: 'https://img.58cdn.com.cn/ds/app/hydalei/jiazhuang_wntj1.png?v=7'
+    }
+]
+export default {classify, rotationImg, menuBarData, menuBarData2 , serviceData }

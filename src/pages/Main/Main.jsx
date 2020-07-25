@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useEffect,  memo } from 'react';
+// memo 缓存组件
+import { connect } from 'react-redux';
+import * as actionTypes from './store/actionCreators'
 
-import {mainData} from '../../api/mock.js';
-import { reqmain } from '../../api/index.js';
+// import axios from 'axios';
+// import {mainData} from '../../api/mock.js';
+// import { reqmain } from '../../api/index.js';
+
 
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Classify from '../../components/main/classify/Classify';
@@ -14,48 +18,42 @@ import FrameLayout from '../../components/main/frameLayout/FrameLayout';
 import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose';
 import './main.css'
 
-class Main extends Component {
-    state = {}
-    componentDidMount() {
-        reqmain().then((res) => {
-            if(res.data.success) {
-                console.log('成功啦',res.data)
-                this.setState({
-                    classify: res.data.data.classify,
-                    rotationImg: res.data.rotationImg,
-                    menuBarData: res.data.menuBarData,
-                    menuBarData2: res.data.menuBarData2
-                })
-            }else{
-                console.log('失败了', res.data)
-                this.setState({
-                    classify: [],
-                    rotationImg: [],
-                    menuBarData: [],
-                    menuBarData2: []
-                })
-            }
-            console.log('object', res)
-        })
-    }
-    render() {
-        return (
-            <>
-            <SearchInput />
-            <div className='main'>
-                <Classify />
-                <RotationChart />
-                <MenuBarItem />
-                <ImgList />
-                <HomeService/>
-                <FrameLayout/>
-            </div>
-            <MainBottomChoose/>
-            </>
-            
-
-        );
+function Main(props) {
+    
+    const { maindata } = props; 
+    const { getMainDataDispatch } = props; 
+    console.log("------",maindata)
+    const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
+    console.log(classify, menuBarData, menuBarData2, rotationImg)
+    useEffect(()=> {
+        if(!maindata.length) {
+            getMainDataDispatch();
+        }
+    },[])
+    return (
+        <>
+        <SearchInput />
+        <div className='main'>
+            <Classify classify={classify}/>
+            <RotationChart rotationImg={rotationImg}/>
+            <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData}/>
+            <ImgList />
+            <HomeService/>
+            <FrameLayout/>
+        </div>
+        <MainBottomChoose/>
+        </>
+    );
+}
+  
+const mapStateToProps = (state) => ({
+    maindata: state.main.maindata
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getMainDataDispatch() {
+            dispatch(actionTypes.getMainData())
+        }
     }
 }
-
-export default Main;
+export default  connect(mapStateToProps,mapDispatchToProps)(memo(Main))

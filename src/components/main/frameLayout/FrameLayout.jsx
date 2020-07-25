@@ -9,7 +9,6 @@ import ad_5 from '../../../../src/assets/images/ad_5.png';
 import ad_6 from '../../../../src/assets/images/ad_6.png';
 import ad_7 from '../../../../src/assets/images/ad_7.png';
 import ad_8 from '../../../../src/assets/images/ad_8.png';
-
 import service_1 from '../../../../src/assets/images/service_1.png';
 
 

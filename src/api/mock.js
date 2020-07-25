@@ -10,7 +10,7 @@ export default Mock.mock('/home/server', 'get', {
     data: ServerData
 });
 
-const mainData = Mock.mock('/main', 'get', {
+const mainData = Mock.mock('/home/main', 'get', {
     success: true,
     data: MainData
 })
