@@ -1,14 +1,21 @@
-import React, { PureComponent } from 'react';
-import axios from 'axios';
+import React, { PureComponent,memo,useEffect } from 'react';
+// import axios from 'axios';
+
+import {connect} from 'react-redux';
 
 import '../../../api/mock.js';
-import {reqserver} from '../../../api/index.js';
 
+
+import {reqserver} from '../../../api/index.js';
 import ServerLeftData from '../../../Data/serverData/ServerData.json';
 import ContentCompont from './contentcomponent/ContentCompoent';
+
+import * as FunActionTypes from '../store/actionCreators'
 import  './servercontent.css';
 class ServerContent extends PureComponent {
-    state = {  }
+    state = { 
+        ServerData:[]
+     }
     onClickServer=(event)=>{
         console.log("object",event.view);
 
@@ -16,51 +23,29 @@ class ServerContent extends PureComponent {
 
     } 
     componentDidMount(){  
-        reqserver().then((res)=>{
-            if (res.data.success) {
-                console.log("成功", res.data);
-            }
-            else
-            {
-                console.log("失败", res.data);
-            }
-            console.log("object",res);
-        })
-        // axios.get("/server").then((res)=>{
-        //     if (res.data.success) {
-        //         console.log("成功", res.data);
-        //         // this.setState({
-        //         //     dataSource: res.data.list.map((item)=>{
-        //         //         if(item.all<=item.already){
-        //         //             item.study='3';
-        //         //         }else{
-        //         //             item.study='2';
-        //         //         }
-        //         //         return item
-        //         //     }),
-        //         //     count: res.data.list.length,
-        //         //     // loading: false,
-        //         // })
-        //         // this.props.funcount(res.data.list.length)
-        //     } else {
-        //         // this.setState({
-        //         //     dataSource: [],
-        //         //     // loading: false,
-        //         // })
-        //         console.log("失败");
-
-        //     }
-            
-        //     // this.initData();
-        //     // console.log("******componentDidMount结束",this.state.newdataSource,this.state.fartherkey,this.state.tabkey);
-        // })
+        if(!this.state.ServerData.length){
+            console.log("第一次进入");
+            this.props.getServerLeftRightData();
+        }
+        // init()
     }
+    // init(){
+    //     console.log("init进入",this.props.serverdata);
+    //     this.setState({
+    //         ServerData:this.props.serverdata
+    //     })
+    // }
     render() { 
-    console.log(ServerLeftData);
+    // console.log(ServerLeftData);
 
+    // useEffect(()=>{
+    //     console.log("this",this);
+    //     // this.init();
+    // },[])
+    console.log("Props.this",this.props);
 
-
-   
+    console.log("state.this.data",this.state.ServerData);
+    const {serverdata}=this.props
     
         return ( 
             <div className="server">
@@ -72,7 +57,8 @@ class ServerContent extends PureComponent {
                             <span >模板演示</span> 
                         </li>
                         {
-                            ServerLeftData.map((item,index)=>{
+                            !serverdata?"":
+                            serverdata.map((item,index)=>{
                                 return (
                                     <a href={item.anchor} key={index} >
                                         <li >
@@ -96,7 +82,8 @@ class ServerContent extends PureComponent {
                       
                 </li>
                     {
-                        ServerLeftData.map((item,index)=>{
+                        !serverdata?"":
+                        serverdata.map((item,index)=>{
                             return (
                                    
                                 <li key={index} id={item.anchor.substring(1)}>
@@ -118,5 +105,21 @@ class ServerContent extends PureComponent {
         );
     }
 }
- 
-export default ServerContent;
+function mapStateToProps(state){
+    return {
+        serverdata:state.server.serverLeftRightdata
+    }
+
+}
+function mapDispatchToProps(dispatch){
+    return{
+        getServerLeftRightData(){
+            dispatch(FunActionTypes.getServerLeftRightData())
+        }
+
+    }
+
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(memo(ServerContent));

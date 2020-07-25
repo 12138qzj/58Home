@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter,HashRouter } from 'react-router-dom';
 
 import {renderRoutes} from 'react-router-config';
+
+import {Provider} from 'react-redux';
 import routes from './routes/index.js';
+import store from './store/index';
 // import My from './pages/my/my';
 // import Server from './pages/server/Server';
 // import Tabbuttom from './components/tabbuttom/Tabbuttom';
@@ -14,7 +17,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
       <HashRouter>
       {/* <Route  path='/main' component={Main} /> */}
 
@@ -28,6 +32,8 @@ function App() {
         {/* <Tabbuttom /> */}
       </HashRouter>
     </div>
+    </Provider>
+    
   );
 }
 
