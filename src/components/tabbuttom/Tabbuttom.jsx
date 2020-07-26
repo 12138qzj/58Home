@@ -17,9 +17,23 @@ class Bottom extends Component {
     componentDidMount(){
         const url=this.props.history.location.pathname
         console.log("history",this.props.history.location.pathname);
-        if(url==="/home/server"){
+        if(url==="/home/main"){
+            this.setState({
+                current:0
+            })
+        }else if(url==="/home/server"){
             this.setState({
                 current:1
+            })
+
+        }else if(url==="/home/info"){
+            this.setState({
+                current:2
+            })
+
+        }else if(url==="/home/my"){
+            this.setState({
+                current:3
             })
         }
     }
@@ -32,7 +46,8 @@ class Bottom extends Component {
             <ul className="Botton-warper" >
                 <li className="Botton-warper-warp" key="1" 
                 onClick={this.ChanegPage.bind(this,0)}>
-                <Link to='/home/main' style={{textDecoration:"none"}}>
+                <Link to='/home/main' style={{textDecoration:"none"}}
+                >
                     {/*  */}
                     <div >
                         <div className="icon" style={

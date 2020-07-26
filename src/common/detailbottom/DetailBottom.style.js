@@ -8,6 +8,7 @@ export const Bottomwarp = styled.div `
     background-color:white;
 
     display:flex;
+    z-index:99;
     .xq-button{
         background-image: linear-gradient(135deg,#ff7b5a,#ff4d4c);
         color: #fff;

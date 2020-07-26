@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect } from 'react-router-dom';
 import BlankLayout from '../layouts/BlankLayout';
-
 import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
 // import Main from '../pages/Main/Main';

@@ -1,4 +1,4 @@
-import Mock, { Random } from 'mockjs';
+import Mock from 'mockjs';
 
 import ServerData from '../Data/serverData/ServerData.json';
 import MainData from '../Data/mainData/index.js'

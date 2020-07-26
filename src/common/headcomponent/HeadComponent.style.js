@@ -9,6 +9,7 @@ export const Head = styled.div `
     width:100%;
     height:1.189rem;
     background-color:pink;
+    z-index:6;
 
     .leftimg{
         &>img{

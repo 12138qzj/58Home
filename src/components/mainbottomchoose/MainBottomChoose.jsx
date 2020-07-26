@@ -15,7 +15,7 @@ const MainBottomChoose=(props)=>{
         <>
             <Top>
 
-            <NavLink to="/main" activeClassName="selected">
+            <NavLink to="/home/main" activeClassName="selected">
                 <TopItem>
                     <div className="personal-info-card">
                         <div className="personal-info-num">生活百科</div>
@@ -44,7 +44,8 @@ const MainBottomChoose=(props)=>{
             <TopItem>
                     <div className="personal-info-card">
                         <div className="personal-info-num">家居改造</div>
-                        <div className="personal-info-num-name">该造家</div>
+                        <div className="personal-info-num-name">
+                             <span>该造家</span> </div>
                     </div>
                 </TopItem>
             </NavLink>

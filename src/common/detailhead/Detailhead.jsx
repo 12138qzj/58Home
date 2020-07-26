@@ -1,17 +1,47 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import {Detail} from './Detailhead.style.js';
 
 const Detailhead=(props)=>{
 
+    const {index, handleTabClick}=props
+    console.log(props);
+    const activeIndex=index;
     return (
-        <>
-            <Detail>
-                <a href="#" >商品</a>
-                <a href="#">详情</a>
-                <a href="#">推荐</a>
 
-            </Detail>
-        </>
+    
+        <Detail style={index===1?{display:"none"}:{}}>
+            <li
+            data-index="0"
+            data-ltab="商品"
+            onClick={handleTabClick}
+            className={activeIndex===0?"activeselected":""}>
+                <span
+                 data-index="0"
+                 data-ltab="商品">商品</span>
+            </li>
+            <li
+            data-index="1"
+            data-ltab="详情"
+            onClick={handleTabClick}
+
+            className={activeIndex===1?"activeselected":""}>
+            <span
+             data-index="0"
+             data-ltab="详情">
+                详情</span>
+            </li>
+            <li
+             data-index="2"
+             data-ltab="推荐"
+            onClick={handleTabClick}
+            className={activeIndex===2?"activeselected":""}>
+            <span
+            data-index="2"
+            data-ltab="推荐">推荐</span>
+            </li>
+
+        </Detail>
         
     )
 }
