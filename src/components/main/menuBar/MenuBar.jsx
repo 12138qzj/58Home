@@ -4,15 +4,16 @@ import './MenuBar.css';
 // import { menuBarData2 } from '../../../Data/mainData/index'
 
 function MenuBar(props) {
-    
-    const menuBarData2 =  props.menuBarData2 ? props.menuBarData2  :[];
+
+    const menuBarData2 = props.menuBarData2 ? props.menuBarData2 : [];
     const menuBarData = props.menuBarData || [];
-    console.log(menuBarData2,'?????????????????????????')
+    console.log(menuBarData2, '?????????????????????????')
     return (
         <div className='menu-bar'>
             <div className="menu-bar1">
                 <MenuBarItem menuBarData={menuBarData}/>
                 <MenuBarItem menuBarData={menuBarData}/>
+
             </div>
             <div className="menu-bar2">
                 {
@@ -20,7 +21,7 @@ function MenuBar(props) {
                         return (
                             <div className="menu-bar2__box" key={index}>
                                 {/* {`${item.icon}`} */}
-                                <span className="iconfont menu-bar2__icon" style={{color: `${item.color}`}}>{`${item.icon}`}</span>
+                                <span className="iconfont menu-bar2__icon" style={{ color: `${item.color}` }}>{`${item.icon}`}</span>
                                 {/* <img src={item.picUrl} alt="" className="menu-bar2-box__img" /> */}
                                 <div className="menu-bar2-box__text">{item.type}</div>
                             </div>

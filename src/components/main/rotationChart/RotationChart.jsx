@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import './RotationChart.css';
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
-// import { rotationImg } from '../../../Data/mainData/index'
 
 class RotationChart extends Component {
     componentDidMount() {
-        this.mySwiper = new Swiper('.swiper-container', {
+        new Swiper('.swiper-container', {
             loop: true,
             autoplay: {
                 delay: 1000,
             },
             pagination: {
-                el: '.swiper-pagination'
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable:true
             }
         })
     }

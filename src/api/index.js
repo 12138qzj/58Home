@@ -5,3 +5,7 @@ export const reqserver = () => {
 export const reqmain = () => {
     return Ajax("/home/main", {}, 'GET');
 }
+// home/main/cbl
+// export const reqmain = (url) => {
+//     return Ajax(url, {}, 'GET');
+// }

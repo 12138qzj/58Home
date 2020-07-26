@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Bottomwarp = styled.div `
-
     position:fixed;
     width:100%;
     bottom:0;

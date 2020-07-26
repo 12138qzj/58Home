@@ -1,12 +1,26 @@
 import React from 'react';
 import { OrderTab, OrderType, TypeItem, OrderAd, BlankOrder } from './Order.style'
-import OrderItem from './OrderItem'
+// import OrderItem from './OrderItem'
 import { NavLink, Link } from 'react-router-dom';
 import { renderRoutes } from "react-router-config";
+import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 
 function Order(props) {
 
     const { route } = props;
+    const init = () => {
+        let boxdata = [];
+        StorageUtils.getUserorder();
+    
+        const data = StorageUtils.getUserorder() ? StorageUtils.getUserorder().split(';') : [];
+        for (let key in data) {
+            var obj = eval("(" + data[key] + ")");
+            boxdata.push(obj);
+        }
+        return boxdata;
+    }
+    const boxdata = init();
+    console.log(boxdata,'获取到本地数据啦')
     return (
         <>
             <OrderTab>
@@ -43,7 +57,7 @@ function Order(props) {
                 <div className="blank_button">立即预约</div>
             </BlankOrder> */}
             {/* <OrderItem /> */}
-            
+            {/* 每次打开，读取localstorage, 没有就不显示， 有就存到store， 从store取数据渲染 */}
             
             {renderRoutes(route.routes)}
         </>

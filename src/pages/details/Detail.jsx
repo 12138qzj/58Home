@@ -1,5 +1,5 @@
-import React, { useState, useEffect, memo ,useRef} from 'react';
-import {connect} from 'react-redux'
+import React, { useState, useEffect, memo, useRef } from 'react';
+import { connect } from 'react-redux'
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
 import HeadComponent from '../../common/headcomponent/HeadComponent';
@@ -16,10 +16,8 @@ import { Rotation, Title, Discount, Fromwarp } from './detail.style.js'
 
 const Detail = (props) => {
 
-
-
-    const {orderdata}=props;
-    const {getinitorderData,addorderData}=props;
+    const { orderdata } = props;
+    const { getinitorderData, addorderData } = props;
     const handleback = () => {
 
     }
@@ -34,34 +32,36 @@ const Detail = (props) => {
             type: 'bullets',
         }
     })
-    const address=useRef();
-    const size=useRef();
-    const time=useRef();
+    const address = useRef();
+    const size = useRef();
+    const time = useRef();
 
-    const handleclick=(e)=>{
+    const handleclick = (e) => {
         e.preventDefault()
-        console.log("提交数据",time.current.value);
+        console.log("提交数据", time.current.value);
 
-        onAddOrder(address.current.value,size.current.value,time.current.value)
+        onAddOrder(address.current.value, size.current.value, time.current.value)
 
-        
+
     }
-    const onAddOrder=(Dadr,Dsize,Dtime)=>{
-        if(Dadr&&Dsize&&Dtime) {
-            let data=StorageUtils.getUserorder();
+    const onAddOrder = (Dadr, Dsize, Dtime) => {
+        if (Dadr && Dsize && Dtime) {
+            let data = StorageUtils.getUserorder();
             // data?
-            let newdata=data?(data+";"+`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`):(`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`)
+            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`)
+            // 存到本地
             StorageUtils.saveUserorder(newdata)
+            // 存到store
             addorderData(newdata);
-        } 
+        }
     }
 
     // const [orderdata,setorderdata] =useState([])
-    useEffect(()=>{
-        if(!orderdata.length){
+    useEffect(() => {
+        if (!orderdata.length) {
             getinitorderData();
         }
-    },[])
+    }, [])
     return (
         <>
             <HeadComponent title="擦玻璃" handleback={() => { handleback() }} />
@@ -121,16 +121,17 @@ const Detail = (props) => {
                 {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
                 <form id="Form1" action="" className="form">
                     <div className="forminput">
-                        <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址"/>
+                        <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" />
                     </div>
                     <div className="forminput">
-                        
-                        <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则"/>
-                    </div> 
-                    <div className="forminput">
-                        <label>时间</label><input  ref={time} type="text" name="time" id="" placeholder="请选择待服务时间"/>
+
+                        <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" />
                     </div>
-                    <DetailBottom handleclick={handleclick}/>
+                    <div className="forminput">
+                        <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" />
+                    </div>
+                    
+                    <DetailBottom handleclick={handleclick} />
                 </form>
             </Fromwarp>
             {/* {orderdata.map((item)=>{
@@ -141,10 +142,10 @@ const Detail = (props) => {
                 )
             })} */}
 
-            <Detailhead style={{display:"none"}}>
-                
+            <Detailhead style={{ display: "none" }}>
+
             </Detailhead>
-            
+
 
         </>
 
@@ -163,21 +164,21 @@ const Detail = (props) => {
 //     })
 // })
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        orderdata:state.order.orderdata
+        orderdata: state.order.orderdata
     }
 
 }
-function mapDispatchToProps(dispatch){
-    return{
-        getinitorderData(){
+function mapDispatchToProps(dispatch) {
+    return {
+        getinitorderData() {
             dispatch(FunActionTypes.initorderData())
         },
-        addorderData(data){
+        addorderData(data) {
             dispatch(FunActionTypes.addorderData(data))
         }
 
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(memo(Detail));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Detail));

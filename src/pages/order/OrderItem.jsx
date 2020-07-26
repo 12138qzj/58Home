@@ -4,6 +4,7 @@ import {  OrderBox } from './Order.style'
 function OrderItem(props) {
 
     const { route } = props;
+    
     return (
         <OrderBox>
                 <div className="order-title">

@@ -15,3 +15,8 @@ const mainData = Mock.mock('/home/main', 'get', {
     data: MainData
 })
 export { mainData }
+// const mainData = Mock.mock('/home/main/cbl', 'get', {
+//     success: true,
+//     data: MainData
+// })
+// export { mainData }

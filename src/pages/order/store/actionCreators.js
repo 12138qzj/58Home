@@ -1,30 +1,30 @@
-import { reqmain } from '../../../api/index';
+// import { reqmain } from '../../../api/index';
 import * as actionType from './constants.js';
 
-export const changeMainData = (data) => {
+
+const init = () => {
+    let boxdata = [];
+    StorageUtils.getUserorder();
+
+    const data = StorageUtils.getUserorder() ? StorageUtils.getUserorder().split(';') : [];
+    for (let key in data) {
+        var obj = eval("(" + data[key] + ")");
+        boxdata.push(obj);
+    }
+    return boxdata;
+}
+
+export const initOrderData = (data) => {
     return {
-        type: actionType.CHANGE_MAINDATA,
+        type: actionType.CHANGE_ORDERDATA,
         data: data
     }
 }
 
-export const getMainData = () => {
+export const getOrderData = () => {
     return (dispatch) => {
-
         console.log("成功进去-----------");
-
-        reqmain().then((res) => {
-            console.log("成功进去-+++++++++++++++");
-            if (res.data.success) {
-                console.log("成功.......", res);
-                dispatch(changeMainData(res.data.data))
-            } else {
-                console.log("失败", res);
-            }
-        }).catch((e) => {
-            console.log("服务页面数据请求错误！");
-        })
+        dispatch(initOrderData(init()))
     }
-
 };
 

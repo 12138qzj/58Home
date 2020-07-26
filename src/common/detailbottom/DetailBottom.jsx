@@ -1,6 +1,7 @@
 import React from 'react'
 import location from '../../assets/images/客服.png';
 import {Bottomwarp} from './DetailBottom.style.js';
+import { Link } from 'react-router-dom';
 
 
 const DetailBottom=(props)=>{
@@ -15,9 +16,11 @@ const DetailBottom=(props)=>{
                  客服   
              </div>
             </div>
-            <button className="xq-button" type="submit" onClick={props.handleclick}>
-                立即购买
-            </button>
+            <Link to='/payment' style={{width:'100%'}}>
+                <button className="xq-button" type="submit" onClick={props.handleclick}>
+                    立即购买
+                </button>
+            </Link>
         </Bottomwarp>
        
         </>
