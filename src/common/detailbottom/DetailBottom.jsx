@@ -7,7 +7,6 @@ const DetailBottom=(props)=>{
 
     
     return(
-        <>
         <Bottomwarp>
             <div className="kefu-img">
              <img src={location} alt="" />
@@ -20,7 +19,6 @@ const DetailBottom=(props)=>{
             </button>
         </Bottomwarp>
        
-        </>
     )
 }
 export default DetailBottom;

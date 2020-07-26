@@ -22,9 +22,7 @@ function Main(props) {
     
     const { maindata } = props; 
     const { getMainDataDispatch } = props; 
-    console.log("------",maindata)
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
-    console.log(classify, menuBarData, menuBarData2, rotationImg)
     useEffect(()=> {
         if(!maindata.length) {
             getMainDataDispatch();

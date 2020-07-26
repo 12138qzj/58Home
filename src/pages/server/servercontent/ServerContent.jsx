@@ -1,100 +1,115 @@
-import React, { PureComponent,memo,useEffect } from 'react';
-// import axios from 'axios';
-
+import React, { memo,useState,useRef,useEffect } from 'react';
 import {connect} from 'react-redux';
-
 import '../../../api/mock.js';
-
-
-import {reqserver} from '../../../api/index.js';
-import ServerLeftData from '../../../Data/serverData/ServerData.json';
 import ContentCompont from './contentcomponent/ContentCompoent';
-
 import * as FunActionTypes from '../store/actionCreators'
 import  './servercontent.css';
-class ServerContent extends PureComponent {
-    state = { 
-        ServerData:[]
-     }
-    onClickServer=(event)=>{
-        console.log("object",event.view);
+function  ServerContentHSS (props) {
+    const {serverdata}=props
+    const [activeIndex,setActiveIndex]=useState(0);
 
-        console.log("target",event.target);
+    //监听函数点事件
+    const handleTabClick=(e)=>{
 
-    } 
-    componentDidMount(){  
-        if(!this.state.ServerData.length){
-            console.log("第一次进入");
-            this.props.getServerLeftRightData();
-        }
-        // init()
+        console.log(e);
+        console.log(e.target);
+        console.log(e.target.getAttribute("data-lefttab"));
+    
+        const  activeIndex=e.target.getAttribute("data-index")
+        console.log("activeIndex",activeIndex);
+        setActiveIndex(parseInt(activeIndex))
+        const ltab=e.target.getAttribute("data-lefttab")
+        const rtab=document.querySelector(`[data-righttab="${ltab}"]`)
+        
+        rtab.scrollIntoView({
+          behavior:'smooth'
+        })
     }
-    // init(){
-    //     console.log("init进入",this.props.serverdata);
-    //     this.setState({
-    //         ServerData:this.props.serverdata
-    //     })
-    // }
-    render() { 
-    // console.log(ServerLeftData);
 
-    // useEffect(()=>{
-    //     console.log("this",this);
-    //     // this.init();
-    // },[])
-    console.log("Props.this",this.props);
+    let ranges=[];
+    const ref=useRef();
+    let base=0;
 
-    console.log("state.this.data",this.state.ServerData);
-    const {serverdata}=this.props
+    //数据初始化
+
+    const initdata=()=>{
+        if(!serverdata.length){
+            // console.log("第一次进入");
+            props.getServerLeftRightData();
+        }
+    }
+    const initScroll=()=>{
+        const tabDetail=ref.current;
+        const tabs=tabDetail.querySelectorAll(`[data-righttab]`)
+        for(let tab of tabs){
+        let h=tab.getBoundingClientRect().height;
+        let newH=base+h;
+        ranges.push([base,newH])
+        base=newH;
+        }
+
+    function onScroll(e){
+        const scrollTop=tabDetail.scrollTop;
+        const index = ranges.findIndex(range=>scrollTop>=range[0]&&scrollTop<range[1])
+        setActiveIndex(index)
+
+    }
+    tabDetail.addEventListener('touchstart',()=>{
+        tabDetail.addEventListener('touchmove',onScroll)
+
+    })
+
+    tabDetail.addEventListener('touchend',()=>{
+        tabDetail.removeEventListener('touchmove',onScroll);
+
+    })
+    }
+    //effect 将在每轮渲染结束后执行
+    useEffect(()=>{
+        initdata();
+        initScroll();
+     
+    },[])
+   
     
         return ( 
             <div className="server">
                 <div className="left">
-                    <ul onClick={(event)=>{
-                        this.onClickServer(event);
-                    }}>
-                        <li className="active">
-                            <span >模板演示</span> 
-                        </li>
+                    <ul >
                         {
                             !serverdata?"":
                             serverdata.map((item,index)=>{
                                 return (
-                                    <a href={item.anchor} key={index} >
-                                        <li >
-                                            <span>
+                                    // <a href={item.anchor} key={index} >
+                                        <li key={index}
+                                        data-index={index}
+                                        data-lefttab={item.item}
+                                        onClick={handleTabClick}
+                                        className={activeIndex===index?"active":""}
+                                        >
+                                            <span 
+                                             data-index={index}
+                                             data-lefttab={item.item}>
                                                 {item.item}
-                                            </span>
-                                            
+                                            </span>                                         
                                         </li>
-                                    </a>
                                 )                              
                             })
                         }
-                       
                     </ul>
                 </div>
-                <div className="right">
+                <div className="right"  ref={ref}>
                 <ul>
-                <li >
-                    <img src="https://images.daojia.com/dop/custom/9ae5199ea57920870ee5fd1a215ab9d6.png" alt="" className="right-top__img"/>
-                      <ContentCompont/>
-                      
-                </li>
                     {
                         !serverdata?"":
                         serverdata.map((item,index)=>{
                             return (
-                                   
-                                <li key={index} id={item.anchor.substring(1)}>
+                                <li key={index}
+                                    data-righttab={item.item}>
                                     <img src={item.item_imgsrc} alt="" className="right-top__img"/>
-
                                     <span>
-                                        {/* {item.conten} */}
                                         <ContentCompont content={item.conten}/>
-
                                     </span>
-                                        
                                 </li>
                             )                              
                         })
@@ -104,7 +119,8 @@ class ServerContent extends PureComponent {
             </div>
         );
     }
-}
+// }
+ 
 function mapStateToProps(state){
     return {
         serverdata:state.server.serverLeftRightdata
@@ -121,5 +137,4 @@ function mapDispatchToProps(dispatch){
 
 }
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(memo(ServerContent));
+export default connect(mapStateToProps,mapDispatchToProps)(memo(ServerContentHSS));

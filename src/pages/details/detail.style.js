@@ -2,21 +2,42 @@ import styled from 'styled-components';
 
 export const Rotation = styled.div `
 
-    width: 9.388rem /* 1014/108 */;
-    height: 2.6944rem /* 291/108 */;
+    width: 100% /* 1014/108 */;
+    height: 8.333rem /* 900/108 */;
     overflow: hidden;
     font-size: 0;
-    border-radius: 10px;
-    .swiper-container{
-        /* --swiper-pagination-color: #fdb3a9;两种都可以 */
-        .rotationChart-img{
-        display: inline-block;
-        height: 2.6944rem /* 291/108 */;
+    z-index:2;
 
+    /* border-radius: 10px; */
+    .swiper-container{
+        z-index:2;
+
+        /* --swiper-pagination-color: #fdb3a9;两种都可以 */
+        .swiper-slide{
+            z-index:2;
+            &>img{
+                display: inline-block;
+                width:100%;
+                /* height: 2.6944rem 291/108; */
+            z-index:2;
+
+            }
         }
+        
     }
+    
 `;
 
+
+export const Lable = styled.div `
+        /* margin-top:3rem; */
+        float:left;
+        right:10px;
+        height:30px;
+        width:30px;
+        background-color:red;
+        z-index:999;
+`;
 export const Title = styled.div `
     height:3.5rem;
     background-color:white;

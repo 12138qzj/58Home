@@ -29,6 +29,7 @@ export const Top = styled.div `
             }
             .personal-info-num-name{
                 display:inline;
+                margin-left:0.1rem;
                 padding:0.05rem 0.18rem;
                 border-radius:0.25rem;
                 color:white;
@@ -61,9 +62,16 @@ export const TopItem = styled.div `
     }
     .personal-info-num-name{
         color:#9a9a9a;
+        /* margin-left:0.25rem; */
+        width:1.58rem;
         font-size: 0.3rem;
         font-family: PingFangSC-medium;
         font-weight: 400;
+        background-color:pink;
+        &>span{
+            margin: 0px auto;
+
+        }
     }
 
 }
