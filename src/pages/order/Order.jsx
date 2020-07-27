@@ -1,6 +1,6 @@
 import React, { useState, memo, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { OrderTab, OrderType, TypeItem, OrderAd } from './Order.style';
+import { OrderTab, OrderType, TypeItem, OrderAd,BlankOrder } from './Order.style';
 import { NavLink, Link } from 'react-router-dom';
 
 import * as actionTypes from '../../pages/details/store/actionCreators'
@@ -8,6 +8,8 @@ import * as actionTypes from '../../pages/details/store/actionCreators'
 import { renderRoutes } from "react-router-config";
 import OrderItem from './OrderItem'
 import BlankOrderComponent from './BlankOrder';
+import StorageUtils from '../../Utils/storageUtis/StorageUtils';
+
 // import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 
 
@@ -58,7 +60,7 @@ function Order(props) {
                 </NavLink>
             </OrderType>
             <OrderAd>
-                到家优选订单，点击这里查看 >
+                {/* 到家优选订单，点击这里查看 */}
             </OrderAd>
 
             {

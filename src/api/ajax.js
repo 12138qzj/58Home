@@ -5,7 +5,9 @@ export default function Ajax(url, data = {}, type) {
     return new Promise((resolve, rejet) => {
         let Promise;
         if (type === 'GET') {
-            Promise = axios.get(url)
+            Promise = axios.get(url, {
+                params: data
+            })
         } else {
             Promise = axios.post(url, {
                 params: data
