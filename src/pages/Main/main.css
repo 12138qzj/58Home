@@ -1,4 +1,4 @@
 .main {
   padding: 0 0.324rem;
-  overflow-y: scroll;
+  height: calc(100vh - 2.5rem);
 }
