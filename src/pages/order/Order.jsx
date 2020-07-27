@@ -2,7 +2,7 @@ import React,{useState, memo } from 'react';
 import { connect } from 'react-redux';
 import { OrderTab, OrderType, TypeItem, OrderAd, BlankOrder } from './Order.style';
 import { NavLink, Link } from 'react-router-dom';
-import * as actionTypes from './store/actionCreators'
+// import * as actionTypes from './store/actionCreators'
 import { renderRoutes } from "react-router-config";
 import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 
@@ -66,16 +66,16 @@ function Order(props) {
             )
         }
         
+        export default Order;     
         
-        
-        const mapStateToProps = (state) => ({
-            maindata: state.main.maindata
-        })
-        const mapDispatchToProps = (dispatch) => {
-            return {
-                getMainDataDispatch() {
-                    dispatch(actionTypes.getMainData())
-                }
-            }
-        }
-        export default connect(mapStateToProps, mapDispatchToProps)(memo(Order))
+        // const mapStateToProps = (state) => ({
+        //     maindata: state.main.maindata
+        // })
+        // const mapDispatchToProps = (dispatch) => {
+        //     return {
+        //         getMainDataDispatch() {
+        //             dispatch(actionTypes.getMainData())
+        //         }
+        //     }
+        // }
+        // export default connect(mapStateToProps, mapDispatchToProps)(memo(Order))
