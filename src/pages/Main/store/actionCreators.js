@@ -2,8 +2,16 @@ import { reqmain } from '../../../api/index';
 import * as actionType from './constants.js';
 
 export const changeMainData = (data) => {
+    console.log("进去成功...............");
     return {
         type: actionType.CHANGE_MAINDATA,
+        data: data
+    }
+}
+
+export const changeIndex = (data) => {
+    return {
+        type: actionType.CHANGE_INDEX,
         data: data
     }
 }
@@ -11,12 +19,9 @@ export const changeMainData = (data) => {
 export const getMainData = () => {
     return (dispatch) => {
 
-        console.log("成功进去-----------");
 
         reqmain().then((res) => {
-            console.log("成功进去-+++++++++++++++");
             if (res.data.success) {
-                console.log("成功.......", res);
                 dispatch(changeMainData(res.data.data))
             } else {
                 console.log("失败", res);
@@ -28,3 +33,10 @@ export const getMainData = () => {
 
 };
 
+//改变 访问的页面
+export const changeIndexData = (newIndex) => {
+    return (dispatch) => {
+        console.log("成功进去changeIndexData-----------");
+        dispatch(changeIndex(newIndex))
+    }
+};

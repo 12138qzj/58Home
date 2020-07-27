@@ -3,10 +3,6 @@ import React, { useEffect,  memo } from 'react';
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators'
 
-// import axios from 'axios';
-// import {mainData} from '../../api/mock.js';
-// import { reqmain } from '../../api/index.js';
-
 
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Classify from '../../components/main/classify/Classify';
@@ -20,13 +16,18 @@ import './main.css'
 
 function Main(props) {
     
-    const { maindata } = props; 
-    const { getMainDataDispatch } = props; 
+    const { maindata ,index} = props; 
+    const { getMainDataDispatch,changeIndexData } = props; 
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
+
+    useEffect(()=>{
+        changeIndexData(0);
+    },[index])
     useEffect(()=> {
         if(!maindata.length) {
             getMainDataDispatch();
         }
+
     },[])
     return (
         <>
@@ -45,12 +46,16 @@ function Main(props) {
 }
   
 const mapStateToProps = (state) => ({
-    maindata: state.main.maindata
+    maindata: state.main.maindata,
+    index:state.main.index
 })
 const mapDispatchToProps = (dispatch) => {
     return {
         getMainDataDispatch() {
             dispatch(actionTypes.getMainData())
+        },
+        changeIndexData(newIndex){
+            dispatch(actionTypes.changeIndexData(newIndex))
         }
     }
 }

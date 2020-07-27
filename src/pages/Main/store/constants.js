@@ -1,1 +1,2 @@
 export const CHANGE_MAINDATA = 'CHANGE_MAINDATA';
+export const CHANGE_INDEX = 'CHANGE_INDEX';

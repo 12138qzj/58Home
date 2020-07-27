@@ -1,4 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect,  memo } from 'react';
+// memo 缓存组件
+import { connect } from 'react-redux';
+import * as actionTypes from '../Main/store/actionCreators'
 import {Link} from 'react-router-dom';
 import {renderRoutes} from 'react-router-config'
 import InfoCard from './infocard/InfoCard';
@@ -7,11 +10,15 @@ import ToolserverCard from './toolservercard/ToolserverCard'
 import './my.css';
 ///image/temp-head_c43dfad.png
 import head_icon from '../../assets/images/temp-head_c43dfad.png'
-class My extends PureComponent {
-    state = {}
 
-    render() {
-        const {route}=this.props;
+function My(props){
+// class My extends PureComponent {
+    // state = {}
+
+    // render() {
+        const {route,index}=props;
+        const {changeIndexData}=props;
+
         const ordercardbgp = [
             {
                 bgp: "0 0",
@@ -64,6 +71,9 @@ class My extends PureComponent {
             }
         ]
 
+        useEffect(()=>{
+            changeIndexData(3)
+        },[index])
         return (
             <div>
                 <div className="head">
@@ -136,7 +146,19 @@ class My extends PureComponent {
             </div>
 
         );
-    }
+    // }
 }
 
-export default My;
+const mapStateToProps = (state) => ({
+    // maindata: state.main.maindata,
+    index:state.main.index
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeIndexData(newIndex){
+            dispatch(actionTypes.changeIndexData(newIndex))
+        }
+    }
+}
+export default  connect(mapStateToProps,mapDispatchToProps)(memo(My))
+

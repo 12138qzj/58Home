@@ -8,7 +8,11 @@ export const Head = styled.div `
     top:0;
     width:100%;
     height:1.189rem;
-    background-color:pink;
+    font-size:0.4rem;
+    background-color:gray;
+    font-family: PingFangSC-Medium,PingFang SC;
+
+
     z-index:6;
 
     .leftimg{

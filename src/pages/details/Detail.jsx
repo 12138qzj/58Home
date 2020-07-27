@@ -108,8 +108,9 @@ const Detail = (props) => {
       const ref=useRef();
       let base=0;
       useEffect(()=>{
-          console.log("ref",ref);
         const tabDetail=ref.current;
+        console.log("tabDetail",tabDetail);
+
         const tabs=tabDetail.querySelectorAll(`[data-rtab]`)
         console.log("tabs",tabs);
         for(let tab of tabs){
@@ -124,10 +125,9 @@ const Detail = (props) => {
         const scrollTop=tabDetail.scrollTop;
         const index = ranges.findIndex(range=>scrollTop>=range[0]&&scrollTop<range[1])
         console.log("Index",index,scrollTop);
-        console.log("ref",ref.current.scrollTop,ref,e);
+        // console.log("ref",ref.current.scrollTop,ref,e);
 
-        setActiveIndex(index)
-    
+        setActiveIndex(index)   
       }
       tabDetail.addEventListener('touchstart',()=>{
         tabDetail.addEventListener('touchmove',onScroll)
@@ -140,96 +140,90 @@ const Detail = (props) => {
       })
       },[1])
     return (
-        <div ref={ref}>
+        <>
             <HeadComponent title="擦玻璃" handleback={() => { handleback() }} />
             <Detailhead index={activeIndex}  handleTabClick={handleTabClick}/>
-            
-            <div data-rtab="商品">
-                    <Rotation>
-                        <div className="swiper-container">
-                            <div className="swiper-wrapper ">
-                                <div className="swiper-slide">
-                                    <img data-src="https://images.daojia.com/pic/commodity/online/9275c6db764bbe4cb4f83aa5a7dbdd39.png?x-oss-process=image/auto-orient,0/format,webp" data-index="0"  className="swiper-lazy"/>
+            <div ref={ref}>
+
+                <div data-rtab="商品">
+                        <Rotation>
+                            <div className="swiper-container">
+                                <div className="swiper-wrapper ">
+                                    <div className="swiper-slide">
+                                        <img data-src="https://images.daojia.com/pic/commodity/online/9275c6db764bbe4cb4f83aa5a7dbdd39.png?x-oss-process=image/auto-orient,0/format,webp" data-index="0"  className="swiper-lazy"/>
+                                        <div className="swiper-lazy-preloader"></div>
+                                    </div>
+                                    <div className="swiper-slide">
+                                    
+                                        <img data-src="https://images.daojia.com/pic/commodity/online/1a247a084e9d63fc0ba80cdc5612e998.png?x-oss-process=image/auto-orient,0/format,webp" data-index="1"  className="swiper-lazy"/>
                                     <div className="swiper-lazy-preloader"></div>
-                                </div>
-                                <div className="swiper-slide">
-                                   
-                                    <img data-src="https://images.daojia.com/pic/commodity/online/1a247a084e9d63fc0ba80cdc5612e998.png?x-oss-process=image/auto-orient,0/format,webp" data-index="1"  className="swiper-lazy"/>
-                                <div className="swiper-lazy-preloader"></div>
-                                </div>
-                                <div className="swiper-slide">
-                                    <img data-src="https://images.daojia.com/pic/commodity/online/f67c550b6c0b42da7b40d5559bd80075.png?x-oss-process=image/auto-orient,0/format,webp" data-index="2"  className="swiper-lazy"/>
-                                    <div className="swiper-lazy-preloader"></div>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <img data-src="https://images.daojia.com/pic/commodity/online/f67c550b6c0b42da7b40d5559bd80075.png?x-oss-process=image/auto-orient,0/format,webp" data-index="2"  className="swiper-lazy"/>
+                                        <div className="swiper-lazy-preloader"></div>
+                                    </div>
                                 </div>
                             </div>
+                            {/* <Lable>
+                            fasfrag
+                        </Lable> */}
+                        </Rotation>
+                    <p><span >{imgIndex}</span></p> 
+
+                    <Title>
+                        <div className="price">
+                            ￥ <span>14</span>.00/平起
                         </div>
-                        {/* <Lable>
-                        fasfrag
-                    </Lable> */}
-                    </Rotation>
-                <p><span >{imgIndex}</span></p> 
+                        <div className="type">
+                            擦玻璃
+                        </div>
+                        <div className="describe">
+                            <span>双面精细擦窗，服务有标准，清洁看得见</span>
+                        </div>
+                        <div className="tabs">
+                            <span className="icon-shezhi iconfont">
+                                &#xe618;随时预约
+                            </span>
+                            <span className="icon-shezhi iconfont">
+                                &#xe618;专业清洗工具
+                            </span>
+                            <span className="icon-shezhi iconfont">
+                                &#xe618;阿姨专业培训
+                            </span>
+                        </div>
+                    </Title>
+                    <Discount>
+                        <div className="icon">优惠</div>
+                        <div className="text">7.5折优惠券</div>
+                        <button>
+                            <span>立即领取</span>
+                        </button>
+                    </Discount>
+                    <Fromwarp>
+                    {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
+                    <form id="Form1" action="" className="form">
+                        <div className="forminput">
+                            <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" />
+                        </div>
+                        <div className="forminput">
 
-                <Title>
-                    <div className="price">
-                        ￥ <span>14</span>.00/平起
-                    </div>
-                    <div className="type">
-                        擦玻璃
-                    </div>
-                    <div className="describe">
-                        <span>双面精细擦窗，服务有标准，清洁看得见</span>
-                    </div>
-                    <div className="tabs">
-                        <span className="icon-shezhi iconfont">
-                            &#xe618;随时预约
-                        </span>
-                        <span className="icon-shezhi iconfont">
-                            &#xe618;专业清洗工具
-                        </span>
-                        <span className="icon-shezhi iconfont">
-                            &#xe618;阿姨专业培训
-                        </span>
-                    </div>
-                </Title>
-                <Discount>
-                    <div className="icon">优惠</div>
-                    <div className="text">7.5折优惠券</div>
-                    <button>
-                        <span>立即领取</span>
-                    </button>
-                </Discount>
-                <Fromwarp>
-                {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
-                <form id="Form1" action="" className="form">
-                    <div className="forminput">
-                        <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" />
-                    </div>
-                    <div className="forminput">
-
-                        <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" />
-                    </div>
-                    <div className="forminput">
-                        <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" />
-                    </div>
-                    
-                    <DetailBottom handleclick={handleclick} />
-                </form>
-            </Fromwarp>
+                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" />
+                        </div>
+                        <div className="forminput">
+                            <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" />
+                        </div>
+                        
+                        <DetailBottom handleclick={handleclick} />
+                    </form>
+                </Fromwarp>
+                </div>
+                <DetailItemPage  />
+                <Recommend  />
             </div>
-            {/* {orderdata.map((item)=>{
-                return (
-                    <div >
-                        {item.time}
-                    </div>
-                )
-            })} */}
 
-
-            <DetailItemPage  />
-            <Recommend  />
             
 
-        </div>
+        </>
 
     )
 }

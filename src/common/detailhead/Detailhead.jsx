@@ -10,7 +10,8 @@ const Detailhead=(props)=>{
     return (
 
     
-        <Detail style={index===1?{display:"none"}:{}}>
+        //style={activeIndex===0?{display:"none"}:{}}
+        <Detail >
             <li
             data-index="0"
             data-ltab="商品"
@@ -24,10 +25,9 @@ const Detailhead=(props)=>{
             data-index="1"
             data-ltab="详情"
             onClick={handleTabClick}
-
             className={activeIndex===1?"activeselected":""}>
             <span
-             data-index="0"
+             data-index="1"
              data-ltab="详情">
                 详情</span>
             </li>
