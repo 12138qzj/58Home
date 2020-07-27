@@ -1,60 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component,memo} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../pages/Main/store/actionCreators'
 
 import Tab from './tab/Tab';
 import './bottom.css';
+
 class Bottom extends Component {
     state = {
         current:0
     }
-    ChanegPage(e,index,a) {
-        this.setState({
-            current:e
-        })
-    }
+    // ChanegPage(e,index,a) {
+    //     this.setState({
+    //         current:e
+    //     })
+    // }
 
+    // useEffect(() => {
+    //     // effect
+    //     // return () => {
+    //     //     cleanup
+    //     // }
+    // }, []);
     componentDidMount(){
-        const url=this.props.history.location.pathname
-        console.log("history",this.props.history.location.pathname);
-        if(url==="/home/main"){
-            this.setState({
-                current:0
-            })
-        }else if(url==="/home/server"){
-            this.setState({
-                current:1
-            })
-
-        }else if(url==="/home/info"){
-            this.setState({
-                current:2
-            })
-
-        }else if(url==="/home/my"){
-            this.setState({
-                current:3
-            })
-        }
+        
     }
     render() {
-        const {route}=this.props;
-
-
+        const {route,index}=this.props;
+        const {changeIndexData}=this.props;
         return (
             <>
             <ul className="Botton-warper" >
                 <li className="Botton-warper-warp" key="1" 
-                onClick={this.ChanegPage.bind(this,0)}>
+                onClick={()=>{changeIndexData(0)}}>
                 <Link to='/home/main' style={{textDecoration:"none"}}
                 >
                     {/*  */}
                     <div >
                         <div className="icon" style={
-                            this.state.current===0?
+                            index===0?
                             {backgroundPosition:"0rem -.833rem"}
                             :{backgroundPosition:"0rem 0px"}} ></div>
-                        <div className="planet" style={this.state.current===0?{color:"#ec564b"}:{}}>
+                        <div className="planet" style={index===0?{color:"#ec564b"}:{}}>
                                 首页
                         </div>
                     </div>
@@ -62,29 +50,29 @@ class Bottom extends Component {
 
                 </li>
                 <li className="Botton-warper-warp" key="2"
-                onClick={this.ChanegPage.bind(this,1)}>
+                onClick={()=>{changeIndexData(1)}}>
                     <Link to='/home/server' style={{textDecoration:"none"}}>
                         {/* style={{ backgroundPosition: "-1.685rem 0px" }} */}
                         <div className="icon" style={
-                            this.state.current===1?
+                            index===1?
                             {backgroundPosition:"-1.685rem -.833rem"}:
                             {backgroundPosition:"-1.685rem 0px"}}></div>
-                        <div className="planet"style={this.state.current===1?{color:"#ec564b"}:{}}>
+                        <div className="planet"style={index===1?{color:"#ec564b"}:{}}>
                             全部服务
                     </div>
                     </Link>
 
                 </li>
                 <li className="Botton-warper-warp" key="3"
-                onClick={this.ChanegPage.bind(this,2)}>
+                onClick={()=>{changeIndexData(2)}}>
                 <Link to='/home/info' style={{textDecoration:"none"}}>
                 {/* style={{backgroundPosition:"-93px 0px"}} */}
                     <div className="icon" 
                     style={
-                        this.state.current===2?
+                        index===2?
                         {backgroundPosition:"-2.528rem -.833rem"}:
                         {backgroundPosition:"-2.528rem 0px"}}></div>
-                    <div className="planet"style={this.state.current===2?{color:"#ec564b"}:{}} >
+                    <div className="planet"style={index===2?{color:"#ec564b"}:{}} >
                             消息
                     </div>
                 </Link>
@@ -92,15 +80,17 @@ class Bottom extends Component {
                 </li>
 
                 <li className="Botton-warper-warp" key="4"
-                onClick={this.ChanegPage.bind(this,3)}>
+                onClick={()=>{
+                    changeIndexData(3);
+                } }>
                 <Link to='/home/my' style={{textDecoration:"none"}}>
 
                     <div className="icon" 
                     style={
-                        this.state.current===3?
+                        index===3?
                         {backgroundPosition:"-3.333rem -.833rem"}:
                         {backgroundPosition:"-3.333rem 0px"}}></div>
-                    <div className="planet" style={this.state.current===3?{color:"#ec564b"}:{}}>
+                    <div className="planet" style={index===3?{color:"#ec564b"}:{}}>
                             我的
                     </div>
                 </Link>
@@ -118,4 +108,15 @@ class Bottom extends Component {
     }
 }
 
-export default withRouter(Bottom);
+const mapStateToProps = (state) => ({
+    index:state.main.index
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeIndexData(newIndex){
+            dispatch(actionTypes.changeIndexData(newIndex))
+        }
+    }
+}
+export default  connect(mapStateToProps,mapDispatchToProps)(memo(Bottom))
+

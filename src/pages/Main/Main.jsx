@@ -19,15 +19,20 @@ import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose
 import './main.css'
 
 function Main(props) {
-
-    const { maindata } = props;
-    const { getMainDataDispatch } = props;
+    
+    const { maindata ,index} = props; 
+    const { getMainDataDispatch,changeIndexData } = props; 
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
-    useEffect(() => {
-        if (!maindata.length) {
+
+    useEffect(()=>{
+        changeIndexData(0);
+    },[index])
+    useEffect(()=> {
+        if(!maindata.length) {
             getMainDataDispatch();
         }
-    }, [])
+
+    },[])
     return (
         <>
             <SearchInput />
@@ -47,12 +52,16 @@ function Main(props) {
 }
 
 const mapStateToProps = (state) => ({
-    maindata: state.main.maindata
+    maindata: state.main.maindata,
+    index:state.main.index
 })
 const mapDispatchToProps = (dispatch) => {
     return {
         getMainDataDispatch() {
             dispatch(actionTypes.getMainData())
+        },
+        changeIndexData(newIndex){
+            dispatch(actionTypes.changeIndexData(newIndex))
         }
     }
 }

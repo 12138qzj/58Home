@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect,  memo } from 'react';
+// memo 缓存组件
+import { connect } from 'react-redux';
+import * as actionTypes from '../Main/store/actionCreators'
 import './Info.css'
 import InfoItem from '../../components/InfoItem/InfoItem'
-class Info extends Component {
-    state = {  }
-    render() { 
+function Info(props){
+   
+    const {index}=props;
+    const {changeIndexData}=props;
+
+
+    useEffect(()=>{
+        changeIndexData(2)
+    },[index])
         return ( 
             <div className='infomation'>
                 <div className="header">
@@ -25,7 +34,17 @@ class Info extends Component {
                 </div>
             </div> 
          );
-    }
 }
  
-export default Info;
+const mapStateToProps = (state) => ({
+    // maindata: state.main.maindata,
+    index:state.main.index
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeIndexData(newIndex){
+            dispatch(actionTypes.changeIndexData(newIndex))
+        }
+    }
+}
+export default  connect(mapStateToProps,mapDispatchToProps)(memo(Info))
