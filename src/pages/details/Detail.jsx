@@ -13,9 +13,9 @@ import Recommend from '../../components/detail/recommend/Recommend'
 import * as FunActionTypes from './store/actionCreators'
 
 // ../../../Data/mainData/index
-import { rotationImg } from '../../Data/mainData/index'
+// import { rotationImg } from '../../Data/mainData/index'
 
-import { Rotation,Lable, Title, Discount, Fromwarp } from './detail.style.js'
+import { Rotation, Title, Discount, Fromwarp } from './detail.style.js'
 
 const Detail = (props) => {
 
@@ -35,7 +35,7 @@ const Detail = (props) => {
         watchSlidesProgress : true,
         on: {
             progress: function (progress) {
-                console.log(".........",progress);
+                // console.log(".........",progress);
                 if(Math.abs(progress)===0){
                     return;
                 }
@@ -59,7 +59,7 @@ const Detail = (props) => {
         // autoplay:true,
     })
 
-     console.log("8888",DetailSwiper); 
+    //  console.log("8888",DetailSwiper); 
     // DetailSwiper.slides[0].progress;
     const address=useRef();
     const size=useRef();
@@ -67,7 +67,7 @@ const Detail = (props) => {
     const type=0;
     const handleclick = (e) => {
         e.preventDefault()
-        console.log("提交数据", time.current.value);
+        // console.log("提交数据", time.current.value);
 
         onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
 
@@ -109,22 +109,22 @@ const Detail = (props) => {
       let base=0;
       useEffect(()=>{
         const tabDetail=ref.current;
-        console.log("tabDetail",tabDetail);
+        // console.log("tabDetail",tabDetail);
 
         const tabs=tabDetail.querySelectorAll(`[data-rtab]`)
-        console.log("tabs",tabs);
+        // console.log("tabs",tabs);
         for(let tab of tabs){
           let h=tab.clientHeight;
-        console.log("tabsH",h);
+        // console.log("tabsH",h);
           let newH=base+h;
           ranges.push([base,newH])
           base=newH;
         }
+        // console.log(object);
       function onScroll(e){
 
-        const scrollTop=tabDetail.scrollTop;
+        const scrollTop=document.documentElement.scrollTop+500;
         const index = ranges.findIndex(range=>scrollTop>=range[0]&&scrollTop<range[1])
-        console.log("Index",index,scrollTop);
         // console.log("ref",ref.current.scrollTop,ref,e);
 
         setActiveIndex(index)   

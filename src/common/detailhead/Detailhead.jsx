@@ -5,13 +5,13 @@ import {Detail} from './Detailhead.style.js';
 const Detailhead=(props)=>{
 
     const {index, handleTabClick}=props
-    console.log(props);
+    // console.log(props);
     const activeIndex=index;
     return (
 
     
         //style={activeIndex===0?{display:"none"}:{}}
-        <Detail >
+        <Detail style={activeIndex===0?{display:"none"}:{}}>
             <li
             data-index="0"
             data-ltab="商品"
