@@ -64,20 +64,20 @@ const Detail = (props) => {
     const address=useRef();
     const size=useRef();
     const time=useRef();
-
+    const type=0;
     const handleclick = (e) => {
         e.preventDefault()
         console.log("提交数据", time.current.value);
 
-        onAddOrder(address.current.value, size.current.value, time.current.value)
+        onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
 
 
     }
-    const onAddOrder = (Dadr, Dsize, Dtime) => {
+    const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
         if (Dadr && Dsize && Dtime) {
             let data = StorageUtils.getUserorder();
             // data?
-            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}'}`)
+            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`)
             // 存到本地
             StorageUtils.saveUserorder(newdata)
             // 存到store

@@ -13,7 +13,6 @@ function MenuBar(props) {
             <div className="menu-bar1">
                 <MenuBarItem menuBarData={menuBarData}/>
                 <MenuBarItem menuBarData={menuBarData}/>
-
             </div>
             <div className="menu-bar2">
                 {

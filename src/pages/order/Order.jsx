@@ -1,7 +1,8 @@
-import React from 'react';
-import { OrderTab, OrderType, TypeItem, OrderAd, BlankOrder } from './Order.style'
-// import OrderItem from './OrderItem'
+import React,{useState, memo } from 'react';
+import { connect } from 'react-redux';
+import { OrderTab, OrderType, TypeItem, OrderAd, BlankOrder } from './Order.style';
 import { NavLink, Link } from 'react-router-dom';
+import * as actionTypes from './store/actionCreators'
 import { renderRoutes } from "react-router-config";
 import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 
@@ -19,8 +20,9 @@ function Order(props) {
         }
         return boxdata;
     }
-    const boxdata = init();
-    console.log(boxdata,'获取到本地数据啦')
+    const data = init();
+    console.log(data,'获取到本地数据啦')
+    const [boxdata, setBoxData] = useState('')
     return (
         <>
             <OrderTab>
@@ -66,4 +68,14 @@ function Order(props) {
         
         
         
-export default Order;
+        const mapStateToProps = (state) => ({
+            maindata: state.main.maindata
+        })
+        const mapDispatchToProps = (dispatch) => {
+            return {
+                getMainDataDispatch() {
+                    dispatch(actionTypes.getMainData())
+                }
+            }
+        }
+        export default connect(mapStateToProps, mapDispatchToProps)(memo(Order))

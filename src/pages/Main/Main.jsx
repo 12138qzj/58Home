@@ -1,8 +1,8 @@
-import React, { useEffect,  memo } from 'react';
+import React, { useEffect, memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators'
-
+import Scroll from '../../baseUI/scroll/index'
 // import axios from 'axios';
 // import {mainData} from '../../api/mock.js';
 // import { reqmain } from '../../api/index.js';
@@ -19,31 +19,33 @@ import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose
 import './main.css'
 
 function Main(props) {
-    
-    const { maindata } = props; 
-    const { getMainDataDispatch } = props; 
+
+    const { maindata } = props;
+    const { getMainDataDispatch } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
-    useEffect(()=> {
-        if(!maindata.length) {
+    useEffect(() => {
+        if (!maindata.length) {
             getMainDataDispatch();
         }
-    },[])
+    }, [])
     return (
         <>
-        <SearchInput />
-        <div className='main'>
-            <Classify classify={classify}/>
-            <RotationChart rotationImg={rotationImg}/>
-            <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData}/>
-            <ImgList />
-            <HomeService/>
-            <FrameLayout/>
-        </div>
-        <MainBottomChoose/>
+            <SearchInput />
+            <Scroll direction={"vertical"} refresh={true}>
+                <div className='main'>
+                    <Classify classify={classify} />
+                    <RotationChart rotationImg={rotationImg} />
+                    <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData} />
+                    <ImgList />
+                    <HomeService />
+                    <FrameLayout />
+                </div>
+            </Scroll>
+            <MainBottomChoose />
         </>
     );
 }
-  
+
 const mapStateToProps = (state) => ({
     maindata: state.main.maindata
 })
@@ -54,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-export default  connect(mapStateToProps,mapDispatchToProps)(memo(Main))
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Main))
