@@ -2,6 +2,9 @@ import React, { useEffect, memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators'
+import * as detailactionTypes from '../details/store/actionCreators'
+
+
 import Scroll from '../../baseUI/scroll/index'
 // import axios from 'axios';
 // import {mainData} from '../../api/mock.js';
@@ -19,48 +22,59 @@ import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose
 import './main.css'
 
 function Main(props) {
-    
-    const { maindata ,index} = props; 
-    const { getMainDataDispatch,changeIndexData } = props; 
+
+    const { maindata, orderdata, index } = props;
+    const { getMainDataDispatch, changeIndexData, getDetailDataDispatch } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
-    useEffect(()=>{
+    useEffect(() => {
         changeIndexData(0);
-    },[index])
-    useEffect(()=> {
-        if(!maindata.length) {
+    }, [index])
+    useEffect(() => {
+        if (!maindata.length) {
             getMainDataDispatch();
+            console.log("******")
+        }
+        if (!orderdata.length) {
+            getDetailDataDispatch();
         }
 
-    },[])
+    }, [])
+    console.log("........", maindata.length)
     return (
         <>
             <SearchInput />
-            <Scroll direction={"vertical"} refresh={true}>
-                <div className='main'>
-                    <Classify classify={classify} />
+            <div className="main">
+                <Scroll direction={"vertical"} refresh={true}>
+                   <div>
+                   <Classify classify={classify} />
                     <RotationChart rotationImg={rotationImg} />
                     <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData} />
                     <ImgList />
                     <HomeService />
                     <FrameLayout />
-                </div>
-            </Scroll>
-            <MainBottomChoose />
+                    <MainBottomChoose />
+                   </div>
+                </Scroll>
+            </div>
         </>
     );
 }
 
 const mapStateToProps = (state) => ({
     maindata: state.main.maindata,
-    index:state.main.index
+    orderdata: state.order.orderdata,
+    index: state.main.index
 })
 const mapDispatchToProps = (dispatch) => {
     return {
         getMainDataDispatch() {
             dispatch(actionTypes.getMainData())
         },
-        changeIndexData(newIndex){
+        getDetailDataDispatch() {
+            dispatch(detailactionTypes.initorderData())
+        },
+        changeIndexData(newIndex) {
             dispatch(actionTypes.changeIndexData(newIndex))
         }
     }

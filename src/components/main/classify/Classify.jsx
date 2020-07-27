@@ -6,7 +6,9 @@ class Classify extends Component {
     render() {
         const classifyData = this.props.classify || [];
         return (
-            // <Scroll direction={"vertical"} refresh={true}>
+            <Scroll direction={"horizental"} refresh={true}>
+                <div>
+
                 <div className="classify">
                     <div className="classify-box">
                         {
@@ -20,7 +22,8 @@ class Classify extends Component {
                         }
                     </div>
                 </div>
-            // </Scroll>
+                </div>
+            </Scroll>
 
         );
     }

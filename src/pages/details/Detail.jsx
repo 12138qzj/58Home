@@ -8,20 +8,13 @@ import Detailhead from '../../common/detailhead/Detailhead';
 import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 import DetailItemPage from '../../components/detail/detailitempage/DetailItemPage'
 import Recommend from '../../components/detail/recommend/Recommend'
-
-
 import * as FunActionTypes from './store/actionCreators'
-
 // ../../../Data/mainData/index
 import { rotationImg } from '../../Data/mainData/index'
-
 import { Rotation,Lable, Title, Discount, Fromwarp } from './detail.style.js'
 
 const Detail = (props) => {
-
-
     const [imgIndex,setimgIndex]=useState(0)
-
     const {orderdata}=props;
     const {getinitorderData,addorderData}=props;
     const handleback = () => {
@@ -70,8 +63,6 @@ const Detail = (props) => {
         console.log("提交数据", time.current.value);
 
         onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
-
-
     }
     const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
         if (Dadr && Dsize && Dtime) {
