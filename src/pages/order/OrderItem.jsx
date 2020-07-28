@@ -7,10 +7,10 @@ function OrderItem(props) {
 
     return (
         <>
-                {
-                    data.data.map((item, key) => {
+            {
+                data.data.map((item, key) => {
                         return (
-                            <OrderBox >
+                            <OrderBox key={key}>
                             <div className="order-title">
                                 <div className="order-title__box">
                                     <span className="shop-info">
@@ -47,11 +47,8 @@ function OrderItem(props) {
                             </div>
                             </OrderBox>
                         )
-                    })
-                }
-
-            
-
+                })
+            }
         </>
     )
 }

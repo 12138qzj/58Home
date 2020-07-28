@@ -39,16 +39,18 @@
 
 @font-face {
     font-family: 'iconfont';
-    src: url('./Icon-font/iconfont.eot');
-    src: url('./Icon-font/iconfont.eot?#iefix') format('embedded-opentype'), url('./Icon-font/iconfont.woff2') format('woff2'), url('./Icon-font/iconfont.woff') format('woff'), url('./Icon-font/iconfont.ttf') format('truetype'), url('./Icon-font/iconfont.svg#iconfont') format('svg');
+    src: url('./assets/Icon-font/iconfont.eot');
+    src: url('./assets/Icon-font/iconfont.eot?#iefix') format('embedded-opentype'), url('./assets/Icon-font/iconfont.woff2') format('woff2'), url('./assets/Icon-font/iconfont.woff') format('woff'), url('./assets/Icon-font/iconfont.ttf') format('truetype'), url('./assets/Icon-font/iconfont.svg#iconfont') format('svg');
 }
+
 .iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
 html {
     background: rgb(243, 247, 245);
     color: #333;

@@ -1,15 +1,17 @@
 /* 消息 */
+
 .detail-scroll-warp {
     /* padding: 0 0.324rem; */
     height: calc(100vh - 3rem);
-  }
-  
-.infomation{
+}
+
+.infomation {
     width: 100%;
     height: 100%;
     background-color: #fff;
 }
-.infomation .header{
+
+.infomation .header {
     position: fixed;
     top: 0;
     text-align: center;
@@ -20,33 +22,39 @@
     height: 44px;
     background-color: #fff;
 }
-.infomation .header p{
+
+.infomation .header p {
     text-align: center;
 }
-.infomation .header span{
+
+.infomation .header span {
     right: 0.4256rem;
     font-size: 0.3796rem;
     font-weight: normal;
     top: 2px;
     position: absolute;
 }
-.infomation .content{
+
+.infomation .content {
     border-top: 1px solid #e5e5e5;
     /* height: calc(100vh - 3rem ); */
 }
-.infomation .content .info-item{
+
+.infomation .content .info-item {
     height: 2.2222rem;
     padding: 0 0.4166rem;
     box-sizing: border-box;
     display: flex;
 }
-.infomation .content .info-item .item-img{
-    display: inline-block;    
+
+.infomation .content .info-item .item-img {
+    display: inline-block;
     width: 1.1203rem;
     height: 1.1203rem;
     margin-top: .5740rem;
 }
-.infomation .content .info-item .item-info{
+
+.infomation .content .info-item .item-info {
     box-sizing: border-box;
     height: 100%;
     width: 100%;
@@ -54,20 +62,29 @@
     padding-left: 0.1666rem;
     border-bottom: 1px solid #e5e5e5;
 }
-.infomation .content .info-item .item-info .item-top{
+
+.infomation .content .info-item .item-info .item-top {
     display: flex;
 }
-.infomation .content .info-item .item-info .item-top .title{
+
+.infomation .content .info-item .item-info .item-top .title {
     font-weight: bold;
     font-size: 0.3888rem;
 }
-.infomation .content .info-item .item-info .item-top .time{
+
+.infomation .content .info-item .item-info .item-top .time {
     font-size: .2962rem;
     position: absolute;
     right: 0.4166rem;
     color: #838d97;
 }
-.infomation .content .info-item .item-info .item-msg{
+
+.infomation .content .info-item .item-info .item-msg {
     font-size: .2962rem;
     color: #838d97;
+}
+
+.loading-img {
+    height: 3rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAclBMVEUAAADKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr1Pl5+AAAAJXRSTlMA+eHTpn4dBfUS6NnGto6HcTk1LPDezL+emkpCJA4KvpdmXDEwnz5YWwAAAJFJREFUGNNNjYcOwyAMRI8ZsgdJmtV0+v9/sVapCk9I6J7ONoBDj8VyxR/vSA9aR2GoPGFdFJ2yQC9DyE9ueAB1E4TtgIzfWv6WbtW3VysbBgY98jfIW86tYzfmQQ54ivrVXqSg2SxEChuplRhRTsS0mKmgiLAQlNJ4TGmWVYYuFaIHsnvMijPz5qOOiqrZwXwAMFwQS8/hhg0AAAAASUVORK5CYII=) no-repeat 6px 6px
 }

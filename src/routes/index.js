@@ -68,14 +68,14 @@ export default [{
         },
         {
             path: '/detail',
-            exact: true,
+            // exact: true,
             component: SuspenseComponent(Detail),
-            // routes: [
-            //     {
-            //         path: '/detail/payment',
-            //         render: ()=> <Redirect to='/payment'/>
-            //     }
-            // ]
+            routes: [
+                {
+                  path: "/detail/:id",
+                  component: SuspenseComponent(Detail)
+                }
+              ]
         },
         {
             path: '/order',

@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import  { withRouter } from 'react-router-dom';
+
 import Scroll from '../../../baseUI/scroll/index'
 import './Classify.css';
 class Classify extends Component {
     state = {}
+    handleclick(id){
+        // console.log("object",encodeURIComponent(id))
+        // this.props.history.push(`/detail/${id}`)
+
+        
+        this.props.history.push(`/detail?data=${encodeURIComponent(id)}`)
+        // console.log(this.props)
+    }
     render() {
         const classifyData = this.props.classify || [];
         return (
@@ -14,7 +24,9 @@ class Classify extends Component {
                         {
                             classifyData.map((item, index) => {
                                 return (
-                                    <span className="classify-item" key={index}>
+                                    <span className="classify-item" key={index} onClick={()=>{
+                                        this.handleclick(item)
+                                    }}>
                                         {item}
                                     </span>
                                 )
@@ -28,4 +40,4 @@ class Classify extends Component {
         );
     }
 }
-export default Classify;
+export default withRouter(Classify);

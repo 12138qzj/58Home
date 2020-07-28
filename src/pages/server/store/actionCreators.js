@@ -4,12 +4,12 @@ import * as actionType from './constants.js';
 export const getServerLeftRightData = () => {
     return (dispatch) => {
 
-        console.log("成功进去-----------");
+        // console.log("成功进去-----------");
 
         reqserver().then((res) => {
-            console.log("成功进去-+++++++++++++++");
+            // console.log("成功进去-+++++++++++++++");
             if (res.data.success) {
-                console.log("成功.......", res);
+                // console.log("成功.......", res);
                 dispatch(changeServerLeftRightData(res.data.data))
             } else {
                 console.log("失败", res);

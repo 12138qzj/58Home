@@ -2,6 +2,8 @@ import React, { useState, useEffect, memo, useRef } from 'react';
 import { connect } from 'react-redux'
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
+
+//组件导入
 import HeadComponent from '../../common/headcomponent/HeadComponent';
 import DetailBottom from '../../common/detailbottom/DetailBottom';
 import Detailhead from '../../common/detailhead/Detailhead';
@@ -11,15 +13,35 @@ import Recommend from '../../components/detail/recommend/Recommend'
 import * as FunActionTypes from './store/actionCreators'
 // ../../../Data/mainData/index
 import { rotationImg } from '../../Data/mainData/index'
+
+//资源导入
+import {reqdetail} from '../../api/index'
 import { Rotation,Lable, Title, Discount, Fromwarp } from './detail.style.js'
 
 const Detail = (props) => {
     const [imgIndex,setimgIndex]=useState(0)
-    const {orderdata}=props;
+    const [detailtitle,setdetailtitle]=useState(null)
+    const [detailprice,setdetailprice]=useState(0)
+
+    const {orderdata,reqparams}=props;
     const {getinitorderData,addorderData}=props;
     const handleback = () => {
 
     }
+    useEffect(()=>{
+        console.log("详情页面数据props",props)
+        console.log("详情页面数据propsid",decodeURIComponent(props.location.search.split("=")[1]))
+        
+        reqdetail(decodeURIComponent(props.location.search.split("=")[1])).then((res)=>{
+            console.log("详情页面数据",res)
+            if(res.data.success){
+                setdetailtitle(res.data.data[0].title);
+                setdetailprice(res.data.data[0].price);
+
+            }
+
+        })
+    },[])
     // =null;
     const DetailSwiper= new Swiper('.swiper-container', {
         lazy: {
@@ -132,7 +154,7 @@ const Detail = (props) => {
       },[1])
     return (
         <>
-            <HeadComponent title="擦玻璃" handleback={() => { handleback() }} />
+            <HeadComponent title={detailtitle} handleback={() => { handleback() }} />
             <Detailhead index={activeIndex}  handleTabClick={handleTabClick}/>
             <div ref={ref}>
 
@@ -163,7 +185,7 @@ const Detail = (props) => {
 
                     <Title>
                         <div className="price">
-                            ￥ <span>14</span>.00/平起
+                            ￥ <span>{detailprice}</span>.00/平起
                         </div>
                         <div className="type">
                             擦玻璃

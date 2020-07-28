@@ -8,7 +8,6 @@ class ToolserverCard extends PureComponent {
         const {name}=this.props
         return ( 
             <div className="tool-server-card-warp">
-                
                 <div className="tool-server-card-img">
                     <img src={loaction} alt=""/>
                 </div>
