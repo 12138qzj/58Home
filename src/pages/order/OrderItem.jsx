@@ -42,7 +42,7 @@ function OrderItem(props) {
                             </div>
                             <div id="card-button">
                                 <div className="btn-list">
-                                    <div className="button">取消订单</div>
+                                    <div className="button">在线客服</div>
                                 </div>
                             </div>
                             </OrderBox>

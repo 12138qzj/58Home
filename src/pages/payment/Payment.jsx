@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {   PaymentTab, PaymentItem, PaymentCoupon, PaymentAddress,PaymentFooter } from './payment.style.js';
 import { renderRoutes } from "react-router-config";
+import * as actionTypes from '../../pages/details/store/actionCreators'
 
 function Payment(props) {
-    const { route } = props;
-
+    const { orderdata } = props;
+    const len = orderdata.length;
+    console.log(len, '获取到detail的store啦')
 
     return (
-        <div>
+        <div> 
             <PaymentTab>
                 <span className="payment-tab__cancel iconfont">&#xe640;</span>
                 <div className="payment-tab__left iconfont">&#xe653;
@@ -56,7 +58,6 @@ function Payment(props) {
                 </div>
                 <div className="footer-botton">去结算</div>
             </PaymentFooter>
-            {renderRoutes(route.routes)}
         </div>
     )
 }
