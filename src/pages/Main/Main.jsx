@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useState,useEffect, memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actionCreators'
@@ -19,6 +19,10 @@ import ImgList from '../../components/main/imgList/ImgList';
 import HomeService from '../../components/main/homeService/HomeService'
 import FrameLayout from '../../components/main/frameLayout/FrameLayout';
 import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose';
+
+import MainBottomChooseCopy from '../../components/miainBottomChooseCopy/MiainBottomChooseCopy';
+
+import MainPopup from '../../components/mainPopup/MainPopup';
 import './main.css'
 
 function Main(props) {
@@ -27,6 +31,7 @@ function Main(props) {
     const { getMainDataDispatch, changeIndexData, getDetailDataDispatch } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
+    const [Display,setDisplay]=useState(0);
     useEffect(() => {
         changeIndexData(0);
     }, [index])
@@ -45,18 +50,30 @@ function Main(props) {
         <>
             <SearchInput />
             <div className="main">
-                <Scroll direction={"vertical"} refresh={true}>
-                   <div>
-                   <Classify classify={classify} />
-                    <RotationChart rotationImg={rotationImg} />
-                    <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData} />
-                    <ImgList />
-                    <HomeService />
-                    <FrameLayout />
-                    <MainBottomChoose />
-                   </div>
+                <Scroll direction={"vertical"} refresh={false} onScroll={(e)=>{
+                    console.log("滚动高度.",e)
+                    if(e.y<-1142)
+                    setDisplay(1)
+                    else
+                    setDisplay(0)
+
+                }}>
+                    <div>
+                        <div className="main-padding">
+                        <Classify classify={classify} />
+                            <RotationChart rotationImg={rotationImg} />
+                            <MenuBarItem menuBarData2={menuBarData2} menuBarData={menuBarData} />
+                            <ImgList />
+                            <HomeService />
+                            <FrameLayout />
+                        </div>
+                        <MainBottomChoose />
+                    </div>
                 </Scroll>
             </div>
+            <MainBottomChooseCopy display={Display}/>
+            <MainPopup/>
+
         </>
     );
 }

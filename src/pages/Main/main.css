@@ -1,4 +1,6 @@
 .main {
+  height: calc(100vh - 3rem);
+}
+.main .main-padding {
   padding: 0 0.324rem;
-  height: calc(100vh - 2.5rem);
 }
