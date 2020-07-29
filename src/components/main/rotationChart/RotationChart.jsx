@@ -9,6 +9,8 @@ class RotationChart extends Component {
             loop: true,
             autoplay: {
                 delay: 1000,
+                observer:true,//修改swiper自己或子元素时，自动初始化swiper
+                observeParents:true,//修改swiper的父元素时，自动初始化swiper
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -26,9 +28,9 @@ class RotationChart extends Component {
                         {
                             rotationImg.map((item, index) => {
                                 return (
-                                    <div className="swiper-slide" key={index}>
+                                    <div className="swiper-slide fq" key={index}>
                                         <a href={item.linkUrl} >
-                                            <img className='rotationChart-img' src={item.picUrl} alt="" width="100%" height="100%" />
+                                            <img className='rotationChart-img' src={item.picUrl} alt="" />
                                         </a>
                                     </div>
                                 )

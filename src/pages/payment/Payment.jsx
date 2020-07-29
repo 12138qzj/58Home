@@ -6,8 +6,8 @@ import * as actionTypes from '../../pages/details/store/actionCreators'
 
 function Payment(props) {
     const { orderdata } = props;
-    const len = orderdata.length;
-    console.log(len, '获取到detail的store啦')
+    // const len = orderdata.length;
+    // console.log(len, '获取到detail的store啦')
 
     return (
         <div> 

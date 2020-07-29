@@ -8,8 +8,10 @@
 .rotationChart-img {
   display: inline-block;
   height: 2.6944rem /* 291/108 */;
+  width: 9.388rem;
 }
 .swiper-container {
   --swiper-pagination-color: #fdb3a9;
   /* 两种都可以 */
+  width: 9.388rem;
 }
