@@ -61,7 +61,7 @@ const Detail = (props) => {
     const handleclick = (e) => {
         e.preventDefault()
         // console.log("提交数据", time.current.value);
-
+        
         onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
     const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
@@ -84,7 +84,7 @@ const Detail = (props) => {
     },[])
 
 
-  const [activeIndex,setActiveIndex]=useState(0)
+  const [activeIndex, setActiveIndex]=useState(0)
 
     const handleTabClick=(e)=>{
         const  activeIndex=e.target.getAttribute("data-index")
