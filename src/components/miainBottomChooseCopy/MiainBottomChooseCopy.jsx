@@ -1,19 +1,29 @@
 import React , {useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import ListItemcomponent from './listitem/ListItemcomponent';
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
 
 
-import {Top,TopItem} from './mainbottomchoose.style.js';
+import {Top,TopItem} from '../mainbottomchoose/mainbottomchoose.style';
 // import {TopItem} from './topitem/TopItem.js';
 
 // import { useState } from 'react';
 
-const MainBottomChoose=(props)=>{
 
+export const Topcopy = styled.div `
+    position:fixed;
+    width:100%;
+    top:1.38rem;
+    z-index:2;
+`;
+
+const MainBottomChooseCopy=(props)=>{
+    // display
+    const {display}=props;
     return (
-        <>
-            <Top>
+        <Topcopy style={display===0?{display:"none"}:{}}>
+            <Top >
                 <NavLink to="/home/main" activeClassName="selected">
                     <TopItem>
                         <div className="personal-info-card">
@@ -49,17 +59,13 @@ const MainBottomChoose=(props)=>{
                 </TopItem>
             </NavLink>
             </Top>
-
-            <ListItemcomponent/>
-        </>
-        // <div>
-        //     <header className="main-header__title">fadsfe</header>
-        // </div>
+        </Topcopy>
+           
     )
 }
-export default MainBottomChoose;
+export default MainBottomChooseCopy;
 
-MainBottomChoose.prototype={
+MainBottomChooseCopy.prototype={
     // title:PropTypes.string.isRequired,
     // onBack:PropTypes.func.isRequired,
 }

@@ -22,21 +22,21 @@ function Info(props) {
             </div>
 
             <div className="detail-scroll-warp">
-            <Scroll direction={"vertical"} refresh={true}>
-                    <div className="content">
-                        <div className="info-item">
-                            <img className="item-img" src={'https://static.daojia.com/assets/project/im/images/activity1.png'}></img>
+                <Scroll direction={"vertical"} refresh={true}>
+                        <div className="content">
+                            <div className="info-item">
+                                <img className="item-img" src={'https://static.daojia.com/assets/project/im/images/activity1.png'}></img>
 
-                            <div className="item-info">
-                                <div className="item-top">
-                                    <p className="title">优惠促销</p>
+                                <div className="item-info">
+                                    <div className="item-top">
+                                        <p className="title">优惠促销</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <InfoItem />
-                </div>
-                <div className="loading-img"></div>
-            </Scroll>
+                            <InfoItem />
+                    </div>
+                    <div className="loading-img"></div>
+                </Scroll>
             </div>
         </div>
     );

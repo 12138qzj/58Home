@@ -6,7 +6,7 @@
   bottom: 0px;
   background-color: white;
   flex-wrap: wrap;
-  z-index: 4;
+  z-index: 10;
 }
 .Botton-warper li {
   list-style: none;
@@ -31,6 +31,7 @@
   overflow: hidden;
 }
 .Botton-warper .Botton-warper-warp .planet {
+  position: relative;
   color: #969494;
   font-size: 0.3rem;
 }

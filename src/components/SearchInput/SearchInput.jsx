@@ -6,6 +6,7 @@ import imgSearch from '../../assets/images/搜索.png'
 class SearchInput extends Component {
     state = {}
     render() {
+        const {handleOnclick}=this.props;
         return (
             <div className="search" >
                 <div className="search-input">
@@ -18,7 +19,7 @@ class SearchInput extends Component {
                         <input type="text" placeholder='擦玻璃' /> 
                     </div>
                 </div>
-                <img className="search-jiahao" src={imgJiahao}></img>
+                <img className="search-jiahao" src={imgJiahao} onClick={()=>{handleOnclick()}}></img>
             </div>
         );
     }

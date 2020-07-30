@@ -13,7 +13,7 @@ export const Top = styled.div `
     flex-direction:row;
     justify-content:space-around;
     border-bottom:1px solid #ececec;
-    z-index:2;
+    z-index:9;
     a{
       justify-content:center;
       color:blue;

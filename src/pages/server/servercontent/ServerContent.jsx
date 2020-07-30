@@ -29,7 +29,6 @@ function  ServerContentHSS (props) {
     let ranges=[];
     const ref=useRef();
     let base=0;
-
     //数据初始化
 
     const initdata=()=>{
@@ -40,10 +39,14 @@ function  ServerContentHSS (props) {
     }
     const initScroll=()=>{
         const tabDetail=ref.current;
+        // console.log("tabDetail",tabDetail)
         const tabs=tabDetail.querySelectorAll(`[data-righttab]`)
+        // console.log("tabs",tabs)
+
         for(let tab of tabs){
         let h=tab.getBoundingClientRect().height;
         let newH=base+h;
+        // console.log("数据",[base,newH])
         ranges.push([base,newH])
         base=newH;
         }
@@ -51,6 +54,8 @@ function  ServerContentHSS (props) {
     function onScroll(e){
         const scrollTop=tabDetail.scrollTop;
         const index = ranges.findIndex(range=>scrollTop>=range[0]&&scrollTop<range[1])
+        // console.log("高度",index,scrollTop,ranges)
+
         setActiveIndex(index)
 
     }
@@ -65,11 +70,13 @@ function  ServerContentHSS (props) {
     })
     }
     //effect 将在每轮渲染结束后执行
-    useEffect(()=>{
+    useEffect( ()=>{
         initdata();
-        initScroll();
+        // setTimeout(()=>{
+            initScroll();
+        // },500)
      
-    },[])
+    },[serverdata])
    
     
         return ( 
@@ -98,7 +105,7 @@ function  ServerContentHSS (props) {
                         }
                     </ul>
                 </div>
-                <div className="right"  ref={ref}>
+                <div className="right"   ref={ref} >
                 <ul>
                     {
                         !serverdata?"":

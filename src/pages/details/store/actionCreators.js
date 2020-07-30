@@ -17,7 +17,6 @@ export const initorderData = () => {
     }
 };
 
-
 const init = () => {
     let boxdata = [];
     StorageUtils.getUserorder();
@@ -35,3 +34,22 @@ export const changeorderData = (data) => {
         data: data
     }
 }
+
+
+// 详情页面数据
+
+export const changeorderdetailData = (data) => {
+    return {
+        type: actionType.CHANGE_ORDERDETAIL_DATA,
+        data: data
+    }
+}
+
+
+export const setorderdetailData = (data) => {
+    return (dispatch) => {
+        console.log("成功进去-----------");
+        dispatch(changeorderdetailData(data))
+
+    }
+};

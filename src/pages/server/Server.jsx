@@ -1,21 +1,34 @@
-import React, { useEffect,  memo } from 'react';
+import React, { useState,useEffect,  memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
 import * as actionTypes from '../Main/store/actionCreators'
-import ServerContent from './servercontent/ServerContent';
-
 import ServerSearchInput from './serverhead/serversearchinput/ServerSearchInput';
+
+import ServerContent from './servercontent/ServerContent';
+import ServerPopup from '../../components/serverPopup/ServerPopup';
+
 function Server(props){
     const {index}=props;
     const {changeIndexData}=props;
+
+    const [serverDisplay,setserverDisplay]=useState(false)
+
     useEffect(()=>{
         changeIndexData(1)
     },[index])
 
+    const handleonclick=()=>{
+        setserverDisplay(!serverDisplay)
+    }
         return ( 
             <div>
-                <ServerSearchInput/>
+                <ServerSearchInput handlenOclick={
+                    handleonclick
+                }/>
                 <ServerContent/>
+                <ServerPopup 
+                display={serverDisplay} 
+                handleOnclick={handleonclick}/>
             </div>
          );
 }

@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../pages/Main/store/actionCreators'
 
+import HeadNumIcon from '../../common/headnumicon/HeadNumIcon';
 import Tab from './tab/Tab';
 import './bottom.css';
 
@@ -74,6 +75,7 @@ class Bottom extends Component {
                         {backgroundPosition:"-2.528rem 0px"}}></div>
                     <div className="planet"style={index===2?{color:"#ec564b"}:{}} >
                             消息
+                            <HeadNumIcon display="" top="-0.92rem" left="1.5rem" num="9"/>
                     </div>
                 </Link>
 
@@ -92,6 +94,7 @@ class Bottom extends Component {
                         {backgroundPosition:"-3.333rem 0px"}}></div>
                     <div className="planet" style={index===3?{color:"#ec564b"}:{}}>
                             我的
+                           
                     </div>
                 </Link>
 

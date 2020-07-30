@@ -10,7 +10,7 @@ import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 // import Detail from '../pages/details/Detail';
 // import Order from '../pages/order/Order';
 // import OrderItem from '../pages/order/OrderItem';
-import Payment from '../pages/payment/Payment'
+// import Payment from '../pages/payment/Payment'
 
 const Main = lazy(()=> import('../pages/Main/Main'));
 const Server = lazy(()=> import('../pages/server/Server'));
@@ -19,7 +19,7 @@ const My = lazy(()=> import('../pages/my/my'));
 const Detail = lazy(()=> import('../pages/details/Detail'));
 const Order = lazy(()=> import('../pages/order/Order'));
 const OrderItem = lazy(()=> import('../pages/order/OrderItem'));
-// const Payment = lazy(()=> import('../pages/payment/Payment'));
+const Payment = lazy(()=> import('../pages/payment/Payment'));
 
 const SuspenseComponent = Component => props => {
     return (
@@ -112,8 +112,14 @@ export default [{
         },
         {
             path: '/payment',
-            exact: true,
-            component: Payment,
+            // exact: true,
+            component: SuspenseComponent(Payment),
+            routes: [
+                {
+                  path: "/payment/:id",
+                  component: SuspenseComponent(Payment)
+                }
+              ]
             // routes: [
             //     {
             //         path: '/payment',
