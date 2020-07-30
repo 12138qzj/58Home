@@ -1,30 +1,37 @@
-import React, { Component } from 'react'
+import React, { memo } from 'react'
 import { connect } from 'react-redux'
 import {   PaymentTab, PaymentItem, PaymentCoupon, PaymentAddress,PaymentFooter } from './payment.style.js';
-import { renderRoutes } from "react-router-config";
-import * as actionTypes from '../../pages/details/store/actionCreators'
+// import { renderRoutes } from "react-router-config";
+// import * as actionTypes from '../../pages/details/store/actionCreators'
+import { withRouter } from 'react-router-dom';
 
 function Payment(props) {
-    const { orderdata } = props;
-    const len = orderdata.length;
-    console.log(len, '获取到detail的store啦')
-
+    // const { handleback } = props;
+    // const len = orderdata.length;
+    // console.log(len, '获取到detail的store啦')
+    const {detaildata}=props
+    const handleback=()=>{
+        props.history.goBack();
+    }
+    console.log("props数据",props.detaildata)
+    let date=new Date()
+    // console.log(date.getDate(),date.getMonth()+1);
     return (
         <div> 
             <PaymentTab>
                 <span className="payment-tab__cancel iconfont">&#xe640;</span>
-                <div className="payment-tab__left iconfont">&#xe653;
+                <div className="payment-tab__left iconfont" onClick={handleback}>&#xe653;
                     {/* <span className="payment-tab__return iconfont"></span> */}
                     
                 </div>
-                <div className="payment-tab__title">擦玻璃</div>
+                <div className="payment-tab__title">{detaildata.title}</div>
                 <div className="payment-tab__share iconfont">&#xe600;</div>
             </PaymentTab>
             <PaymentItem>
-                <div className="payment-item__name">擦玻璃 (10平米)</div>
+                <div className="payment-item__name">{detaildata.size}</div>
                 <div className="payment-item">
-                    <div className="payment-item__time">07-26 (今天) 14:30</div>
-                    <div className="payment-item__price">140元</div>
+    <div className="payment-item__time">{date.getMonth()+1}-{date.getDate()} (今天) {detaildata.PaymentItem}</div>
+                    <div className="payment-item__price">{detaildata.price}元</div>
                 </div>
             </PaymentItem>
             <PaymentCoupon>
@@ -42,7 +49,7 @@ function Payment(props) {
                 <div className="addrss-title">服务地址信息</div>
                 <div className="service-address">
                     <div className="service-address__text">服务地址: </div>
-                    <div className="service-address__value">东华理工大学</div>
+                    <div className="service-address__value">{detaildata.address}</div>
                 </div>
                 <div className="tell-service">
                     <div className="tell-service_-text">联系电话: </div>
@@ -53,7 +60,7 @@ function Payment(props) {
             <PaymentFooter>
                 <div className="footer-left">
                     <div className="footer-left__text">需支付:</div>
-                    <div className="footer-left__price">140元</div>
+                    <div className="footer-left__price">{detaildata.price}元</div>
                     <div className="footer-left__logo iconfont">&#xe611;</div>
                 </div>
                 <div className="footer-botton">去结算</div>
@@ -63,13 +70,17 @@ function Payment(props) {
 }
     
 
-export default Payment;
-// const mapStateToProps = (state) => ({
-    
-// })
+function mapStateToProps(state) {
+    return {
+        detaildata: state.order.detaildata
+    }
 
-// const mapDispatchToProps = {
-    
-// }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+         dispatch
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(memo(withRouter(Payment)));
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Payment)
+

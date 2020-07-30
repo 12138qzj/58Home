@@ -58,9 +58,15 @@ const Popupcontent=styled.div`
 `;
 
 const MainPopup=(props)=>{
+    const {display}=props;
+    const {handleOnclick}=props;
+
 
     return(
-        <Popupcontent>
+
+        <Popupcontent onClick={()=>{
+            handleOnclick()
+        }} style={display?{}:{display:"none"}}>
             <div className="father">
                 <span></span>
                 <div className="content">

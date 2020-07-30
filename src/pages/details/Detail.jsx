@@ -9,7 +9,11 @@ import DetailBottom from '../../common/detailbottom/DetailBottom';
 import Detailhead from '../../common/detailhead/Detailhead';
 import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 import DetailItemPage from '../../components/detail/detailitempage/DetailItemPage'
+
 import Recommend from '../../components/detail/recommend/Recommend'
+
+import SpecificationsPopup from '../../components/specificationsPopup/SpecificationsPopup';
+
 import * as FunActionTypes from './store/actionCreators'
 // ../../../Data/mainData/index
 import { rotationImg } from '../../Data/mainData/index'
@@ -23,10 +27,17 @@ const Detail = (props) => {
     const [detailtitle,setdetailtitle]=useState(null)
     const [detailprice,setdetailprice]=useState(0)
 
-    const {orderdata,reqparams}=props;
-    const {getinitorderData,addorderData}=props;
-    const handleback = () => {
+    // const [specifications,setspecifications]=useState(null)
 
+    
+    const [activeIndex, setActiveIndex]=useState(0)
+    const [downDisplay, setdownDisplay]=useState(false)
+    const {orderdata,reqparams}=props;
+    const {getinitorderData,addorderData,setdetailData}=props;
+    const handleback = (e) => {
+        e.preventDefault();
+        console.log("hist",props);
+        props.history.goBack();
     }
     useEffect(()=>{
         console.log("详情页面数据props",props)
@@ -84,8 +95,34 @@ const Detail = (props) => {
         e.preventDefault()
         // console.log("提交数据", time.current.value);
         
-        onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
+
+        let Daddress=address.current.value;
+        let Dsize=size.current.value;
+        let Dtime=time.current.value;
+        if(!Daddress){
+            console.log("请输入地址！")
+            return;
+        }else if(!Dsize){
+            handleonclickchange();
+            return;
+        }else if(!Dtime){
+            console.log("请输入时间！")
+            return;
+        }
+        
+        let data={
+            address:Daddress,
+            size:Dsize,
+            time:Dtime,
+            title:detailtitle,
+            price:detailprice
+        }
+        setdetailData(data);
+        props.history.push(`/payment/${data}`)
+
+        // onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
+
     const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
         if (Dadr && Dsize && Dtime) {
             let data = StorageUtils.getUserorder();
@@ -97,17 +134,21 @@ const Detail = (props) => {
             addorderData(newdata);
         }
     }
-
-    // const [orderdata,setorderdata] =useState([])
     useEffect(() => {
         if (!orderdata.length) {
             getinitorderData();
         }
     },[])
 
-
-  const [activeIndex, setActiveIndex]=useState(0)
-
+    const handleonclickchange=()=>{
+        setdownDisplay(!downDisplay);
+    }
+    const handleOnclickComfirm=(area,num)=>{
+        // console.log("面积数量",area,num);
+        // setspecifications(`${area} ${num}`)
+        size.current.value=`${area} ${num}`;
+        handleonclickchange()
+    }
     const handleTabClick=(e)=>{
         const  activeIndex=e.target.getAttribute("data-index")
         setActiveIndex(parseInt(activeIndex));
@@ -151,10 +192,11 @@ const Detail = (props) => {
         tabDetail.removeEventListener('touchmove',onScroll);
     
       })
-      },[1])
+      },[])
     return (
         <>
-            <HeadComponent title={detailtitle} handleback={() => { handleback() }} />
+            <SpecificationsPopup handleOnclickBack={handleonclickchange} handleOnclickComfirm={handleOnclickComfirm} display={downDisplay}/>
+            <HeadComponent title={detailtitle} handleback={handleback} />
             <Detailhead index={activeIndex}  handleTabClick={handleTabClick}/>
             <div ref={ref}>
 
@@ -195,13 +237,13 @@ const Detail = (props) => {
                         </div>
                         <div className="tabs">
                             <span className="icon-shezhi iconfont">
-                                &#xe618;随时预约
+                                &#xe785;随时预约
                             </span>
                             <span className="icon-shezhi iconfont">
-                                &#xe618;专业清洗工具
+                                &#xe785;专业清洗工具
                             </span>
                             <span className="icon-shezhi iconfont">
-                                &#xe618;阿姨专业培训
+                                &#xe785;阿姨专业培训
                             </span>
                         </div>
                     </Title>
@@ -220,7 +262,7 @@ const Detail = (props) => {
                         </div>
                         <div className="forminput">
 
-                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" />
+                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" onFocus={handleclick} />
                         </div>
                         <div className="forminput">
                             <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" />
@@ -235,7 +277,6 @@ const Detail = (props) => {
             </div>
 
             
-
         </>
 
     )
@@ -266,6 +307,9 @@ function mapDispatchToProps(dispatch) {
         },
         addorderData(data) {
             dispatch(FunActionTypes.addorderData(data))
+        },
+        setdetailData(data){
+            dispatch(FunActionTypes.setorderdetailData(data))
         }
 
     }

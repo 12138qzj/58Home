@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import  { withRouter } from 'react-router-dom';
 
 import Scroll from '../../../baseUI/scroll/index'
 import './Classify.css';
-class Classify extends Component {
-    state = {}
-    handleclick(id){
+const Classify =(props)=>{
+// class Classify extends Component {
+    // state = {}
+    const handleclick=(id)=>{
         // console.log("object",encodeURIComponent(id))
         // this.props.history.push(`/detail/${id}`)
 
         
-        this.props.history.push(`/detail?data=${encodeURIComponent(id)}`)
+        props.history.push(`/detail?data=${encodeURIComponent(id)}`)
         // console.log(this.props)
     }
-    render() {
-        const classifyData = this.props.classify || [];
+    // render() {
+        const classifyData = props.classify || [];
         return (
             <Scroll direction={"horizental"} refresh={true}>
                 <div>
@@ -25,7 +26,7 @@ class Classify extends Component {
                             classifyData.map((item, index) => {
                                 return (
                                     <span className="classify-item" key={index} onClick={()=>{
-                                        this.handleclick(item)
+                                        handleclick(item)
                                     }}>
                                         {item}
                                     </span>
@@ -38,6 +39,5 @@ class Classify extends Component {
             </Scroll>
 
         );
-    }
 }
 export default withRouter(Classify);

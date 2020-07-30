@@ -32,6 +32,7 @@ function Main(props) {
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
     const [Display,setDisplay]=useState(0);
+    const [Helpdisplay,setHelpdisplay]= useState(false);
     useEffect(() => {
         changeIndexData(0);
     }, [index])
@@ -45,13 +46,17 @@ function Main(props) {
         }
 
     }, [])
-    console.log("........", maindata.length)
+
+    const handleOnclick=()=>{
+        setHelpdisplay(!Helpdisplay)
+    }
+    // console.log("........", maindata.length)
     return (
         <>
-            <SearchInput />
+            <SearchInput handleOnclick={()=>{handleOnclick()}}/>
             <div className="main">
                 <Scroll direction={"vertical"} refresh={false} onScroll={(e)=>{
-                    console.log("滚动高度.",e)
+                    // console.log("滚动高度.",e)
                     if(e.y<-1142)
                     setDisplay(1)
                     else
@@ -72,7 +77,7 @@ function Main(props) {
                 </Scroll>
             </div>
             <MainBottomChooseCopy display={Display}/>
-            <MainPopup/>
+            <MainPopup handleOnclick={()=>{handleOnclick()}} display={Helpdisplay}/>
 
         </>
     );

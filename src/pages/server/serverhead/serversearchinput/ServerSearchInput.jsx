@@ -6,6 +6,7 @@ import imgSearch from '../../../../assets/images/搜索.png'
 class ServerSearchInput extends Component {
     state = {}
     render() {
+        const {handlenOclick}=this.props;
         return (
             <div className="server-search">
                 <div className="server-search-input">
@@ -17,7 +18,7 @@ class ServerSearchInput extends Component {
                         <input type="text" placeholder='擦玻璃' style={{fontSize:"11px"}} /> 
                     </div>
                 </div>
-                <img className="server-search-jiahao" src={imgJiahao}></img>
+                <img className="server-search-jiahao" src={imgJiahao} onClick={()=>{handlenOclick()}}></img>
             </div>
         );
     }
