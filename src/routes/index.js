@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import BlankLayout from '../layouts/BlankLayout';
 import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
@@ -68,7 +68,6 @@ export default [{
         },
         {
             path: '/detail',
-            // exact: true,
             component: SuspenseComponent(Detail),
             routes: [
                 {
@@ -83,12 +82,11 @@ export default [{
             routes: [
                 {
                     path: '/order',
-                    exact: true,
-                    render: () => <Redirect to={"/order/comfirm"} />
+                    render: ()=><Redirect to="/order/confirm"/>
+                    
                 },
                 {
                 path: '/order/comfirm',
-                exact: true,
                 component: SuspenseComponent(OrderItem)
                 },
                 {

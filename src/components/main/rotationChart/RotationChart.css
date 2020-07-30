@@ -3,12 +3,13 @@
   height: 2.6944rem /* 291/108 */;
   overflow: hidden;
   font-size: 0;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .rotationChart-img {
   display: inline-block;
   height: 2.6944rem /* 291/108 */;
   width: 9.388rem;
+  border-radius: 5px;
 }
 .swiper-container {
   --swiper-pagination-color: #fdb3a9;

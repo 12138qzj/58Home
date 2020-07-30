@@ -20,8 +20,19 @@ const Classify =(props)=>{
         props.history.push(`/detail?data=${encodeURIComponent(id)}`)
         // console.log(this.props)
     }
+<<<<<<< HEAD
     // render() {
         const classifyData = props.classify || [];
+=======
+    omponentDidMount() {
+        new Swiper('.swiper-container-mainhead', {
+            slidesPerView :'auto', 
+            width:300
+        })
+    }
+    render() {  
+        const classifyData = this.props.classify || [];
+>>>>>>> qiaochun
         return (
             <Scroll direction={"horizental"} refresh={true}>
 
@@ -39,7 +50,7 @@ const Classify =(props)=>{
                                                     {item}
                                                 </span>
                                             </div>
-                                        )
+                                        ) 
                                     })
                                 }
                             </div>
