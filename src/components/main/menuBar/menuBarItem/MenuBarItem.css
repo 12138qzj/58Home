@@ -1,11 +1,11 @@
 .menu-item__box {
   margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 .menu-item__box .item-box {
-  height: 1.8333rem /* 198/108 */;
-  width: 1.3056rem /* 141/108 */;
   text-align: center;
-  margin-right: 0.6111rem /* 66/108 */;
+  flex: 1;
 }
 .menu-item__box .item-box .item-box__img {
   width: 1.3056rem /* 141/108 */;

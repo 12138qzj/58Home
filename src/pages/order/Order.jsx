@@ -22,6 +22,16 @@ function Order(props) {
     const handleOnclick = (index) => {
         setorderIndex(index);
     }
+    const fn = () => {
+        let data  = '';
+        if(orderIndex ==4){
+             data = orderdata
+        }else{
+             data = orderdata.filter((item) => item.type == orderIndex)
+        }
+        console.log("data", data)
+        return data.length ? (<OrderItem data={data} />) : (<BlankOrderComponent />);
+    }
 
     return (
         <>
@@ -62,18 +72,10 @@ function Order(props) {
             <OrderAd>
                 到家优选订单，点击这里查看 >
             </OrderAd>
+            {renderRoutes(route.routes)}
 
             {
-                (() => {
-                    let data  = '';
-                    if(orderIndex ==4){
-                         data = orderdata
-                    }else{
-                         data = orderdata.filter((item) => item.type == orderIndex)
-                    }
-                    console.log("data", data)
-                    return data.length ? (<OrderItem data={data} />) : (<BlankOrderComponent />);
-                })()
+               fn()
             }
 
         </>

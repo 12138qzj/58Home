@@ -103,7 +103,8 @@ const Scroll = forwardRef((props, ref) => {
       bounce:{
         top: bounceTop,
         bottom: bounceBottom
-      }
+      },
+      
     });
     setBScroll(scroll);
     return () => {

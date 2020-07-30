@@ -19,7 +19,7 @@ class Classify extends Component {
             width:300
         })
     }
-    render() {
+    render() {  
         const classifyData = this.props.classify || [];
         return (
             <Scroll direction={"horizental"} refresh={true}>
@@ -38,7 +38,7 @@ class Classify extends Component {
                                                     {item}
                                                 </span>
                                             </div>
-                                        )
+                                        ) 
                                     })
                                 }
                             </div>
