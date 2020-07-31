@@ -2,10 +2,7 @@ import React ,{memo} from 'react';
 import { connect } from 'react-redux';
 import LazyLoad ,{forceCheck}from 'react-lazyload';
 
-
-import list_item_img from '../../../assets/images/list_item_img.png';
 import PropTypes from 'prop-types';
-
 import { List, TextContent } from './ListItem.style.js';
 
 const ListItemcomponent = (props) => {
@@ -48,37 +45,17 @@ const ListItemcomponent = (props) => {
 
 const mapStateToProps = (state) => ({
     ListItemData:state.main.ListItemData,
-
-
 })
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch
-        // getMainDataDispatch() {
-        //     dispatch(actionTypes.getMainData())
-        // },
-        // getDetailDataDispatch() {
-        //     dispatch(detailactionTypes.initorderData())
-        // },
-        // changeIndexData(newIndex) {
-        //     dispatch(actionTypes.changeIndexData(newIndex))
-        // },
-        // // 滑到最底部刷新部分的处理
-        // pullUpRefresh(frist, count) {
-        //     dispatch(actionTypes.changePullUpLoading(true));
-        //     if(frist){
-        //     dispatch(actionTypes.refreshMoreMainList());
-        //     } else {
-        //     dispatch(actionTypes.refreshMoreMainList());
-        //     }
-        // },
- 
-        
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(memo(ListItemcomponent))
 
+ListItemcomponent.defaultProps = {
+    ListItemData: null,
+  };
 ListItemcomponent.prototype = {
-    // title:PropTypes.string.isRequired,
-    // onBack:PropTypes.func.isRequired,
+    ListItemData:PropTypes.string.isRequired,
 }

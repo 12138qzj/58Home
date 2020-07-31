@@ -83,7 +83,6 @@ export const refreshMoreMainList = () => {
             console.log("进入了.........res", res, "ListItemData", ListItemData)
             const data = [...ListItemData, ...res.data.data];
             console.log("进入了.........data", data)
-
             dispatch(changeListItemData(data));
             dispatch(changePullUpLoading(false));
             dispatch(changeListOffset(data.length));

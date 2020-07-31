@@ -84,9 +84,3 @@
     font-size: .2962rem;
     color: #838d97;
 }
-
-.loading-img {
-    position: relative;
-    height: 3rem;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAclBMVEUAAADKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr1Pl5+AAAAJXRSTlMA+eHTpn4dBfUS6NnGto6HcTk1LPDezL+emkpCJA4KvpdmXDEwnz5YWwAAAJFJREFUGNNNjYcOwyAMRI8ZsgdJmtV0+v9/sVapCk9I6J7ONoBDj8VyxR/vSA9aR2GoPGFdFJ2yQC9DyE9ueAB1E4TtgIzfWv6WbtW3VysbBgY98jfIW86tYzfmQQ54ivrVXqSg2SxEChuplRhRTsS0mKmgiLAQlNJ4TGmWVYYuFaIHsnvMijPz5qOOiqrZwXwAMFwQS8/hhg0AAAAASUVORK5CYII=) no-repeat 6px 6px
-}

@@ -6,11 +6,7 @@ import LazyLoad ,{forceCheck}from 'react-lazyload';
 import * as actionTypes from './store/actionCreators'
 import * as detailactionTypes from '../details/store/actionCreators'
 
-
 import Scroll from '../../baseUI/scroll/index.jsx'
-// import axios from 'axios';
-// import {mainData} from '../../api/mock.js';
-// import { reqmain } from '../../api/index.js';
 
 
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -25,6 +21,7 @@ import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose
 import MainBottomChooseCopy from '../../components/miainBottomChooseCopy/MiainBottomChooseCopy';
 
 import MainPopup from '../../components/mainPopup/MainPopup';
+import loading from '../../assets/images/loading.gif';
 import './main.css'
 
 function Main(props) {
@@ -41,7 +38,6 @@ function Main(props) {
     useEffect(() => {
         if (!maindata.length) {
             getMainDataDispatch();
-            console.log("******")
         }
         if (!orderdata.length) {
             getDetailDataDispatch();
@@ -76,6 +72,7 @@ function Main(props) {
                 }}
                 pullUp={ handlePullUp }
                 pullDown = { handlePullDown }
+                pullUpLoading={uploading}
                 >
                     <div>
                         <div className="main-padding">
@@ -87,7 +84,9 @@ function Main(props) {
                             <FrameLayout />
                         </div>
                         <MainBottomChoose />
+                        <div className="loading-img"><img src={loading} alt=""/><span>加载中...</span> </div>
                     </div>
+                    
                 </Scroll>
             </div>
             {/* { enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null} */}

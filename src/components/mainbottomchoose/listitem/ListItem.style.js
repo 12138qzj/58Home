@@ -23,9 +23,7 @@ export const List = styled.div `
         }
        
     }
-    &:last-child{
-        margin-bottom:4rem;
-    }
+  
 `;
 export const TextContent = styled.div `
     
