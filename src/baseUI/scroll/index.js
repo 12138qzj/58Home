@@ -31,52 +31,7 @@ export const PullDownLoading = styled.div`
   z-index: 100;
 `
 
-// 下为问题代码，以此为鉴
-// useEffect(() => {
-//   if(bScroll) return;
-//   const scroll = new BScroll(scrollContaninerRef.current, {
-//     scrollX: direction === "horizental",
-//     scrollY: direction === "vertical",
-//     probeType: 3,
-//     click: click,
-//     bounce:{
-//       top: bounceTop,
-//       bottom: bounceBottom
-//     }
-//   });
-//   setBScroll(scroll);
-//   if(pullUp) {
-//     scroll.on('scrollEnd', () => {
-//       //判断是否滑动到了底部
-//       if(scroll.y <= scroll.maxScrollY + 100){
-//         pullUp();
-//       }
-//     });
-//   }
-//   if(pullDown) {
-//     scroll.on('touchEnd', (pos) => {
-//       //判断用户的下拉动作
-//       if(pos.y > 50) {
-//         debounce(pullDown, 0)();
-//       }
-//     });
-//   }
 
-//   if(onScroll) {
-//     scroll.on('scroll', (scroll) => {
-//       onScroll(scroll);
-//     })
-//   }
-
-//   if(refresh) {
-//     scroll.refresh();
-//   }
-//   return () => {
-//     scroll.off('scroll');
-//     setBScroll(null);
-//   }
-//   // eslint-disable-next-line
-// }, []);
 const Scroll = forwardRef((props, ref) => {
   const [bScroll, setBScroll] = useState();
 

@@ -8,9 +8,6 @@ import * as actionTypes from '../../pages/details/store/actionCreators'
 import { renderRoutes } from "react-router-config";
 import OrderItem from './OrderItem'
 import BlankOrderComponent from './BlankOrder';
-import StorageUtils from '../../Utils/storageUtis/StorageUtils';
-
-// import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 
 
 function Order(props) {

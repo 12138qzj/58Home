@@ -1,5 +1,6 @@
 const USER_ORDER = 'user_order'
     // const ADMIN_KEY = 'admin_key'
+const RecentNum = 'recent_num'
 
 export default {
     saveUserorder(data) {
@@ -10,6 +11,9 @@ export default {
     },
     removeUserorder() {
         localStorage.removeItem(USER_ORDER);
+    },
+    saveRecentNum(num) {
+        localStorage.setItem(RecentNum, num)
     }
 
 

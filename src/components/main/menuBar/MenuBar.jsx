@@ -9,13 +9,10 @@ function MenuBar(props) {
 
     useEffect(() => {
         new Swiper('.swiper-container-menu', {
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-                clickable: true
+            scrollbar: {
+                el: '.swiper-scrollbar-menu',
             }
         })
-
     })
     const menuBarData2 = props.menuBarData2 ? props.menuBarData2 : [];
     const menuBarData = props.menuBarData || [];
@@ -41,7 +38,7 @@ function MenuBar(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="swiper-pagination"></div>
+                    <div className="swiper-scrollbar-menu"></div>
                 </div>
             </div>
             <div className="menu-bar2">

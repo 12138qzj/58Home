@@ -9,7 +9,7 @@ export const OrderTab = styled.div`
     justify-content:space-between;
     align-items: center;
     box-sizing:border-box;
-    font-weight:bold;
+    /* font-weight:bold; */
     background-color: #fff;
   & .order-tab__icon{
     width: .7407rem /* 80/108 */;
@@ -19,6 +19,7 @@ export const OrderTab = styled.div`
     line-height:.7417rem;
     text-align:center;
     font-size:.3rem;
+    font-weight:bold;
   }
   & .order-tab__title{
     font-size: .4815rem /* 52/108 */;
