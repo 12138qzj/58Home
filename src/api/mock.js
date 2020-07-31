@@ -43,7 +43,7 @@ const detailData = Mock.mock(/\/detail/, 'get', (options) => {
 // })
 
 const mainData = Mock.mock(/\/home\/main/, 'get', (options) => {
-    console.log("mock进去", options.url.split("?")[1]);
+    console.log("mock进去..", options);
 
     if (!options.url.split("?")[1]) {
         return {
@@ -52,7 +52,12 @@ const mainData = Mock.mock(/\/home\/main/, 'get', (options) => {
         }
     }
     const offset = decodeURIComponent(options.url.split("?")[1].split("=")[1]);
-    console.log("offset", offset);
+    console.log("offset-----------", offset);
+    console.log("ListItemData", ListItemData)
+    return {
+        success: true,
+        data: ListItemData[offset / 5]
+    }
     // if (offset) {
     // return {
     //     success: true,

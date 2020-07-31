@@ -1,6 +1,8 @@
 import React, { useState,useEffect, memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
+import LazyLoad ,{forceCheck}from 'react-lazyload';
+
 import * as actionTypes from './store/actionCreators'
 import * as detailactionTypes from '../details/store/actionCreators'
 
@@ -27,8 +29,8 @@ import './main.css'
 
 function Main(props) {
 
-    const { maindata, orderdata, index,ListItemData,listOffset} = props;
-    const { getMainDataDispatch, changeIndexData, getDetailDataDispatch } = props;
+    const { maindata, orderdata, index,ListItemData,listOffset,uploading} = props;
+    const { getMainDataDispatch, changeIndexData, getDetailDataDispatch,pullUpRefresh } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
     const [Display,setDisplay]=useState(0);
@@ -48,7 +50,7 @@ function Main(props) {
     }, [])
 
     const handlePullUp = () => {
-        // pullUpRefresh(ListItemData === '', listOffset);
+        pullUpRefresh(ListItemData === '', listOffset);
     };
     
     const handlePullDown = () => {
@@ -57,7 +59,9 @@ function Main(props) {
     const handleOnclick=()=>{
         setHelpdisplay(!Helpdisplay)
     }
-    // console.log("........", maindata.length)
+    console.log("........", maindata.length)
+    console.log("........主页下面的数据", ListItemData,listOffset,uploading)
+    
     return (
         <>
             <SearchInput handleOnclick={()=>{handleOnclick()}}/>
@@ -68,6 +72,7 @@ function Main(props) {
                     setDisplay(1)
                     else
                     setDisplay(0)
+                    forceCheck();
                 }}
                 pullUp={ handlePullUp }
                 pullDown = { handlePullDown }
@@ -85,6 +90,7 @@ function Main(props) {
                     </div>
                 </Scroll>
             </div>
+            {/* { enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null} */}
             <MainBottomChooseCopy display={Display}/>
             <MainPopup handleOnclick={()=>{handleOnclick()}} display={Helpdisplay}/>
 
@@ -97,7 +103,9 @@ const mapStateToProps = (state) => ({
     orderdata: state.order.orderdata,
     index: state.main.index,
     ListItemData:state.main.ListItemData,
-    listOffset:state.main.listOffset
+    listOffset:state.main.listOffset,
+    uploading:state.main.Uploading
+
 })
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -111,14 +119,14 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actionTypes.changeIndexData(newIndex))
         },
         // 滑到最底部刷新部分的处理
-        // pullUpRefresh(frist, count) {
-        //     dispatch(changePullUpLoading(true));
-        //     if(frist){
-        //     dispatch(refreshMoreHotSingerList());
-        //     } else {
-        //     dispatch(refreshMoreSingerList());
-        //     }
-        // },
+        pullUpRefresh(frist, count) {
+            dispatch(actionTypes.changePullUpLoading(true));
+            if(frist){
+            dispatch(actionTypes.refreshMoreMainList());
+            } else {
+            dispatch(actionTypes.refreshMoreMainList());
+            }
+        },
         //顶部下拉刷新
         // pullDownRefresh(frist, alpha) {
         //     dispatch(changePullDownLoading(true));

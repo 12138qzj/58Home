@@ -9,7 +9,7 @@ export const reqdetail = (data) => {
     return Ajax("/detail", { data }, 'GET');
 }
 export const reqgetmainListoffset = (count) => {
-    return Ajax('/home/main', count);
+    return Ajax('/home/main', { count }, 'GET');
 };
 // home/main/cbl
 // export const reqmain = (url) => {

@@ -1,43 +1,19 @@
-import React from 'react';
+import React ,{memo} from 'react';
+import { connect } from 'react-redux';
+import LazyLoad ,{forceCheck}from 'react-lazyload';
+
+
 import list_item_img from '../../../assets/images/list_item_img.png';
 import PropTypes from 'prop-types';
 
 import { List, TextContent } from './ListItem.style.js';
 
 const ListItemcomponent = (props) => {
-
-    const ListItemData = [
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        },
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        },
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }, 
-        {
-            title: "厨房不要买这4样电器！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }
-        , 
-        {
-            title: "入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }
-    ]
-
+    const {ListItemData}=props;
     return (
         <>
             {
+                !ListItemData?"":
                 ListItemData.map((item,index)=>{
                     return(
                         <List key={index}>
@@ -47,13 +23,15 @@ const ListItemcomponent = (props) => {
                                 </div>
                                 <div className="ListItem-label">
                                     {item.label}
-
                                 </div>
                             </TextContent>
                             {/* {item.imgsrc} */}
                             <div className="ListItem-img">
                                 <div className="ListItem-content__img">
-                                    <img src="https://images.daojia.com//dop2c/custom/947fdeb47dc6741d8af763834d4390f7.jpeg?x-oss-process=image/resize,w_330,h_246/format,webp" alt="" />
+                                <LazyLoad height={100}>
+                                    <img src={item.imgsrc}  alt="" />
+                                </LazyLoad>
+                                    {/* <img src={item.imgsrc}  alt="" /> */}
             
                                 </div>
                             </div>
@@ -68,7 +46,37 @@ const ListItemcomponent = (props) => {
 }
 
 
-export default ListItemcomponent
+const mapStateToProps = (state) => ({
+    ListItemData:state.main.ListItemData,
+
+
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch
+        // getMainDataDispatch() {
+        //     dispatch(actionTypes.getMainData())
+        // },
+        // getDetailDataDispatch() {
+        //     dispatch(detailactionTypes.initorderData())
+        // },
+        // changeIndexData(newIndex) {
+        //     dispatch(actionTypes.changeIndexData(newIndex))
+        // },
+        // // 滑到最底部刷新部分的处理
+        // pullUpRefresh(frist, count) {
+        //     dispatch(actionTypes.changePullUpLoading(true));
+        //     if(frist){
+        //     dispatch(actionTypes.refreshMoreMainList());
+        //     } else {
+        //     dispatch(actionTypes.refreshMoreMainList());
+        //     }
+        // },
+ 
+        
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(memo(ListItemcomponent))
 
 ListItemcomponent.prototype = {
     // title:PropTypes.string.isRequired,
