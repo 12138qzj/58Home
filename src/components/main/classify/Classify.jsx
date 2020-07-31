@@ -15,37 +15,34 @@ class Classify extends Component {
     }
     omponentDidMount() {
         new Swiper('.swiper-container-mainhead', {
-            slidesPerView :'auto', 
-            width:300
+            slidesPerView: 'auto',
+            width: 300
         })
     }
-    render() {  
+    render() {
         const classifyData = this.props.classify || [];
         return (
-            <Scroll direction={"horizental"} refresh={true}>
+            // <div className='clas' >
+                <Scroll direction={"horizental"} refresh={true}>
 
-                <div className="classify">
-                    <div className="classify-box">
-                        <div className="swiper-container-mainhead" >
-                            <div className="swiper-wrapper" >
-                                {
-                                    classifyData.map((item, index) => {
-                                        return (
-                                            <div className="swiper-slide dd" key={index}>
-                                                <span className="classify-item" key={index} onClick={() => {
-                                                    this.handleclick(item)
-                                                }}>
-                                                    {item}
-                                                </span>
-                                            </div>
-                                        ) 
-                                    })
-                                }
-                            </div>
+                    <div className="classify">
+                        <div className="classify-box">
+                            {
+                                classifyData.map((item, index) => {
+                                    return (
+                                        <span className="classify-item" key={index} onClick={() => {
+                                            this.handleclick(item)
+                                        }}>
+                                            {item}
+                                        </span>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
-                </div>
-            </Scroll >
+                </Scroll >
+            // </div>
+
 
         );
     }

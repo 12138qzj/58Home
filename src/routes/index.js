@@ -19,7 +19,7 @@ const My = lazy(()=> import('../pages/my/my'));
 const Detail = lazy(()=> import('../pages/details/Detail'));
 const Order = lazy(()=> import('../pages/order/Order'));
 const OrderItem = lazy(()=> import('../pages/order/OrderItem'));
-// const Payment = lazy(()=> import('../pages/payment/Payment'));
+const Recent = lazy(()=> import('../pages/recent/Recent'));
 
 const SuspenseComponent = Component => props => {
     return (
@@ -61,7 +61,11 @@ export default [{
                         {
                             path: '/home/my/order',
                             render:()=><Redirect to="/order"/>
-                        }
+                        },
+                        // {
+                        //     path:'/home/my/recent',
+                        //     render:() => <Redirect to = "/recent"/>
+                        // }
                     ]
                 },
             ],
@@ -83,7 +87,6 @@ export default [{
                 {
                     path: '/order',
                     render: ()=><Redirect to="/order/confirm"/>
-                    
                 },
                 {
                 path: '/order/comfirm',
@@ -111,17 +114,12 @@ export default [{
         {
             path: '/payment',
             exact: true,
-            component: Payment,
-            // routes: [
-            //     {
-            //         path: '/payment',
-            //         render: () => <Redirect to={"/payment"} />
-            //     },
-            //     {
-            //     path: '/payment',
-            //     component: SuspenseComponent(Payment)
-            //     },
-            // ]
+            component: Payment
+        },
+        {
+            path:'/recent',
+            component: SuspenseComponent(Recent)
+
         }
     ]
 }];

@@ -22,13 +22,16 @@ const Detail = (props) => {
     const [imgIndex,setimgIndex]=useState(0)
     const [detailtitle,setdetailtitle]=useState(null)
     const [detailprice,setdetailprice]=useState(0)
+    // const [recentnum, setrecentnum ] = useState(0);
 
     const {orderdata,reqparams}=props;
-    const {getinitorderData,addorderData}=props;
+    const {getinitorderData,addorderData, getrecentNumData}=props;
     const handleback = () => {
 
     }
+
     useEffect(()=>{
+        
         console.log("详情页面数据props",props)
         console.log("详情页面数据propsid",decodeURIComponent(props.location.search.split("=")[1]))
         
@@ -60,18 +63,6 @@ const Detail = (props) => {
                 // setimgIndex(Math.floor(progress))
                 }
             },
-
-        //   hashNavigation: true,
-        //   on:{
-        //     hashSet: function(){
-        //       alert('Swiper更新了浏览器的hash值');
-        //     },
-        //   },
-        // loop: true,
-        // autoplay: {
-        //     delay: 1000,
-        // }
-        // autoplay:true,
     })
 
     //  console.log("8888",DetailSwiper); 
@@ -97,12 +88,19 @@ const Detail = (props) => {
             addorderData(newdata);
         }
     }
+    const onAddRecentNum = (num) => {
+            // 存到本地
+            StorageUtils.saveRecentNum(num);
+            // 存到store
+            addorderData(num);
+    }
 
     // const [orderdata,setorderdata] =useState([])
     useEffect(() => {
         if (!orderdata.length) {
             getinitorderData();
         }
+        getrecentNumData()
     },[])
 
 
@@ -255,7 +253,8 @@ const Detail = (props) => {
 
 function mapStateToProps(state) {
     return {
-        orderdata: state.order.orderdata
+        orderdata: state.order.orderdata,
+        
     }
 
 }
@@ -266,6 +265,9 @@ function mapDispatchToProps(dispatch) {
         },
         addorderData(data) {
             dispatch(FunActionTypes.addorderData(data))
+        },
+        getrecentNumData(){
+            dispatch(FunActionTypes.getrecentNum())
         }
 
     }

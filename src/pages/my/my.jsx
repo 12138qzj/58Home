@@ -14,7 +14,9 @@ import head_icon from '../../assets/images/temp-head_c43dfad.png'
 function My(props) {
     // class My extends PureComponent {
     // state = {}
-
+    let { recentnum } = props;
+    recentnum = localStorage.getItem('recentNum')?localStorage.getItem('recentNum') :recentnum;
+    console.log(recentnum);
     // render() {
     const { route, index } = props;
     const { changeIndexData } = props;
@@ -59,25 +61,33 @@ function My(props) {
     const infocard = [
         {
             infocardnum: 1,
-            infocardname: "卡劵"
+            infocardname: "卡劵",
+            param:'/home/my'
         },
         {
             infocardnum: 0,
-            infocardname: "候选阿姨"
+            infocardname: "候选阿姨",
+            param:'/home/my'
         },
         {
             infocardnum: 0,
-            infocardname: "收藏"
+            infocardname: "收藏",
+            param:'/home/my'
         },
         {
-            infocardnum: 0,
-            infocardname: "浏览记录"
+            infocardnum: recentnum,
+            infocardname: "浏览记录",
+            param:'/recent'
         }
     ]
 
     const handleClick = (params) => {
         console.log("params",params)
         props.history.push(`/order${params}`)
+    }
+    const handleClickRecent = (params) => {
+        console.log('params', params)
+        props.history.push(`${params}`)
     }
     useEffect(() => {
         changeIndexData(3)
@@ -98,12 +108,14 @@ function My(props) {
                 <div className="info info-card" >
                     {
                         infocard.map((item, index) => {
+                            console.log(item.param,'num_mane')
                             return (
-                                <InfoCard num={item.infocardnum} num_name={item.infocardname} key={index} />
+                                <InfoCard num={item.infocardnum} num_name={item.infocardname} key={index}
+                                handleonclick={handleClickRecent} param={item.param}
+                                 />
                             )
                         })
                     }
-
 
                 </div>
                 <div className="order">
@@ -118,10 +130,6 @@ function My(props) {
                                 <Ordercard key={index} bgp={item.bgp} bgptext={item.bgptext} handleonclick={handleClick} url={item.param} />
                             )
                         })}
-                        {/* <Ordercard/>
-                            
-                            <Ordercard/>
-                            <Ordercard/> */}
 
                     </div>
                 </div>
@@ -138,9 +146,6 @@ function My(props) {
                                 )
                             })
                         }
-                        {/* <ToolserverCard name="我的地址" />
-                            <ToolserverCard name="入住中心" />
-                            <ToolserverCard name="帮助中心" /> */}
 
                     </div>
 
@@ -156,6 +161,7 @@ function My(props) {
 
 const mapStateToProps = (state) => ({
     // maindata: state.main.maindata,
+    recentnum: state.order.recentnum,
     index: state.main.index
 })
 const mapDispatchToProps = (dispatch) => {
