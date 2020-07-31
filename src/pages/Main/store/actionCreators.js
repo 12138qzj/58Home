@@ -40,3 +40,22 @@ export const changeIndexData = (newIndex) => {
         dispatch(changeIndex(newIndex))
     }
 };
+
+
+//进场loading
+// export const changeEnterLoading = (data) => ({
+//     type: CHANGE_ENTER_LOADING,
+//     data
+// });
+
+//滑动最底部loading
+export const changePullUpLoading = (data) => ({
+    type: actionType.CHANGE_UPLOADING,
+    data
+});
+
+//顶部下拉刷新loading
+export const changePullDownLoading = (data) => ({
+    type: actionType.CHANGE_DOWNLOADING,
+    data
+});

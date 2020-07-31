@@ -5,7 +5,7 @@ import * as actionTypes from './store/actionCreators'
 import * as detailactionTypes from '../details/store/actionCreators'
 
 
-import Scroll from '../../baseUI/scroll/index'
+import Scroll from '../../baseUI/scroll/index.jsx'
 // import axios from 'axios';
 // import {mainData} from '../../api/mock.js';
 // import { reqmain } from '../../api/index.js';
@@ -27,7 +27,7 @@ import './main.css'
 
 function Main(props) {
 
-    const { maindata, orderdata, index } = props;
+    const { maindata, orderdata, index,ListItemData,listOffset} = props;
     const { getMainDataDispatch, changeIndexData, getDetailDataDispatch } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
@@ -47,6 +47,13 @@ function Main(props) {
 
     }, [])
 
+    const handlePullUp = () => {
+        // pullUpRefresh(ListItemData === '', listOffset);
+    };
+    
+    const handlePullDown = () => {
+        // pullDownRefresh(ListItemData, listOffset);
+    };
     const handleOnclick=()=>{
         setHelpdisplay(!Helpdisplay)
     }
@@ -61,8 +68,10 @@ function Main(props) {
                     setDisplay(1)
                     else
                     setDisplay(0)
-
-                }}>
+                }}
+                pullUp={ handlePullUp }
+                pullDown = { handlePullDown }
+                >
                     <div>
                         <div className="main-padding">
                         <Classify classify={classify} />
@@ -86,7 +95,9 @@ function Main(props) {
 const mapStateToProps = (state) => ({
     maindata: state.main.maindata,
     orderdata: state.order.orderdata,
-    index: state.main.index
+    index: state.main.index,
+    ListItemData:state.main.ListItemData,
+    listOffset:state.main.listOffset
 })
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -98,7 +109,27 @@ const mapDispatchToProps = (dispatch) => {
         },
         changeIndexData(newIndex) {
             dispatch(actionTypes.changeIndexData(newIndex))
-        }
+        },
+        // 滑到最底部刷新部分的处理
+        // pullUpRefresh(frist, count) {
+        //     dispatch(changePullUpLoading(true));
+        //     if(frist){
+        //     dispatch(refreshMoreHotSingerList());
+        //     } else {
+        //     dispatch(refreshMoreSingerList());
+        //     }
+        // },
+        //顶部下拉刷新
+        // pullDownRefresh(frist, alpha) {
+        //     dispatch(changePullDownLoading(true));
+        //     dispatch(changeListOffset(0));
+        //     if(category === '' && alpha === ''){
+        //     dispatch(getHotSingerList());
+        //     } else {
+        //     dispatch(getSingerList());
+        //     }
+        // }
+        
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Main))

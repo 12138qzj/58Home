@@ -50,9 +50,10 @@ const ListItemcomponent = (props) => {
 
                                 </div>
                             </TextContent>
+                            {/* {item.imgsrc} */}
                             <div className="ListItem-img">
                                 <div className="ListItem-content__img">
-                                    <img src={item.imgsrc} alt="" />
+                                    <img src="https://images.daojia.com//dop2c/custom/947fdeb47dc6741d8af763834d4390f7.jpeg?x-oss-process=image/resize,w_330,h_246/format,webp" alt="" />
             
                                 </div>
                             </div>

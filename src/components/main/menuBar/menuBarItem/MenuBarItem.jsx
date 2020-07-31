@@ -15,11 +15,11 @@ class MenuBarItem extends Component {
     }
     
     render() {
-        console.log("-11111----",this)
+        // console.log("-11111----",this)
 
         const menuBarData = this.props.menuBarData || [];
         // console.log(menuBarData)\
-        console.log("-----",this)
+        // console.log("-----",this)
         const that=this;
         return ( 
             <div className='menu-item__box'>
