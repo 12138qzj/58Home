@@ -12,8 +12,8 @@ export const List = styled.div `
         flex:1;
         border-radius:1px;
         .ListItem-content__img{
-            margin: 0 auto;
-            width:100%;
+            /* margin: 0 auto; */
+            width:47%;
             height:100%;
             border-radius:9px;
             overflow:hidden;
@@ -23,9 +23,7 @@ export const List = styled.div `
         }
        
     }
-    &:last-child{
-        margin-bottom:4rem;
-    }
+  
 `;
 export const TextContent = styled.div `
     

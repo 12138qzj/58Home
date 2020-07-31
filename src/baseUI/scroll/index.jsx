@@ -2,8 +2,8 @@ import React, { forwardRef, useState, useEffect, useRef, useImperativeHandle, us
 import PropTypes from "prop-types"
 import BScroll from "better-scroll"
 import styled from 'styled-components';
-import Loading from '../loading/index';
-import Loading2 from '../loading-v2/index';
+// import Loading from '../loading/index';
+// import Loading2 from '../loading-v2/index';
 import { debounce } from "../../api/utils";
 
 const ScrollContainer = styled.div`
@@ -105,6 +105,7 @@ const Scroll = forwardRef((props, ref) => {
                 bottom: bounceBottom
             }
         });
+        console.log("scroll----------",scroll);
         setBScroll(scroll);
         return () => {
             setBScroll(null);
@@ -170,16 +171,16 @@ const Scroll = forwardRef((props, ref) => {
         }
     }));
 
-    const PullUpdisplayStyle = pullUpLoading ? { display: "" } : { display: "none" };
-    const PullDowndisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
+    // const PullUpdisplayStyle = pullUpLoading ? { display: "" } : { display: "none" };
+    // const PullDowndisplayStyle = pullDownLoading ? { display: "" } : { display: "none" };
     return (
         <ScrollContainer ref={scrollContaninerRef} > {props.children} { /* 滑到底部加载动画 */} 
-            <PullUpLoading style={PullUpdisplayStyle} > 
+            {/* <PullUpLoading style={PullUpdisplayStyle} > 
                 < Loading > </Loading>
-            </PullUpLoading > { /* 顶部下拉刷新动画 */} 
-            <PullDownLoading style={PullDowndisplayStyle} > 
+            </PullUpLoading > { /* 顶部下拉刷新动画 */}  
+            {/* <PullDownLoading style={PullDowndisplayStyle} > 
                 < Loading2 > </Loading2>
-            </PullDownLoading >
+            </PullDownLoading > */}
         </ScrollContainer>
     );
 })

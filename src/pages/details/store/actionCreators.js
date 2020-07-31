@@ -3,15 +3,15 @@ import * as actionType from './constants.js';
 import StorageUtils from '../../../Utils/storageUtis/StorageUtils'
 
 
-export const changerecentNum =(data) => ({
-    type:actionType.CHANGE_RECENT_NUM,
-    data:data
+export const changerecentNum = (data) => ({
+    type: actionType.CHANGE_RECENT_NUM,
+    data: data
 })
 
 
-export const getrecentNum = () =>{
-    return (dispatch,getState) => {
-        const data = getState().order.recentnum+1
+export const getrecentNum = () => {
+    return (dispatch, getState) => {
+        const data = getState().order.recentnum + 1
         console.log(data)
         dispatch(changerecentNum(data))
         localStorage.setItem('recentNum', data)
@@ -35,7 +35,6 @@ export const initorderData = () => {
 const init = () => {
     let boxdata = [];
     StorageUtils.getUserorder();
-
     const data = StorageUtils.getUserorder() ? StorageUtils.getUserorder().split(';') : [];
     for (let key in data) {
         var obj = eval("(" + data[key] + ")");
@@ -68,4 +67,3 @@ export const setorderdetailData = (data) => {
 
     }
 };
-

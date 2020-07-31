@@ -6,9 +6,12 @@ export const reqmain = () => {
     return Ajax("/home/main", {}, 'GET');
 }
 export const reqdetail = (data) => {
-        return Ajax("/detail", { data }, 'GET');
-    }
-    // home/main/cbl
-    // export const reqmain = (url) => {
-    //     return Ajax(url, {}, 'GET');
-    // }
+    return Ajax("/detail", { data }, 'GET');
+}
+export const reqgetmainListoffset = (count) => {
+    return Ajax('/home/main', { count }, 'GET');
+};
+// home/main/cbl
+// export const reqmain = (url) => {
+//     return Ajax(url, {}, 'GET');
+// }

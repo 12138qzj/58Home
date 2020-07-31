@@ -262,14 +262,14 @@ const Detail = (props) => {
                     {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
                     <form id="Form1" action="" className="form">
                         <div className="forminput">
-                            <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" />
+                            <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" autoComplete='off'/>
                         </div>
                         <div className="forminput">
 
-                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" onFocus={handleclick} />
+                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" autoComplete='off' onFocus={handleclick} />
                         </div>
                         <div className="forminput">
-                            <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" />
+                            <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间"  autoComplete='off'/>
                         </div>
                         
                         <DetailBottom handleclick={handleclick} />

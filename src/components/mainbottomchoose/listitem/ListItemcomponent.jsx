@@ -1,43 +1,16 @@
-import React from 'react';
-import list_item_img from '../../../assets/images/list_item_img.png';
-import PropTypes from 'prop-types';
+import React ,{memo} from 'react';
+import { connect } from 'react-redux';
+import LazyLoad ,{forceCheck}from 'react-lazyload';
 
+import PropTypes from 'prop-types';
 import { List, TextContent } from './ListItem.style.js';
 
 const ListItemcomponent = (props) => {
-
-    const ListItemData = [
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        },
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        },
-        {
-            title: "厨房不要买这4样电器，入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }, 
-        {
-            title: "厨房不要买这4样电器！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }
-        , 
-        {
-            title: "入住才知费钱不实用！",
-            label: "家装小助手",
-            imgsrc:list_item_img
-        }
-    ]
-
+    const {ListItemData}=props;
     return (
         <>
             {
+                !ListItemData?"":
                 ListItemData.map((item,index)=>{
                     return(
                         <List key={index}>
@@ -47,12 +20,15 @@ const ListItemcomponent = (props) => {
                                 </div>
                                 <div className="ListItem-label">
                                     {item.label}
-
                                 </div>
                             </TextContent>
+                            {/* {item.imgsrc} */}
                             <div className="ListItem-img">
                                 <div className="ListItem-content__img">
-                                    <img src={item.imgsrc} alt="" />
+                                <LazyLoad height={100}>
+                                    <img src={item.imgsrc}  alt="" />
+                                </LazyLoad>
+                                    {/* <img src={item.imgsrc}  alt="" /> */}
             
                                 </div>
                             </div>
@@ -67,9 +43,19 @@ const ListItemcomponent = (props) => {
 }
 
 
-export default ListItemcomponent
+const mapStateToProps = (state) => ({
+    ListItemData:state.main.ListItemData,
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(memo(ListItemcomponent))
 
+ListItemcomponent.defaultProps = {
+    ListItemData: null,
+  };
 ListItemcomponent.prototype = {
-    // title:PropTypes.string.isRequired,
-    // onBack:PropTypes.func.isRequired,
+    ListItemData:PropTypes.string.isRequired,
 }

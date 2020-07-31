@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import location from '../../assets/images/定位.png';
 const Popupcontent=styled.div`
     position:absolute;
     height:100vh;
@@ -17,7 +16,6 @@ const Popupcontent=styled.div`
             right:-2px;
             top:-2px;
             display:block;
-            /* width:0.2rem; */
             border-top:0.2rem solid transparent;
             border-left:0.2rem solid transparent;
             border-right:0.2rem solid transparent;
@@ -30,27 +28,14 @@ const Popupcontent=styled.div`
             right:-12px;
             background-color:white;
             .item{
-                align-content :center;
-                padding:0.1rem 0.3rem;
+                padding:0.2rem ;
                 font-size:0;
                 .text{
-                    display:inline-block;
-                    margin-top:-2rem;
-                    /* height:0.7rem; */
-                    font-size:0.36rem;
-                    background-color:gray;
-                }
-                span:first-child{
-                    display:inline-block;
-                    background-color:gray;
-                    width:20px;
-                    font-size:0.36rem;
-
-
+                    font-size:0.38rem;
                 }
             }
             .item:first-child{
-                border-bottom:1px solid gray;
+                border-bottom:1px solid #dadedc;
             }
         }
 
@@ -68,21 +53,14 @@ const MainPopup=(props)=>{
             handleOnclick()
         }} style={display?{}:{display:"none"}}>
             <div className="father">
-                <span></span>
+            <span></span>
                 <div className="content">
                     <div className="item">
-                    <span>
-                        <img src={location} alt="" width="100%"/>
-                    </span> 
-                    <span className="text">帮助中心</span>
+                    <span className="text iconfont">&#xe622; &nbsp; 帮助中心</span>
                     </div>
                     <div className="item">
-                    <span>
-                    <img src={location} alt="" width="100%"/>
-                        </span> <span className="text">扫一扫</span>
+                    <span className="text iconfont">&#xe641; &nbsp; 扫一扫</span>
                     </div>
-                   
-
                 </div>
             </div>
         </Popupcontent>

@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "309482",
+      "name": "订单-线",
+      "font_class": "dingdanxian",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "694956",
+      "name": "发布",
+      "font_class": "public",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "1069146",
+      "name": "扫一扫 ",
+      "font_class": "saoyisao1",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "1114849",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "1120959",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "11304103",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
       "icon_id": "4933408",
       "name": "搜索",
       "font_class": "sousuo1",

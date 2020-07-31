@@ -1,14 +1,12 @@
 import React, { useState,useEffect, memo } from 'react';
 // memo 缓存组件
 import { connect } from 'react-redux';
+import LazyLoad ,{forceCheck}from 'react-lazyload';
+
 import * as actionTypes from './store/actionCreators'
 import * as detailactionTypes from '../details/store/actionCreators'
 
-
-import Scroll from '../../baseUI/scroll/index'
-// import axios from 'axios';
-// import {mainData} from '../../api/mock.js';
-// import { reqmain } from '../../api/index.js';
+import Scroll from '../../baseUI/scroll/index.jsx'
 
 
 import SearchInput from '../../components/SearchInput/SearchInput';
@@ -23,12 +21,13 @@ import MainBottomChoose from '../../components/mainbottomchoose/MainBottomChoose
 import MainBottomChooseCopy from '../../components/miainBottomChooseCopy/MiainBottomChooseCopy';
 
 import MainPopup from '../../components/mainPopup/MainPopup';
+import loading from '../../assets/images/loading.gif';
 import './main.css'
 
 function Main(props) {
 
-    const { maindata, orderdata, index } = props;
-    const { getMainDataDispatch, changeIndexData, getDetailDataDispatch } = props;
+    const { maindata, orderdata, index,ListItemData,listOffset,uploading} = props;
+    const { getMainDataDispatch, changeIndexData, getDetailDataDispatch,pullUpRefresh } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
 
     const [Display,setDisplay]=useState(0);
@@ -39,7 +38,6 @@ function Main(props) {
     useEffect(() => {
         if (!maindata.length) {
             getMainDataDispatch();
-            console.log("******")
         }
         if (!orderdata.length) {
             getDetailDataDispatch();
@@ -47,10 +45,19 @@ function Main(props) {
 
     }, [])
 
+    const handlePullUp = () => {
+        pullUpRefresh(ListItemData === '', listOffset);
+    };
+    
+    const handlePullDown = () => {
+        // pullDownRefresh(ListItemData, listOffset);
+    };
     const handleOnclick=()=>{
         setHelpdisplay(!Helpdisplay)
     }
-    // console.log("........", maindata.length)
+    console.log("........", maindata.length)
+    console.log("........主页下面的数据", ListItemData,listOffset,uploading)
+    
     return (
         <>
             <SearchInput handleOnclick={()=>{handleOnclick()}}/>
@@ -61,8 +68,12 @@ function Main(props) {
                     setDisplay(1)
                     else
                     setDisplay(0)
-
-                }}>
+                    forceCheck();
+                }}
+                pullUp={ handlePullUp }
+                pullDown = { handlePullDown }
+                pullUpLoading={uploading}
+                >
                     <div>
                         <div className="main-padding">
                         <Classify classify={classify} />
@@ -73,9 +84,12 @@ function Main(props) {
                             <FrameLayout />
                         </div>
                         <MainBottomChoose />
+                        <div className="loading-img" style={uploading?{}:{display:"none"}}><img src={loading} alt=""/><span>加载中...</span> </div>
                     </div>
+                    
                 </Scroll>
             </div>
+            {/* { enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null} */}
             <MainBottomChooseCopy display={Display}/>
             <MainPopup handleOnclick={()=>{handleOnclick()}} display={Helpdisplay}/>
 
@@ -86,7 +100,11 @@ function Main(props) {
 const mapStateToProps = (state) => ({
     maindata: state.main.maindata,
     orderdata: state.order.orderdata,
-    index: state.main.index
+    index: state.main.index,
+    ListItemData:state.main.ListItemData,
+    listOffset:state.main.listOffset,
+    uploading:state.main.Uploading
+
 })
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -98,7 +116,27 @@ const mapDispatchToProps = (dispatch) => {
         },
         changeIndexData(newIndex) {
             dispatch(actionTypes.changeIndexData(newIndex))
-        }
+        },
+        // 滑到最底部刷新部分的处理
+        pullUpRefresh(frist, count) {
+            dispatch(actionTypes.changePullUpLoading(true));
+            if(frist){
+            dispatch(actionTypes.refreshMoreMainList());
+            } else {
+            dispatch(actionTypes.refreshMoreMainList());
+            }
+        },
+        //顶部下拉刷新
+        // pullDownRefresh(frist, alpha) {
+        //     dispatch(changePullDownLoading(true));
+        //     dispatch(changeListOffset(0));
+        //     if(category === '' && alpha === ''){
+        //     dispatch(getHotSingerList());
+        //     } else {
+        //     dispatch(getSingerList());
+        //     }
+        // }
+        
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Main))

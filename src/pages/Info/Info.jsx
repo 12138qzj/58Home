@@ -35,7 +35,6 @@ function Info(props) {
                             </div>
                             <InfoItem />
                     </div>
-                    <div className="loading-img"></div>
                 </Scroll>
             </div>
         </div>

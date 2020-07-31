@@ -23,6 +23,7 @@ const Popupcontent=styled.div`
             border-right:0.2rem solid transparent;
             border-bottom:0.3rem solid white;
         }
+        /*  */
         .content{
             width:3rem;
             position:absolute;
@@ -30,39 +31,27 @@ const Popupcontent=styled.div`
             right:-12px;
             background-color:white;
             .item{
-                padding:0.15rem 0.3rem;
-                align-content :center;
-                height:0.7rem;
+                /* align-content :center; */
+                padding:0.2rem ;
                 font-size:0;
+                /* height:0.8rem; */
                 .text{
-                    /* display:flex; */
+                    /* display:inline-block; */
                     /* margin-top:-2rem; */
                     /* height:0.7rem; */
-                    /* line-height:0.7rem; */
-                    font-size:0.34rem;
-                    /* background-color:gray; */
+                    font-size:0.38rem;
+                    /* background-color:#dadedc; */
                 }
-                .img{
-                    display:inline-block;
-                    margin-right:0.15rem;
-                    height:0.55rem;
-                    width:0.55rem;
-                    background-color:pink;
-                    transform:translateY(20%)
-                }
-                span:first-child{
-                    display:inline-block;
-                    /* background-color:gray; */
-                    width:20px;
-                    font-size:0.36rem;
-
-
-                }
+            
             }
-            .item:nth-child(n+2){
-                border-top:0.001rem solid gray;
+            .item:nth-child(n){
+                border-bottom:1px solid #dadedc;
             }
+            /* .item:last-child{
+                border-bottom:0;
+            } */
         }
+
 
     }
 `;
@@ -80,43 +69,27 @@ const ServerPopup=(props)=>{
         style={display?{}:{display:"none"}} >
             <div className="father">
                 <span></span>
+
                 <div className="content">
                     <div className="item">
-                        <div className="img iconfont">
-                         &#xe759;
-                            {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">消息</span>
+                        <span className="text iconfont">&#xe601; &nbsp; 消息</span>
                     </div>
                     <div className="item">
-                        <div className="img">
-                                {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">我的订单</span>
+                        <span className="text iconfont">&#xe650; &nbsp; 我的订单</span>
                     </div>
                     <div className="item">
-                        <div className="img">
-                                {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">我的收藏</span>
+                        <span className="text iconfont">&#xe617; &nbsp; 我的收藏</span>
                     </div>
                     <div className="item">
-                        <div className="img">
-                                {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">帮助中心</span>
+                        <span className="text iconfont">&#xe622; &nbsp; 帮助中心</span>
                     </div>
                     <div className="item">
-                        <div className="img">
-                                {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">发布服务</span>
+                     
+                        <span className="text iconfont">&#xe62a; &nbsp; 发布服务</span>
                     </div>
                     <div className="item">
-                        <div className="img">
-                                {/* <img src={location} alt="" width="100%"/> */}
-                        </div> 
-                        <span className="text">扫一扫</span>
+                        
+                        <span className="text iconfont">&#xe641; &nbsp; 扫一扫</span>
                     </div>
                    
 

@@ -3,18 +3,47 @@ import { connect } from 'react-redux'
 import {   PaymentTab, PaymentItem, PaymentCoupon, PaymentAddress,PaymentFooter } from './payment.style.js';
 // import { renderRoutes } from "react-router-config";
 // import * as actionTypes from '../../pages/details/store/actionCreators'
+import StorageUtils from '../../Utils/storageUtis/StorageUtils';
+import * as FunActionTypes from '../details/store/actionCreators'
+
 import { withRouter } from 'react-router-dom';
 
 function Payment(props) {
     // const { handleback } = props;
     // const len = orderdata.length;
     // console.log(len, '获取到detail的store啦')
+    let date=new Date()
+
     const {detaildata}=props
+    const {addorderData}=props
+
     const handleback=()=>{
         props.history.goBack();
     }
+
+    const handlebackOk=()=>{
+        onAddOrder(detaildata.address, detaildata.size,`${date.getMonth()+1}-${date.getDate()}`, Math.floor(Math.random()*4))
+
+    }
+    const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
+        if (Dadr && Dsize && Dtime) {
+            let data = StorageUtils.getUserorder();
+            // data?
+            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`)
+            // 存到本地
+            StorageUtils.saveUserorder(newdata)
+            // 存到store
+            addorderData(newdata);
+        }
+    }
+
+    const onAddRecentNum = (num) => {
+            // 存到本地
+            StorageUtils.saveRecentNum(num);
+            // 存到store
+            addorderData(num);
+    }
     console.log("props数据",props.detaildata)
-    let date=new Date()
     // console.log(date.getDate(),date.getMonth()+1);
     return (
         <div> 
@@ -63,7 +92,7 @@ function Payment(props) {
                     <div className="footer-left__price">{detaildata.price}元</div>
                     <div className="footer-left__logo iconfont">&#xe611;</div>
                 </div>
-                <div className="footer-botton">去结算</div>
+                <div className="footer-botton" onClick={handlebackOk}>去结算</div>
             </PaymentFooter>
         </div>
     )
@@ -78,6 +107,9 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
+        addorderData(data) {
+            dispatch(FunActionTypes.addorderData(data))
+        },
          dispatch
     }
 }

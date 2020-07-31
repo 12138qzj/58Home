@@ -4,3 +4,20 @@
 .main .main-padding {
   padding: 0 0.324rem;
 }
+.main .loading-img {
+  position: relative;
+  width: 100%;
+  margin-left: 4.2rem;
+  height: 1rem;
+  margin-bottom: 1rem;
+}
+.main .loading-img > img {
+  width: 0.5rem;
+  position: absolute;
+  top: 0.13rem;
+}
+.main .loading-img > span {
+  position: absolute;
+  top: 0.14rem;
+  margin-left: 0.6rem;
+}
