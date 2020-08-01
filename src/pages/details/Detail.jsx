@@ -9,106 +9,98 @@ import DetailBottom from '../../common/detailbottom/DetailBottom';
 import Detailhead from '../../common/detailhead/Detailhead';
 import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 import DetailItemPage from '../../components/detail/detailitempage/DetailItemPage'
-
 import Recommend from '../../components/detail/recommend/Recommend'
-
 import SpecificationsPopup from '../../components/specificationsPopup/SpecificationsPopup';
 
 import * as FunActionTypes from './store/actionCreators'
-// ../../../Data/mainData/index
-import { rotationImg } from '../../Data/mainData/index'
 
 //资源导入
-import {reqdetail} from '../../api/index'
-import { Rotation,Lable, Title, Discount, Fromwarp } from './detail.style.js'
+import { reqdetail } from '../../api/index'
+import { Rotation, Lable, Title, Discount, Fromwarp } from './detail.style.js'
 
 const Detail = (props) => {
-    const [imgIndex,setimgIndex]=useState(0)
-    const [detailtitle,setdetailtitle]=useState(null)
-    const [detailprice,setdetailprice]=useState(0)
-    // const [recentnum, setrecentnum ] = useState(0);
+    const [imgIndex, setimgIndex] = useState(0)
+    const [detailtitle, setdetailtitle] = useState(null)
+    const [detailprice, setdetailprice] = useState(0)
 
-    // const {orderdata,reqparams}=props;
-    // const {getinitorderData,addorderData, getrecentNumData}=props;
-    // const handleback = () => {
-    // }
-    
-    const [activeIndex, setActiveIndex]=useState(0)
-    const [downDisplay, setdownDisplay]=useState(false)
-    const {orderdata,reqparams}=props;
-    const {getinitorderData,addorderData,setdetailData, getrecentNumData}=props;
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [downDisplay, setdownDisplay] = useState(false)
+    const { orderdata, reqparams } = props;
+    const { getinitorderData, addorderData, setdetailData, getrecentNumData } = props;
+
+    // 回退
     const handleback = (e) => {
         e.preventDefault();
-        console.log("hist",props);
+        console.log("hist", props);
         props.history.goBack();
     }
 
-    useEffect(()=>{
-        
-        console.log("详情页面数据props",props)
-        console.log("详情页面数据propsid",decodeURIComponent(props.location.search.split("=")[1]))
-        
-        reqdetail(decodeURIComponent(props.location.search.split("=")[1])).then((res)=>{
-            console.log("详情页面数据",res)
-            if(res.data.success){
+    useEffect(() => {
+
+        console.log("详情页面数据props", props)
+        console.log("详情页面数据propsid", decodeURIComponent(props.location.search.split("=")[1]))
+
+        reqdetail(decodeURIComponent(props.location.search.split("=")[1])).then((res) => {
+            console.log("详情页面数据", res)
+            if (res.data.success) {
                 setdetailtitle(res.data.data[0].title);
                 setdetailprice(res.data.data[0].price);
 
             }
 
         })
-    },[])
+    }, [])
     // =null;
-    const DetailSwiper= new Swiper('.swiper-container', {
+    const DetailSwiper = new Swiper('.swiper-container', {
         lazy: {
             loadPrevNext: true,
-          },
-        watchSlidesProgress : true,
+        },
+        watchSlidesProgress: true,
         on: {
             progress: function (progress) {
                 // console.log(".........",progress);
-                if(Math.abs(progress)===0){
+                if (Math.abs(progress) === 0) {
                     return;
                 }
-                    if(Number.isInteger(progress*2) ){
-                        setimgIndex(Math.floor(progress*2))
-                    }
-                // setimgIndex(Math.floor(progress))
+                if (Number.isInteger(progress * 2)) {
+                    setimgIndex(Math.floor(progress * 2))
                 }
-            },
+                // setimgIndex(Math.floor(progress))
+            }
+        },
     })
 
     //  console.log("8888",DetailSwiper); 
     // DetailSwiper.slides[0].progress;
-    const address=useRef();
-    const size=useRef();
-    const time=useRef();
-    const type=0;
+    const address = useRef();
+    const size = useRef();
+    const time = useRef();
+    const type = 0;
     const handleclick = (e) => {
         e.preventDefault()
         // console.log("提交数据", time.current.value);
-        
 
-        let Daddress=address.current.value;
-        let Dsize=size.current.value;
-        let Dtime=time.current.value;
-        if(!Daddress){
+
+        let Daddress = address.current.value;
+        let Dsize = size.current.value;
+        let Dtime = time.current.value;
+        if (!Daddress) {
             console.log("请输入地址！")
             return;
-        }else if(!Dsize){
+        } else if (!Dsize) {
             handleonclickchange();
             return;
-        }else if(!Dtime){
+        } else if (!Dtime) {
             console.log("请输入时间！")
             return;
         }
-        
-        let data={
-            address:Daddress,
-            size:Dsize,
-            time:Dtime,
-            title:detailtitle,
-            price:detailprice
+
+        let data = {
+            address: Daddress,
+            size: Dsize,
+            time: Dtime,
+            title: detailtitle,
+            price: detailprice
         }
         setdetailData(data);
         props.history.push(`/payment/${data}`)
@@ -116,7 +108,7 @@ const Detail = (props) => {
         // onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
 
-    const onAddOrder = (Dadr, Dsize, Dtime,Dtype) => {
+    const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
         if (Dadr && Dsize && Dtime) {
             let data = StorageUtils.getUserorder();
             // data?
@@ -129,10 +121,10 @@ const Detail = (props) => {
     }
 
     const onAddRecentNum = (num) => {
-            // 存到本地
-            StorageUtils.saveRecentNum(num);
-            // 存到store
-            addorderData(num);
+        // 存到本地
+        StorageUtils.saveRecentNum(num);
+        // 存到store
+        addorderData(num);
     }
 
     // const [orderdata,setorderdata] =useState([])
@@ -142,92 +134,92 @@ const Detail = (props) => {
             getinitorderData();
         }
         getrecentNumData()
-    },[])
+    }, [])
 
-    const handleonclickchange=()=>{
+    const handleonclickchange = () => {
         setdownDisplay(!downDisplay);
     }
-    const handleOnclickComfirm=(area,num)=>{
+    const handleOnclickComfirm = (area, num) => {
         // console.log("面积数量",area,num);
         // setspecifications(`${area} ${num}`)
-        size.current.value=`${area} ${num}`;
+        size.current.value = `${area} ${num}`;
         handleonclickchange()
     }
-    const handleTabClick=(e)=>{
-        const  activeIndex=e.target.getAttribute("data-index")
+    const handleTabClick = (e) => {
+        const activeIndex = e.target.getAttribute("data-index")
         setActiveIndex(parseInt(activeIndex));
-        const ltab=e.target.getAttribute("data-ltab")
-        const rtab=document.querySelector(`[data-rtab="${ltab}"]`)
+        const ltab = e.target.getAttribute("data-ltab")
+        const rtab = document.querySelector(`[data-rtab="${ltab}"]`)
         rtab.scrollIntoView({
-          behavior:'smooth'
+            behavior: 'smooth'
         })
-      }
-      let ranges=[];
-      const ref=useRef();
-      let base=0;
-      useEffect(()=>{
-        const tabDetail=ref.current;
+    }
+    let ranges = [];
+    const ref = useRef();
+    let base = 0;
+    useEffect(() => {
+        const tabDetail = ref.current;
         // console.log("tabDetail",tabDetail);
 
-        const tabs=tabDetail.querySelectorAll(`[data-rtab]`)
+        const tabs = tabDetail.querySelectorAll(`[data-rtab]`)
         // console.log("tabs",tabs);
-        for(let tab of tabs){
-          let h=tab.clientHeight;
-        // console.log("tabsH",h);
-          let newH=base+h;
-          ranges.push([base,newH])
-          base=newH;
+        for (let tab of tabs) {
+            let h = tab.clientHeight;
+            // console.log("tabsH",h);
+            let newH = base + h;
+            ranges.push([base, newH])
+            base = newH;
         }
         // console.log(object);
-      function onScroll(e){
+        function onScroll(e) {
 
-        const scrollTop=document.documentElement.scrollTop+300;
-        const index = ranges.findIndex(range=>scrollTop>=range[0]&&scrollTop<range[1])
-        // console.log("ref",ref.current.scrollTop,ref,e);
+            const scrollTop = document.documentElement.scrollTop + 300;
+            const index = ranges.findIndex(range => scrollTop >= range[0] && scrollTop < range[1])
+            // console.log("ref",ref.current.scrollTop,ref,e);
 
-        setActiveIndex(index)   
-      }
-      tabDetail.addEventListener('touchstart',()=>{
-        tabDetail.addEventListener('touchmove',onScroll)
-    
-      })
-    
-      tabDetail.addEventListener('touchend',()=>{
-        tabDetail.removeEventListener('touchmove',onScroll);
-    
-      })
-      },[])
+            setActiveIndex(index)
+        }
+        tabDetail.addEventListener('touchstart', () => {
+            tabDetail.addEventListener('touchmove', onScroll)
+
+        })
+
+        tabDetail.addEventListener('touchend', () => {
+            tabDetail.removeEventListener('touchmove', onScroll);
+
+        })
+    }, [])
     return (
         <>
-            <SpecificationsPopup handleOnclickBack={handleonclickchange} handleOnclickComfirm={handleOnclickComfirm} display={downDisplay}/>
+            <SpecificationsPopup handleOnclickBack={handleonclickchange} handleOnclickComfirm={handleOnclickComfirm} display={downDisplay} />
             <HeadComponent title={detailtitle} handleback={handleback} />
-            <Detailhead index={activeIndex}  handleTabClick={handleTabClick}/>
+            <Detailhead index={activeIndex} handleTabClick={handleTabClick} />
             <div ref={ref}>
 
                 <div data-rtab="商品">
-                        <Rotation>
-                            <div className="swiper-container">
-                                <div className="swiper-wrapper ">
-                                    <div className="swiper-slide">
-                                        <img data-src="https://images.daojia.com/pic/commodity/online/9275c6db764bbe4cb4f83aa5a7dbdd39.png?x-oss-process=image/auto-orient,0/format,webp" data-index="0"  className="swiper-lazy"/>
-                                        <div className="swiper-lazy-preloader"></div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                    
-                                        <img data-src="https://images.daojia.com/pic/commodity/online/1a247a084e9d63fc0ba80cdc5612e998.png?x-oss-process=image/auto-orient,0/format,webp" data-index="1"  className="swiper-lazy"/>
+                    <Rotation>
+                        <div className="swiper-container">
+                            <div className="swiper-wrapper ">
+                                <div className="swiper-slide">
+                                    <img data-src="https://images.daojia.com/pic/commodity/online/9275c6db764bbe4cb4f83aa5a7dbdd39.png?x-oss-process=image/auto-orient,0/format,webp" data-index="0" className="swiper-lazy" />
                                     <div className="swiper-lazy-preloader"></div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <img data-src="https://images.daojia.com/pic/commodity/online/f67c550b6c0b42da7b40d5559bd80075.png?x-oss-process=image/auto-orient,0/format,webp" data-index="2"  className="swiper-lazy"/>
-                                        <div className="swiper-lazy-preloader"></div>
-                                    </div>
+                                </div>
+                                <div className="swiper-slide">
+
+                                    <img data-src="https://images.daojia.com/pic/commodity/online/1a247a084e9d63fc0ba80cdc5612e998.png?x-oss-process=image/auto-orient,0/format,webp" data-index="1" className="swiper-lazy" />
+                                    <div className="swiper-lazy-preloader"></div>
+                                </div>
+                                <div className="swiper-slide">
+                                    <img data-src="https://images.daojia.com/pic/commodity/online/f67c550b6c0b42da7b40d5559bd80075.png?x-oss-process=image/auto-orient,0/format,webp" data-index="2" className="swiper-lazy" />
+                                    <div className="swiper-lazy-preloader"></div>
                                 </div>
                             </div>
-                            {/* <Lable>
+                        </div>
+                        {/* <Lable>
                             fasfrag
                         </Lable> */}
-                        </Rotation>
-                    <p><span >{imgIndex}</span></p> 
+                    </Rotation>
+                    <p><span >{imgIndex}</span></p>
 
                     <Title>
                         <div className="price">
@@ -259,28 +251,28 @@ const Detail = (props) => {
                         </button>
                     </Discount>
                     <Fromwarp>
-                    {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
-                    <form id="Form1" action="" className="form">
-                        <div className="forminput">
-                            <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" autoComplete='off'/>
-                        </div>
-                        <div className="forminput">
+                        {/* <iframe name="targetIfr" style={{ display: "none" }}></iframe> */}
+                        <form id="Form1" action="" className="form">
+                            <div className="forminput">
+                                <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" autoComplete='off' />
+                            </div>
+                            <div className="forminput">
 
-                            <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" autoComplete='off' onFocus={handleclick} />
-                        </div>
-                        <div className="forminput">
-                            <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间"  autoComplete='off'/>
-                        </div>
-                        
-                        <DetailBottom handleclick={handleclick} />
-                    </form>
-                </Fromwarp>
+                                <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" autoComplete='off' onFocus={handleclick} />
+                            </div>
+                            <div className="forminput">
+                                <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" autoComplete='off' />
+                            </div>
+
+                            <DetailBottom handleclick={handleclick} />
+                        </form>
+                    </Fromwarp>
                 </div>
-                <DetailItemPage  />
-                <Recommend  />
+                <DetailItemPage />
+                <Recommend />
             </div>
 
-            
+
         </>
 
     )
@@ -301,7 +293,7 @@ const Detail = (props) => {
 function mapStateToProps(state) {
     return {
         orderdata: state.order.orderdata,
-        
+
     }
 
 }
@@ -314,14 +306,13 @@ function mapDispatchToProps(dispatch) {
             dispatch(FunActionTypes.addorderData(data))
         },
 
-        setdetailData(data){
+        setdetailData(data) {
             dispatch(FunActionTypes.setorderdetailData(data))
         },
-        getrecentNumData(){
+        getrecentNumData() {
             dispatch(FunActionTypes.getrecentNum())
-
         }
 
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps) (memo(Detail))
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Detail))

@@ -1,6 +1,7 @@
 .menu-item__box {
   margin-bottom: 5px;
   display: flex;
+  width: 9.3rem;
   justify-content: space-between;
 }
 .menu-item__box .item-box {

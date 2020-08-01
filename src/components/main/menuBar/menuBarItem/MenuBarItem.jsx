@@ -9,18 +9,17 @@ class MenuBarItem extends Component {
     state = {  }
     handleclick(id) {
         console.log("object",id)
-        // this.props.history.push(`/detail/${id}`)
+        
         this.props.history.push(`/detail?data=${encodeURIComponent(id)}`)
         // console.log(this.props)
     }
     
     render() {
-        // console.log("-11111----",this)
-
         const menuBarData = this.props.menuBarData || [];
         // console.log(menuBarData)\
         // console.log("-----",this)
         const that=this;
+
         return ( 
             <div className='menu-item__box'>
             {

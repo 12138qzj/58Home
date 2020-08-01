@@ -25,22 +25,22 @@ function My(props) {
         {
             bgp: "0 0",
             bgptext: "待确认",
-            param: '/comfirm'
+            param: '/order/comfirm'
         },
         {
             bgp: "0 -0.954rem",
             bgptext: "待服务",
-            param: '/service'
+            param: '/order/service'
         },
         {
             bgp: "0 -2rem",
             bgptext: "待支付",
-            param: '/paid'
+            param: '/order/paid'
         },
         {
             bgp: "0 -2.981rem",
             bgptext: "待评价",
-            param: '/evaluated'
+            param: '/order/evaluated'
         }
     ];
 
@@ -83,7 +83,9 @@ function My(props) {
 
     const handleClick = (params) => {
         console.log("params",params)
-        props.history.push(`/order${params}`)
+        
+        // props.history.push(`/order`)
+        props.history.push(`${params}`)
     }
     const handleClickRecent = (params) => {
         console.log('params', params)
@@ -121,7 +123,7 @@ function My(props) {
                 <div className="order">
                     <div className="order-warp-head">
                         <div className="order-warp-head-R">我的订单</div>
-                        <div className="order-warp-head-L" onClick={() => { handleClick('') }}>查看全部</div>
+                        <div className="order-warp-head-L" onClick={() => { handleClick('/order/confirm') }}>查看全部</div>
                     </div>
                     <div className="warp-content">
                         {ordercardbgp.map((item, index) => {

@@ -67,7 +67,7 @@ export const TopItem = styled.div `
         font-size: 0.3rem;
         font-family: PingFangSC-medium;
         font-weight: 400;
-        background-color:pink;
+        /* background-color:pink; */
         &>span{
             margin: 0px auto;
 

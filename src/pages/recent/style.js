@@ -46,6 +46,3 @@ export const BlankRecent = styled.div`
       font-size:14px;
     }
 `
-export const RecentCotent = styled.div`
-
-`

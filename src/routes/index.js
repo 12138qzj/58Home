@@ -19,9 +19,7 @@ const My = lazy(()=> import('../pages/my/my'));
 const Detail = lazy(()=> import('../pages/details/Detail'));
 const Order = lazy(()=> import('../pages/order/Order'));
 const OrderItem = lazy(()=> import('../pages/order/OrderItem'));
-
 const Payment = lazy(()=> import('../pages/payment/Payment'));
-
 const Recent = lazy(()=> import('../pages/recent/Recent'));
 
 
@@ -61,16 +59,6 @@ export default [{
                 {
                     path: '/home/my',
                     component: SuspenseComponent(My),
-                    routes: [ 
-                        {
-                            path: '/home/my/order',
-                            render:()=><Redirect to="/order"/>
-                        },
-                        // {
-                        //     path:'/home/my/recent',
-                        //     render:() => <Redirect to = "/recent"/>
-                        // }
-                    ]
                 },
             ],
         },
@@ -93,7 +81,7 @@ export default [{
                     render: ()=><Redirect to="/order/confirm"/>
                 },
                 {
-                path: '/order/comfirm',
+                path: '/order/confirm',
                 component: SuspenseComponent(OrderItem)
                 },
                 {
@@ -117,7 +105,6 @@ export default [{
         },
         {
             path: '/payment',
-        // exact: true,
             component: SuspenseComponent(Payment),
             routes: [
                 {
@@ -125,25 +112,10 @@ export default [{
                   component: SuspenseComponent(Payment)
                 }
               ]
-            // routes: [
-            //     {
-            //         path: '/payment',
-            //         render: () => <Redirect to={"/payment"} />
-            //     },
-            //     {
-            //     path: '/payment',
-            //     component: SuspenseComponent(Payment)
-            //     },
-            // ]
-
-            // exact: true,
-            // component: Payment
         },
         {
             path:'/recent',
             component: SuspenseComponent(Recent)
-
-
         }
     ]
 }];
