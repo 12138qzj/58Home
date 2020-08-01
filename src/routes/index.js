@@ -33,89 +33,124 @@ const SuspenseComponent = Component => props => {
 
 export default [{
     component: BlankLayout,
-    routes: [
+    routes:[
+        {
+            path:'/',
+            // component: Tabbuttom,
+            exact: true,
+            render: () => < Redirect to = { "/home" }/>,
+           
+        },
         {
             path:'/home',
             component: Tabbuttom,
-            routes: [{
-                    path: '/home',
-                    exact: true,
-                    render: () => < Redirect to = { "/home/main" }
-                    />,
-                },
-                {
-                    path: '/home/main',
-                    component: SuspenseComponent(Main),
-                },
-
-                {
-                    path: '/home/server',
-                    component: SuspenseComponent(Server),
-                },
-                {
-                    path: '/home/info',
-                    component: SuspenseComponent(Info),
-                },
-                {
-                    path: '/home/my',
-                    component: SuspenseComponent(My),
-                },
+            routes: [
+                        {
+                            path: '/home',
+                            exact: true,
+                            render: () => < Redirect to = { "/home/main" }
+                            />,
+                        },
+                        {
+                            path: '/home/main',
+                            component: SuspenseComponent(Main),
+                        },
+        
+                        {
+                            path: '/home/server',
+                            component: SuspenseComponent(Server),
+                        },
+                        {
+                            path: '/home/info',
+                            component: SuspenseComponent(Info),
+                        },
+                        {
+                            path: '/home/my',
+                            component: SuspenseComponent(My),
+                            routes: [ 
+                                {
+                                    path: '/home/my/order',
+                                    render:()=><Redirect to="/order"/>
+                                },
+                                // {
+                                //     path:'/home/my/recent',
+                                //     render:() => <Redirect to = "/recent"/>
+                                // }
+                            ]
+                        },
             ],
         },
         {
-            path: '/detail',
-            component: SuspenseComponent(Detail),
-            routes: [
-                {
-                  path: "/detail/:id",
-                  component: SuspenseComponent(Detail)
-                }
-              ]
+                    path: '/detail',
+                    component: SuspenseComponent(Detail),
+                    routes: [
+                        {
+                          path: "/detail/:id",
+                          component: SuspenseComponent(Detail)
+                        }
+                      ]
         },
         {
-            path: '/order',
-            component: SuspenseComponent(Order),
-            routes: [
-                {
                     path: '/order',
-                    render: ()=><Redirect to="/order/confirm"/>
-                },
-                {
-                path: '/order/confirm',
-                component: SuspenseComponent(OrderItem)
-                },
-                {
-                path: '/order/service',
-                component: SuspenseComponent(OrderItem)
-                },
-                {
-                path: '/order/paid',
-                component: SuspenseComponent(OrderItem)
-                },
-                {
-                path: '/order/evaluated',
-                component: SuspenseComponent(OrderItem)
-                },
-                {
-                path: '/order/all',
-                component: SuspenseComponent(OrderItem)
-                }
-
-            ]
+                    component: SuspenseComponent(Order),
+                    routes: [
+                        {
+                            path: '/order',
+                            exact: true,
+                            render: ()=><Redirect to="/order/confirm"/>
+                        },
+                        {
+                        path: '/order/comfirm',
+                        component: SuspenseComponent(OrderItem)
+                        },
+                        {
+                        path: '/order/service',
+                        component: SuspenseComponent(OrderItem)
+                        },
+                        {
+                        path: '/order/paid',
+                        component: SuspenseComponent(OrderItem)
+                        },
+                        {
+                        path: '/order/evaluated',
+                        component: SuspenseComponent(OrderItem)
+                        },
+                        {
+                        path: '/order/all',
+                        component: SuspenseComponent(OrderItem)
+                        }
+        
+                    ]
         },
         {
-            path: '/payment',
-            component: SuspenseComponent(Payment),
-            routes: [
-                {
-                  path: "/payment/:id",
-                  component: SuspenseComponent(Payment)
-                }
-              ]
+                    path: '/payment',
+                // exact: true,
+                    component: SuspenseComponent(Payment),
+                    routes: [
+                        {
+                          path: "/payment/:id",
+                          component: SuspenseComponent(Payment)
+                        }
+                      ]
+                    // routes: [
+                    //     {
+                    //         path: '/payment',
+                    //         render: () => <Redirect to={"/payment"} />
+                    //     },
+                    //     {
+                    //     path: '/payment',
+                    //     component: SuspenseComponent(Payment)
+                    //     },
+                    // ]
+        
+                    // exact: true,
+                    // component: Payment
         },
         {
-            path:'/recent',
-            component: SuspenseComponent(Recent)
+                    path:'/recent',
+                    component: SuspenseComponent(Recent)
+        
+        
         }
     ]
 }];
