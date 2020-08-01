@@ -82,8 +82,13 @@ function My(props) {
     ]
 
     const handleClick = (params) => {
-        console.log("params",params)
+        console.log("params",params,props)
+        if(params=='/comfirm'){
+            props.history.push(`/order`)
+        }else{
         props.history.push(`/order${params}`)
+
+        }
     }
     const handleClickRecent = (params) => {
         console.log('params', params)
@@ -121,7 +126,7 @@ function My(props) {
                 <div className="order">
                     <div className="order-warp-head">
                         <div className="order-warp-head-R">我的订单</div>
-                        <div className="order-warp-head-L" onClick={() => { handleClick('') }}>查看全部</div>
+                        <div className="order-warp-head-L" onClick={() => { handleClick('/all') }}>查看全部</div>
                     </div>
                     <div className="warp-content">
                         {ordercardbgp.map((item, index) => {

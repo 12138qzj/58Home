@@ -2,13 +2,14 @@ import React from 'react';
 import { OrderBox } from './Order.style'
 
 function OrderItem(props) {
-    const data = props
-    console.log(data.data[0].size, '0000000000000')
+    const {data}= props
+    console.log("data.data[0].size", '------',data)
 
     return (
         <>
             {
-                data.data.map((item, key) => {
+                !data?"":
+                data.map((item, key) => {
                         return (
                             <OrderBox key={key}>
                             <div className="order-title">
