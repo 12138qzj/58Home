@@ -25,7 +25,9 @@ const ListItemcomponent = (props) => {
                             {/* {item.imgsrc} */}
                             <div className="ListItem-img">
                                 <div className="ListItem-content__img">
-                                <LazyLoad height={100}>
+
+                               
+                                <LazyLoad height={100}  /* placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="singer"/>}*/> 
                                     <img src={item.imgsrc}  alt="" />
                                 </LazyLoad>
                                     {/* <img src={item.imgsrc}  alt="" /> */}
