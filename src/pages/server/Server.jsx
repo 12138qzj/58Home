@@ -22,7 +22,7 @@ function Server(props){
     }
         return ( 
             <div>
-                <ServerSearchInput handlenOclick={
+                <ServerSearchInput handlenOnclick={
                     handleonclick
                 }/>
                 <ServerContent/>

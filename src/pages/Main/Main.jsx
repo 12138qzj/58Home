@@ -60,7 +60,7 @@ function Main(props) {
     
     return (
         <>
-            <SearchInput handleOnclick={()=>{handleOnclick()}}/>
+            <SearchInput handleOnclick={()=>{handleOnclick()}} SearchBoxhandleOnclick={() => props.history.push("/search")}/>
             <div className="main">
                 <Scroll direction={"vertical"} refresh={false} onScroll={(e)=>{
                     // console.log("滚动高度.",e)

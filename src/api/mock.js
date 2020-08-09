@@ -1,8 +1,10 @@
-// import ApiPath from "@/api/ApiPath"
 import Mock from 'mockjs';
 
 import ServerData from '../Data/serverData/ServerData.json';
 import MainData from '../Data/mainData/index.js'
+import { HotKeys as SearchHotKeys } from './searchData/SearchHotKeys';
+import { Result as SearchResult } from './searchData/SearchResult';
+
 
 
 //服务器端数据
@@ -37,14 +39,8 @@ const detailData = Mock.mock(/\/detail/, 'get', (options) => {
 
 });
 
-// const mainData = Mock.mock('/home/main', 'get', {
-//     success: true,
-//     data: MainData
-// })
 
 const mainData = Mock.mock(/\/home\/main/, 'get', (options) => {
-    console.log("mock进去..", options);
-
     if (!options.url.split("?")[1]) {
         return {
             success: true,
@@ -52,35 +48,42 @@ const mainData = Mock.mock(/\/home\/main/, 'get', (options) => {
         }
     }
     const offset = decodeURIComponent(options.url.split("?")[1].split("=")[1]);
-    console.log("offset-----------", offset);
-    console.log("ListItemData", ListItemData)
+
     return {
         success: true,
         data: ListItemData[offset / 5]
     }
-    // if (offset) {
-    // return {
-    //     success: true,
-    //     data: ListItemData[offset]
-    // }
-    // }
-    // console.log("mock进去", decodeURIComponent(options.url.split("?")[1].split("=")[1]));
-
-    // return {
-    //     success: true,
-    //     data: [{
-    //             'title': detailtitle,
-    //             'price': Math.floor(5 + Math.random() * 20),
-    //         }
-
-    //     ]
-    // }
 
 });
 
-export { mainData, detailData }
-// const mainData = Mock.mock('/home/main/cbl', 'get', {
-//     success: true,
-//     data: MainData
-// })
-// export { mainData }
+const searchHotKeysData = Mock.mock("/hot", 'get', (options) => {
+    // console.log("mock进去", options);
+    return {
+        success: true,
+        data: {
+            hot: SearchHotKeys
+        }
+    }
+
+});
+
+const searchData = Mock.mock(/\/search/, 'get', (options) => {
+
+    if (options.url === "/search") return
+    console.log(options);
+    const SearchKeywords = decodeURIComponent(options.url.split("?")[1].split("=")[1]);
+
+    let data = SearchResult.filter((item, index) => {
+        if (item.includes(SearchKeywords)) return true;
+        return false;
+    })
+    return {
+        success: true,
+        data: {
+            searchData: data
+        }
+    }
+
+});
+
+export { mainData, detailData, searchHotKeysData, searchData }
