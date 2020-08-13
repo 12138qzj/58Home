@@ -191,7 +191,7 @@ export const OrderBox = styled.div`
             font-family: PingFangSC-Regular;
             font-size: 14px;
             color: #292d33;
-            line-height: 14px;
+            line-height: 17px;
             padding-bottom: 15px;
           }
             & .overflow-ellipsis{

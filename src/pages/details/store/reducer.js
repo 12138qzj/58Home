@@ -18,7 +18,7 @@ const reducer = (state = defaultstate, action) => {
 
         case actionTypes.CHANGE_RECENT_NUM:
             return {...state, recentnum: action.data}
-
+        
         default:
             return state;
     }
