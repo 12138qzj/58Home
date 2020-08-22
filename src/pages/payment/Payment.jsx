@@ -1,6 +1,7 @@
 import React, { memo ,useState} from 'react'
 import { connect } from 'react-redux'
 import { PaymentTab, PaymentItem, PaymentCoupon, PaymentAddress, PaymentFooter } from './payment.style.js';
+
 import StorageUtils from '../../Utils/storageUtis/StorageUtils';
 import * as FunActionTypes from '../details/store/actionCreators';
 import SuccessPopup from '../../components/successPopup/SuccessPopup';
