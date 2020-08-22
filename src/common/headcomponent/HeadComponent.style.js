@@ -10,7 +10,7 @@ export const Head = styled.div `
     font-size:0.4rem;
     background-color:white;
     font-family: PingFangSC-Medium,PingFang SC;
-    z-index:6;
+    z-index:99;
     .leftimg{
         width:0.7rem;
         margin-left:0.6rem;

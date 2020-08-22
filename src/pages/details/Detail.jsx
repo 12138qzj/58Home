@@ -7,19 +7,16 @@ import "swiper/css/swiper.min.css";
 import HeadComponent from '../../common/headcomponent/HeadComponent';
 import DetailBottom from '../../common/detailbottom/DetailBottom';
 import Detailhead from '../../common/detailhead/Detailhead';
-import StorageUtils from '../../Utils/storageUtis/StorageUtils'
 import DetailItemPage from '../../components/detail/detailitempage/DetailItemPage'
 import Recommend from '../../components/detail/recommend/Recommend'
 import SpecificationsPopup from '../../components/specificationsPopup/SpecificationsPopup';
 
 import * as FunActionTypes from './store/actionCreators'
-
 //资源导入
 import { reqdetail } from '../../api/index'
-import { Rotation, Lable, Title, Discount, Fromwarp } from './detail.style.js'
+import { Rotation,  Title, Discount, Fromwarp,ImgIndex } from './detail.style.js'
 
 const Detail = (props) => {
-    const [imgIndex, setimgIndex] = useState(0)
     const [detailtitle, setdetailtitle] = useState(null)
     const [detailprice, setdetailprice] = useState(0)
 
@@ -55,19 +52,26 @@ const Detail = (props) => {
         lazy: {
             loadPrevNext: true,
         },
-        watchSlidesProgress: true,
-        on: {
-            progress: function (progress) {
-                // console.log(".........",progress);
-                if (Math.abs(progress) === 0) {
-                    return;
-                }
-                if (Number.isInteger(progress * 2)) {
-                    setimgIndex(Math.floor(progress * 2))
-                }
-                // setimgIndex(Math.floor(progress))
+        // watchSlidesProgress: true,
+        // on: {
+        //     progress: function (progress) {
+        //         // console.log(".........",progress);
+        //         if (Math.abs(progress) === 0) {
+        //             return;
+        //         }
+        //         if (Number.isInteger(progress * 2)) {
+        //             setimgIndex(Math.floor(progress * 2))
+        //         }
+        //         // setimgIndex(Math.floor(progress))
+        //     }
+        // },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'custom',
+            renderCustom: function (swiper, current, total) {
+              return current + ' / ' + total;
             }
-        },
+      },
     })
 
     //  console.log("8888",DetailSwiper); 
@@ -108,24 +112,24 @@ const Detail = (props) => {
         // onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
 
-    const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
-        if (Dadr && Dsize && Dtime) {
-            let data = StorageUtils.getUserorder();
-            // data?
-            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`)
-            // 存到本地
-            StorageUtils.saveUserorder(newdata)
-            // 存到store
-            addorderData(newdata);
-        }
-    }
+    // const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
+    //     if (Dadr && Dsize && Dtime) {
+    //         let data = StorageUtils.getUserorder();
+    //         // data?
+    //         let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`)
+    //         // 存到本地
+    //         StorageUtils.saveUserorder(newdata)
+    //         // 存到store
+    //         addorderData(newdata);
+    //     }
+    // }
 
-    const onAddRecentNum = (num) => {
-        // 存到本地
-        StorageUtils.saveRecentNum(num);
-        // 存到store
-        addorderData(num);
-    }
+    // const onAddRecentNum = (num) => {
+    //     // 存到本地
+    //     StorageUtils.saveRecentNum(num);
+    //     // 存到store
+    //     addorderData(num);
+    // }
 
     // const [orderdata,setorderdata] =useState([])
 
@@ -218,9 +222,14 @@ const Detail = (props) => {
                         {/* <Lable>
                             fasfrag
                         </Lable> */}
-                    </Rotation>
-                    <p><span >{imgIndex}</span></p>
 
+                    </Rotation>
+                    <ImgIndex>
+                        <div className="swiper-pagination swiper-pagination-custom" 
+                        style={{bottom:"2px"}}
+                        >
+                        </div>
+                    </ImgIndex>
                     <Title>
                         <div className="price">
                             ￥ <span>{detailprice}</span>.00/平起

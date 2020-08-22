@@ -7,10 +7,12 @@ export const Rotation = styled.div `
     overflow: hidden;
     font-size: 0;
     z-index:2;
+    padding:0;
 
     /* border-radius: 10px; */
     .swiper-container{
         z-index:2;
+        width:100%;
 
         /* --swiper-pagination-color: #fdb3a9;两种都可以 */
         .swiper-slide{
@@ -166,10 +168,20 @@ export const Fromwarp = styled.div `
     }
 
 `;
-// .rotation-box{
-//     width: 9.388rem /* 1014/108 */;
-//     height: 2.6944rem /* 291/108 */;
-//     overflow: hidden;
-//     font-size: 0;
-//     border-radius: 10px;
-// }rem;
+
+export const ImgIndex = styled.div `
+position: absolute;
+/* top:-10px; */
+display:flex;
+
+align-items:center;
+left:8rem;
+transform:translateY(-1rem);
+width:1rem;
+height:0.5rem;
+background-color:rgba(0,0,0,0.3);
+padding:0.05rem 0.2rem;
+border-radius: 0.5rem;
+color:white;
+z-index:9;
+`;

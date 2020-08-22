@@ -1,6 +1,6 @@
-import React ,{useState} from 'react'
+import React  from 'react'
 import {Head} from './HeadComponent.style.js';
-import add from '../../assets/images/加号.png';
+// import add from '../../assets/images/加号.png';
 
 
 const HeadComponent=(props)=>{

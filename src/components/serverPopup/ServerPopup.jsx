@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import location from '../../assets/images/定位.png';
+import {withRouter} from 'react-router-dom';
+// import location from '../../assets/images/定位.png';
 const Popupcontent=styled.div`
     position:absolute;
     height:100vh;
@@ -62,6 +63,15 @@ const ServerPopup=(props)=>{
 
     console.log("props",props);
 
+    const handleClick = (params) => {
+        console.log("params",params,props)
+        if(params=='/order/comfirm'){
+            props.history.push(`/order`)
+        }else{
+        props.history.push(`${params}`)
+
+        }
+    }
 
     return(
         
@@ -75,7 +85,7 @@ const ServerPopup=(props)=>{
                         <span className="text iconfont">&#xe601; &nbsp; 消息</span>
                     </div>
                     <div className="item">
-                        <span className="text iconfont">&#xe650; &nbsp; 我的订单</span>
+                        <span className="text iconfont" onClick={()=>{ handleClick('/order/all')}}>&#xe650; &nbsp; 我的订单</span>
                     </div>
                     <div className="item">
                         <span className="text iconfont">&#xe617; &nbsp; 我的收藏</span>
@@ -98,4 +108,4 @@ const ServerPopup=(props)=>{
         </Popupcontent>
     )
 }
-export default ServerPopup
+export default  withRouter(ServerPopup);

@@ -1,30 +1,30 @@
-import React, { memo } from 'react'
+import React, { memo ,useState} from 'react'
 import { connect } from 'react-redux'
 import { PaymentTab, PaymentItem, PaymentCoupon, PaymentAddress, PaymentFooter } from './payment.style.js';
-// import { renderRoutes } from "react-router-config";
-// import * as actionTypes from '../../pages/details/store/actionCreators'
 import StorageUtils from '../../Utils/storageUtis/StorageUtils';
-import * as FunActionTypes from '../details/store/actionCreators'
-
+import * as FunActionTypes from '../details/store/actionCreators';
+import SuccessPopup from '../../components/successPopup/SuccessPopup';
 import { withRouter } from 'react-router-dom';
 
 function Payment(props) {
 
     let date = new Date()
-
     const { detaildata } = props
     const { addorderData } = props
-
     // 回到上一页
     const handleback = () => {
         props.history.goBack();
     }
+    const [successDisplay,setsuccessDisplay]=useState(false)
 
+    const handleonclick=()=>{
+        setsuccessDisplay(!successDisplay)
+    }
     const handlebackOk = () => {
-        onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4))
-
+        setsuccessDisplay(!successDisplay);
     }
     const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
+        console.log(Dadr, Dsize, Dtime, Dtype)
         if (Dadr && Dsize && Dtime) {
             let data = StorageUtils.getUserorder();
             // data?
@@ -34,13 +34,15 @@ function Payment(props) {
             // 存到store
             addorderData(newdata);
         }
+        setsuccessDisplay(!successDisplay);
+        props.history.push(`/order/all`)
     }
 
     // const onAddRecentNum = (num) => {
     //     // 存到store
     //     addorderData(num);
     // }
-    console.log("props数据", props.detaildata)
+    // console.log("props数据", props.detaildata)
     // console.log(date.getDate(),date.getMonth()+1);
     return (
         <div>
@@ -88,6 +90,11 @@ function Payment(props) {
                 </div>
                 <div className="footer-botton" onClick={handlebackOk}>去结算</div>
             </PaymentFooter>
+            <SuccessPopup 
+                display={successDisplay} 
+                handleOnclick={handleonclick}
+                onAddOrder={()=>{onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4))}}
+                />
         </div>
     )
 }
@@ -97,7 +104,6 @@ function mapStateToProps(state) {
     return {
         detaildata: state.order.detaildata
     }
-
 }
 function mapDispatchToProps(dispatch) {
     return {
