@@ -22,19 +22,19 @@ function Payment(props) {
         setsuccessDisplay(!successDisplay)
     }
     const handlebackOk = () => {
-<<<<<<< HEAD
+// <<<<<<< HEAD
         setsuccessDisplay(!successDisplay);
     }
-    const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
-        console.log(Dadr, Dsize, Dtime, Dtype)
-        if (Dadr && Dsize && Dtime) {
-=======
-        onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4),detaildata.tell)
+//     const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
+//         console.log(Dadr, Dsize, Dtime, Dtype)
+//         if (Dadr && Dsize && Dtime) {
+// =======
+//         // onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4),detaildata.tell)
 
-    }
+//     }
     const onAddOrder = (Dadr, Dsize, Dtime, Dtype,Dtell) => {
         if (Dadr && Dsize && Dtime && Dtell) {
->>>>>>> qiaochun
+
             let data = StorageUtils.getUserorder();
             // data?
             let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}',type:'${Dtell}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}',type:'${Dtell}'}`)

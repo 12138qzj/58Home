@@ -116,7 +116,6 @@ const Detail = (props) => {
         setdetailData(data);
         props.history.push(`/payment/${data}`)
 
-<<<<<<< HEAD
         // onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
 
@@ -138,9 +137,6 @@ const Detail = (props) => {
     //     // 存到store
     //     addorderData(num);
     // }
-=======
-    }
->>>>>>> qiaochun
 
 
     useEffect(() => {
@@ -244,15 +240,8 @@ const Detail = (props) => {
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
-                        {/* <Lable>
-                            fasfrag
-                        </Lable> */}
-=======
                         
-                    </Rotation>
-                    <p><span >{imgIndex}</span></p>
->>>>>>> qiaochun
+        
 
                     </Rotation>
                     <ImgIndex>
@@ -296,7 +285,7 @@ const Detail = (props) => {
                             <div className="forminput">
                                 <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" autoComplete='off' />
                             </div>
-                            <div elassName="forminput">
+                            <div className="forminput">
 
                                 <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" autoComplete='off' onFocus={handleclick} />
                             </div>
