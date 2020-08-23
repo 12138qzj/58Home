@@ -11,7 +11,10 @@ export const reqdetail = (data) => {
 export const reqgetmainListoffset = (count) => {
     return Ajax('/home/main', { count }, 'GET');
 };
-// home/main/cbl
-// export const reqmain = (url) => {
-//     return Ajax(url, {}, 'GET');
-// }
+
+export const reqsearchkeywords = (keywords) => {
+    return Ajax("/search", { keywords }, 'GET');
+};
+export const reqsearchhot = () => {
+    return Ajax("/hot", {}, 'GET');
+};

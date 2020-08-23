@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import './serversearchinput.css'
+import React from 'react';
+// import './serversearchinput.css'
 import imgJiahao from '../../../../assets/images/serveradd.png'
-import imgPlace from '../../../../assets/images/定位.png'
-import imgSearch from '../../../../assets/images/搜索.png'
-class ServerSearchInput extends Component {
-    state = {}
-    render() {
-        const {handlenOclick}=this.props;
-        return (
-            <div className="server-search">
-                <div className="server-search-input">
-                    <div className="server-search-place">
-                       
-                        <p className='server-search-border'>
-                            <img className='server-search-img' src={imgSearch}></img>
-                        </p>
-                        <input type="text" placeholder='擦玻璃' style={{fontSize:"11px"}} /> 
-                    </div>
-                </div>
-                <img className="server-search-jiahao" src={imgJiahao} onClick={()=>{handlenOclick()}}></img>
-            </div>
-        );
-    }
+import SearchBox from '../../../../common/searchbox/SearchBox'
+// import {SearchBox} from './style.js'
+
+
+
+const ServerSearchInput=(props)=> {
+    const {handlenOnclick}=props;
+    return (
+        <>
+         <SearchBox icon={()=>{
+             return(
+                
+                <img   
+                style={
+                    { marginLeft :".3889rem" , 
+                    width:".7315rem",
+                    height: ".7315rem"}} 
+                     src={imgJiahao} 
+                     onClick={()=>{handlenOnclick()}}/>
+               
+             )
+         }}/>
+        </>
+    );
+
 }
-
-
 export default ServerSearchInput;
+
+
+

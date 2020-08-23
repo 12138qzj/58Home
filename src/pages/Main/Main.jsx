@@ -29,9 +29,9 @@ function Main(props) {
     const { maindata, orderdata, index, ListItemData, listOffset, uploading } = props;
     const { getMainDataDispatch, changeIndexData, getDetailDataDispatch, pullUpRefresh, getrecentNumData } = props;
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
-
     const [Display, setDisplay] = useState(0);
     const [Helpdisplay, setHelpdisplay] = useState(false);
+    console.log("****",classify)
     useEffect(() => {
         changeIndexData(0);
     }, [index])
@@ -47,7 +47,6 @@ function Main(props) {
         }
 
     }, [])
-
     const handlePullUp = () => {
         pullUpRefresh(ListItemData === '', listOffset);
     };
@@ -63,7 +62,8 @@ function Main(props) {
 
     return (
         <>
-            <SearchInput handleOnclick={() => { handleOnclick() }} />
+            <SearchInput handleOnclick={()=>{handleOnclick()}} SearchBoxhandleOnclick={() => props.history.push("/search")}/>
+
             <div className="main">
                 <Scroll direction={"vertical"} refresh={false} onScroll={(e) => {
                     // console.log("滚动高度.",e)
@@ -89,7 +89,6 @@ function Main(props) {
                         <MainBottomChoose />
                         <div className="loading-img" style={uploading ? {} : { display: "none" }}><img src={loading} alt="" /><span>加载中...</span> </div>
                     </div>
-
                 </Scroll>
             </div>
             {/* { enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null} */}

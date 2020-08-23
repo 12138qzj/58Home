@@ -22,6 +22,9 @@ const OrderItem = lazy(()=> import('../pages/order/OrderItem'));
 const Payment = lazy(()=> import('../pages/payment/Payment'));
 const Recent = lazy(()=> import('../pages/recent/Recent'));
 
+const Search = lazy(()=> import('../pages/search/index'));
+
+
 
 const SuspenseComponent = Component => props => {
     return (
@@ -147,10 +150,16 @@ export default [{
                     // component: Payment
         },
         {
-                    path:'/recent',
-                    component: SuspenseComponent(Recent)
+            path:'/recent',
+            component: SuspenseComponent(Recent)
         
         
-        }
+        },
+        {
+            path: "/search",
+            // exact: true,
+            // key: "search",
+            component: SuspenseComponent(Search)
+          }
     ]
 }];

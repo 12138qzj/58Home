@@ -4,6 +4,7 @@ import '../../../api/mock.js';
 import ContentCompont from './contentcomponent/ContentCompoent';
 import * as FunActionTypes from '../store/actionCreators'
 import  './servercontent.css';
+import { withRouter } from 'react-router-dom';
 function  ServerContentHSS (props) {
     const {serverdata}=props
     const [activeIndex,setActiveIndex]=useState(0);
@@ -78,7 +79,14 @@ function  ServerContentHSS (props) {
      
     },[serverdata])
    
-    
+    const handleclick = (id) => {
+        // console.log("object",encodeURIComponent(id))
+        // this.props.history.push(`/detail/${id}`)
+
+
+        props.history.push(`/detail?data=${encodeURIComponent(id)}`)
+        // console.log(this.props)
+    }
         return ( 
             <div className="server">
                 <div className="left">
@@ -90,14 +98,14 @@ function  ServerContentHSS (props) {
                                     // <a href={item.anchor} key={index} >
                                         <li key={index}
                                         data-index={index}
-                                        data-lefttab={item.item}
+                                        data-lefttab={item.title}
                                         onClick={handleTabClick}
                                         className={activeIndex===index?"active":""}
                                         >
                                             <span 
                                              data-index={index}
-                                             data-lefttab={item.item}>
-                                                {item.item}
+                                             data-lefttab={item.title}>
+                                                {item.title}
                                             </span>                                         
                                         </li>
                                 )                              
@@ -107,15 +115,20 @@ function  ServerContentHSS (props) {
                 </div>
                 <div className="right"   ref={ref} >
                 <ul>
+                    {/* <Scroll>
+
+                    </Scroll> */}
                     {
                         !serverdata?"":
                         serverdata.map((item,index)=>{
                             return (
                                 <li key={index}
-                                    data-righttab={item.item}>
-                                    <img src={item.item_imgsrc} alt="" className="right-top__img"/>
+                                    data-righttab={item.title}
+                                    onClick={()=>{handleclick(item.title)}}
+                                    >
+                                    <img src={item.imgUrl} alt="" className="right-top__img"/>
                                     <span>
-                                        <ContentCompont content={item.conten}/>
+                                        <ContentCompont content={item.data}/>
                                     </span>
                                 </li>
                             )                              
@@ -144,4 +157,4 @@ function mapDispatchToProps(dispatch){
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(memo(ServerContentHSS));
+export default connect(mapStateToProps,mapDispatchToProps)(memo(withRouter(ServerContentHSS)));

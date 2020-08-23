@@ -16,11 +16,11 @@ class ContentComponent extends PureComponent {
                                 </div>
                                 <div className="right-item-icon__img">
                                     {
-                                        item.title_item.map((item,index)=>{
+                                        item.data.map((item,index)=>{
                                             return(
                                                 <ServerrightImg 
-                                                title_item_src={item.title_item_src}
-                                                title_item_name={item.title_item_name} 
+                                                title_item_src={item.icon}
+                                                title_item_name={item.title} 
                                                 key= {index}/>
                                             )
                                         })
