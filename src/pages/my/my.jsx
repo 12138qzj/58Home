@@ -16,8 +16,8 @@ function My(props) {
     // state = {}
     let { recentnum } = props;
     recentnum = localStorage.getItem('recentNum')?localStorage.getItem('recentNum') :recentnum;
-    console.log(recentnum);
-    // render() {
+    // console.log(recentnum);
+    
     const { route, index } = props;
     const { changeIndexData } = props;
 
@@ -161,7 +161,6 @@ function My(props) {
         </div>
 
     );
-    // }
 }
 
 const mapStateToProps = (state) => ({

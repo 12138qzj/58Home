@@ -3,27 +3,28 @@ import * as actionType from './constants.js';
 import StorageUtils from '../../../Utils/storageUtis/StorageUtils'
 
 
+// 最近浏览
 export const changerecentNum = (data) => ({
     type: actionType.CHANGE_RECENT_NUM,
     data: data
 })
 
-
 export const getrecentNum = () => {
     return (dispatch, getState) => {
-        const data = getState().order.recentnum + 1
+        
+        let data = StorageUtils.getRecentNum() + 1;
         console.log(data)
+        StorageUtils.saveRecentNum(data)
         dispatch(changerecentNum(data))
-        localStorage.setItem('recentNum', data)
     }
 }
+
 export const addorderData = () => {
     return (dispatch) => {
         console.log("成功进去-----------");
         dispatch(changeorderData(init()))
-
     }
-};
+}; 
 
 export const initorderData = () => {
     return (dispatch) => {
@@ -31,6 +32,12 @@ export const initorderData = () => {
         dispatch(changeorderData(init()))
     }
 };
+export const changeorderData = (data) => {
+    return {
+        type: actionType.CHANGE_ORDER_DATA,
+        data: data
+    }
+}
 
 const init = () => {
     let boxdata = [];
@@ -42,22 +49,6 @@ const init = () => {
     }
     return boxdata;
 }
-export const changeorderData = (data) => {
-    return {
-        type: actionType.CHANGE_ORDER_DATA,
-        data: data
-    }
-}
-
-
-// 详情页面数据
-
-export const changeorderdetailData = (data) => {
-    return {
-        type: actionType.CHANGE_ORDERDETAIL_DATA,
-        data: data
-    }
-}
 
 
 export const setorderdetailData = (data) => {
@@ -66,4 +57,10 @@ export const setorderdetailData = (data) => {
         dispatch(changeorderdetailData(data))
 
     }
-};
+}
+export const changeorderdetailData = (data) => {
+    return {
+        type: actionType.CHANGE_ORDERDETAIL_DATA,
+        data: data
+    }
+}

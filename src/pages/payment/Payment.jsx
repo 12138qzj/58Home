@@ -22,14 +22,22 @@ function Payment(props) {
         setsuccessDisplay(!successDisplay)
     }
     const handlebackOk = () => {
+// <<<<<<< HEAD
         setsuccessDisplay(!successDisplay);
     }
-    const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
-        console.log(Dadr, Dsize, Dtime, Dtype)
-        if (Dadr && Dsize && Dtime) {
+//     const onAddOrder = (Dadr, Dsize, Dtime, Dtype) => {
+//         console.log(Dadr, Dsize, Dtime, Dtype)
+//         if (Dadr && Dsize && Dtime) {
+// =======
+//         // onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4),detaildata.tell)
+
+//     }
+    const onAddOrder = (Dadr, Dsize, Dtime, Dtype,Dtell) => {
+        if (Dadr && Dsize && Dtime && Dtell) {
+
             let data = StorageUtils.getUserorder();
             // data?
-            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}'}`)
+            let newdata = data ? (data + ";" + `{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}',type:'${Dtell}'}`) : (`{address:'${Dadr}',size:'${Dsize}',time:'${Dtime}',type:'${Dtype}',type:'${Dtell}'}`)
             // 存到本地
             StorageUtils.saveUserorder(newdata)
             // 存到store
@@ -79,7 +87,7 @@ function Payment(props) {
                 </div>
                 <div className="tell-service">
                     <div className="tell-service_-text">联系电话: </div>
-                    <div className="tell__value">18879942330</div>
+                    <div className="tell__value">{detaildata.tell}</div>
                 </div>
 
             </PaymentAddress>

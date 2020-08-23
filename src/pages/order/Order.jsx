@@ -15,31 +15,10 @@ function Order(props) {
     const { orderdata } = props;
     const [orderIndex, setorderIndex] = useState(0);
 
-    const [orderItem, setorderItem] = useState([]);
     const handleOnclick = (index) => {
         setorderIndex(index);
-        // fn();
     }
-    // const fn = () => {
-    //     let data  = [];
-    //     console.log("orderIndex",orderIndex)
-    //     if(orderIndex ==4){
-    //          data = orderdata
-    //     }else{
-    //          data = orderdata.filter((item) => item.type == orderIndex)
-    //     }
-    //     // setorderItem(data);
-    //     console.log("data", data,data.length )
-    //     if(data.length!=0 ){
-    //         console.log("进入重新下渲染");
-    //         return (<OrderItem data={data} />)
-    //     }
-    //     else{
-    //         console.log("2222");
-    //         return  (<BlankOrderComponent />);
-    //     }
-    //     // return data.length!=0 ? (<OrderItem data={data} />) : (<BlankOrderComponent />);
-    // }
+    
     const init=()=>{
         if(props.location.pathname==="/order/all"){
             handleOnclick(4);
@@ -58,34 +37,12 @@ function Order(props) {
         }
         console.log(props);
     };
+
     useEffect(()=>{
         init();
-
     },[])
- 
 
     console.log(orderdata, '获取到detail的store啦',orderIndex)
-    
-  
-
-    
-    // const fn = () => {
-    //     let data  = [];
-    //     console.log("orderIndex",orderIndex)
-    //     if(orderIndex ==4){
-    //          data = orderdata
-    //     }else{
-    //          data = orderdata.filter((item) => item.type == orderIndex)
-    //     }
-    //     console.log("data", data,data.length )
-    //     if(data.length!=0 ){
-    //         return (<OrderItem data={data} />)
-    //     }
-    //     else{
-    //         return  (<BlankOrderComponent />);
-    //     }
-    //     // return data.length!=0 ? (<OrderItem data={data} />) : (<BlankOrderComponent />);
-    // }
 
     return (
         <>
@@ -127,30 +84,10 @@ function Order(props) {
             <OrderAd>
                 到家优选订单，点击这里查看 	&#62;
             </OrderAd>
-            {/* {
-               init()
-            } */}
+            
             {
-                // let data  = [];
-                // console.log("orderIndex",orderIndex)
-                // if(orderIndex ==4){
-                //     data = orderdata
-                // }else{
-                //     data = orderdata.filter((item) => item.type == orderIndex)
-                // }
                 orderIndex ==4?(orderdata.length!=0 ? (<OrderItem data={orderdata} />) : (<BlankOrderComponent />)):
                 (orderdata.filter((item) => item.type == orderIndex).length!=0? (<OrderItem data={orderdata} />) : (<BlankOrderComponent />))
-                // setorderItem(data);
-                // console.log("data", data,data.length )
-                // data.length!=0 ? (<OrderItem data={data} />) : (<BlankOrderComponent />);
-                // if(data.length!=0 ){
-                //     console.log("进入重新下渲染");
-                //     return <OrderItem data={data} />
-                // }
-                // else{
-                //     console.log("2222");
-                //     return  (<BlankOrderComponent />);
-                // }
             }
 
             {renderRoutes(route.routes)}

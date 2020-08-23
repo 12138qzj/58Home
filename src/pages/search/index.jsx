@@ -10,7 +10,7 @@ import * as actionTypes  from './store/actionCreators'
 const Search = (props) => {
 
   const [query, setQuery] = useState('');
-
+  console.log('1',props)
 
   const {
     hotList,

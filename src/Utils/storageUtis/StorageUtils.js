@@ -12,6 +12,9 @@ export default {
     removeUserorder() {
         localStorage.removeItem(USER_ORDER);
     },
+    getRecentNum() {
+        return JSON.parse(localStorage.getItem(RecentNum) || null)
+    },
     saveRecentNum(num) {
         localStorage.setItem(RecentNum, num)
     }

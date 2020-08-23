@@ -134,7 +134,7 @@ export const Discount = styled.div `
 `;
 
 export const Fromwarp = styled.div `
-    height:4rem;
+    height:6rem;
     background-color:white;
     .form{
       display:flex;
@@ -160,6 +160,7 @@ export const Fromwarp = styled.div `
             border-top:0;
           }
           &>label{
+              line-height:.9rem;
               margin: 0.3rem;  
               font-weight: 700; 
               font-size: 0.35rem;  
