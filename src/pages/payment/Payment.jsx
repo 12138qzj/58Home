@@ -32,7 +32,7 @@ function Payment(props) {
 //         // onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4),detaildata.tell)
 
 //     }
-    const onAddOrder = (Dadr, Dsize, Dtime, Dtype,Dtell) => {
+    const onAddOrder = (Dadr, Dsize, Dtime,Dtell, Dtype) => {
         if (Dadr && Dsize && Dtime && Dtell) {
 
             let data = StorageUtils.getUserorder();
@@ -102,7 +102,7 @@ function Payment(props) {
             <SuccessPopup 
                 display={successDisplay} 
                 handleOnclick={handleonclick}
-                onAddOrder={()=>{onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`, Math.floor(Math.random() * 4))}}
+                onAddOrder={()=>{onAddOrder(detaildata.address, detaildata.size, `${date.getMonth() + 1}-${date.getDate()}`,detaildata.tell, Math.floor(Math.random() * 4))}}
                 />
         </div>
     )
