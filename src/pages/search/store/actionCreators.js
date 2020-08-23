@@ -16,6 +16,7 @@ export const changeEnterLoading = (data) => ({
 export const getHotKeyWords = () => {
     return dispatch => {
         reqsearchhot().then(data => {
+            console.log('0000000',data)
             let list = data.data.data.hot;
             dispatch(changeHotKeyWords(list));
         })

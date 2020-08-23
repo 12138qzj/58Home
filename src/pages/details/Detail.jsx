@@ -22,8 +22,8 @@ const Detail = (props) => {
 
     const [activeIndex, setActiveIndex] = useState(0)
     const [downDisplay, setdownDisplay] = useState(false)
-    const { orderdata, reqparams } = props;
-    const { getinitorderData, addorderData, setdetailData, getrecentNumData } = props;
+    const { orderdata } = props;
+    const { getinitorderData, setdetailData, getrecentNumData } = props;
 
     // 回退
     const handleback = (e) => {
@@ -32,6 +32,7 @@ const Detail = (props) => {
         props.history.goBack();
     }
 
+    // 根据url的参数 请求数据 并存入store
     useEffect(() => {
 
         console.log("详情页面数据props", props)
@@ -42,12 +43,11 @@ const Detail = (props) => {
             if (res.data.success) {
                 setdetailtitle(res.data.data[0].title);
                 setdetailprice(res.data.data[0].price);
-
             }
-
         })
     }, [])
-    // =null;
+    
+    // 轮播
     const DetailSwiper = new Swiper('.swiper-container', {
         lazy: {
             loadPrevNext: true,
@@ -79,7 +79,10 @@ const Detail = (props) => {
     const address = useRef();
     const size = useRef();
     const time = useRef();
+    const tell =useRef();
     const type = 0;
+
+    // 拿到文本框的输入值 存入store 页面跳转payment
     const handleclick = (e) => {
         e.preventDefault()
         // console.log("提交数据", time.current.value);
@@ -88,10 +91,12 @@ const Detail = (props) => {
         let Daddress = address.current.value;
         let Dsize = size.current.value;
         let Dtime = time.current.value;
+        let Dtell = tell.current.value;
         if (!Daddress) {
             console.log("请输入地址！")
             return;
         } else if (!Dsize) {
+            // 自动弹出
             handleonclickchange();
             return;
         } else if (!Dtime) {
@@ -104,11 +109,14 @@ const Detail = (props) => {
             size: Dsize,
             time: Dtime,
             title: detailtitle,
-            price: detailprice
+            price: detailprice,
+            tell: Dtell
         }
+        console.log(data,'111111111111')
         setdetailData(data);
         props.history.push(`/payment/${data}`)
 
+<<<<<<< HEAD
         // onAddOrder(address.current.value, size.current.value, time.current.value, Math.floor(Math.random()*4))
     }
 
@@ -130,8 +138,10 @@ const Detail = (props) => {
     //     // 存到store
     //     addorderData(num);
     // }
+=======
+    }
+>>>>>>> qiaochun
 
-    // const [orderdata,setorderdata] =useState([])
 
     useEffect(() => {
         if (!orderdata.length) {
@@ -140,24 +150,32 @@ const Detail = (props) => {
         getrecentNumData()
     }, [])
 
+    // 若服务规格为空则自动弹出
     const handleonclickchange = () => {
         setdownDisplay(!downDisplay);
     }
+
+    // 服务规格弹出框
     const handleOnclickComfirm = (area, num) => {
         // console.log("面积数量",area,num);
         // setspecifications(`${area} ${num}`)
         size.current.value = `${area} ${num}`;
         handleonclickchange()
     }
+
+    // 一层级联
     const handleTabClick = (e) => {
         const activeIndex = e.target.getAttribute("data-index")
         setActiveIndex(parseInt(activeIndex));
         const ltab = e.target.getAttribute("data-ltab")
         const rtab = document.querySelector(`[data-rtab="${ltab}"]`)
+        // 滑动定位到顶端
         rtab.scrollIntoView({
             behavior: 'smooth'
         })
     }
+
+
     let ranges = [];
     const ref = useRef();
     let base = 0;
@@ -165,8 +183,10 @@ const Detail = (props) => {
         const tabDetail = ref.current;
         // console.log("tabDetail",tabDetail);
 
+        // 商品 详情 推荐
         const tabs = tabDetail.querySelectorAll(`[data-rtab]`)
         // console.log("tabs",tabs);
+        // ranges收集每个的高度
         for (let tab of tabs) {
             let h = tab.clientHeight;
             // console.log("tabsH",h);
@@ -174,7 +194,8 @@ const Detail = (props) => {
             ranges.push([base, newH])
             base = newH;
         }
-        // console.log(object);
+        
+        // 页面滚动到位置的index
         function onScroll(e) {
 
             const scrollTop = document.documentElement.scrollTop + 300;
@@ -187,17 +208,21 @@ const Detail = (props) => {
             tabDetail.addEventListener('touchmove', onScroll)
 
         })
-
         tabDetail.addEventListener('touchend', () => {
             tabDetail.removeEventListener('touchmove', onScroll);
 
         })
     }, [])
+
     return (
         <>
+            {/* 服务规格弹出框 */}
             <SpecificationsPopup handleOnclickBack={handleonclickchange} handleOnclickComfirm={handleOnclickComfirm} display={downDisplay} />
+
             <HeadComponent title={detailtitle} handleback={handleback} />
+
             <Detailhead index={activeIndex} handleTabClick={handleTabClick} />
+
             <div ref={ref}>
 
                 <div data-rtab="商品">
@@ -219,9 +244,15 @@ const Detail = (props) => {
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         {/* <Lable>
                             fasfrag
                         </Lable> */}
+=======
+                        
+                    </Rotation>
+                    <p><span >{imgIndex}</span></p>
+>>>>>>> qiaochun
 
                     </Rotation>
                     <ImgIndex>
@@ -265,12 +296,15 @@ const Detail = (props) => {
                             <div className="forminput">
                                 <label>地址</label><input ref={address} type="text" name="addres" id="" placeholder="请选择服务地址" autoComplete='off' />
                             </div>
-                            <div className="forminput">
+                            <div elassName="forminput">
 
                                 <label>规格</label><input ref={size} type="text" name="size" id="" placeholder="请选择服务规则" autoComplete='off' onFocus={handleclick} />
                             </div>
                             <div className="forminput">
                                 <label>时间</label><input ref={time} type="text" name="time" id="" placeholder="请选择待服务时间" autoComplete='off' />
+                            </div>
+                            <div className="forminput">
+                                <label>电话</label><input ref={tell} type="text" name="tell" id="" placeholder="请填写联系方式" autoComplete='off' />
                             </div>
 
                             <DetailBottom handleclick={handleclick} />
@@ -287,34 +321,25 @@ const Detail = (props) => {
     )
 }
 
-// Detail.mySwiper= memo(()=>{
-//     return new Swiper('.swiper-container', {
-//         loop: true,
-//         autoplay: {
-//             delay: 1000,
-//         },
-//         pagination: {
-//             el: '.swiper-pagination'
-//         }
-//     })
-// })
-
 function mapStateToProps(state) {
     return {
         orderdata: state.order.orderdata,
+        // recentnum:state.order.recentnum
 
     }
 
 }
 function mapDispatchToProps(dispatch) {
     return {
+        // 取出本地order数据
         getinitorderData() {
             dispatch(FunActionTypes.initorderData())
         },
+
         addorderData(data) {
             dispatch(FunActionTypes.addorderData(data))
         },
-
+        // detail数据
         setdetailData(data) {
             dispatch(FunActionTypes.setorderdetailData(data))
         },
