@@ -5,7 +5,8 @@ import {SearchBoxstyle} from './style.js'
 class SearchBox extends Component {
     state = {}
     render() {
-        const {handlenOnclick,icon}=this.props;
+
+        const {handlenOnclick,icon,SearchBoxhandleOnclick}=this.props;
         return (
             <SearchBoxstyle>
                 <div className="server-search-input">
@@ -13,7 +14,7 @@ class SearchBox extends Component {
                         <p className='server-search-border'>
                             <img className='server-search-img' src={imgSearch}></img>
                         </p>
-                        <input type="text" placeholder='擦玻璃' style={{fontSize:"11px"}} /> 
+                        <input type="text" placeholder='擦玻璃' style={{fontSize:"11px"}} onFocus={SearchBoxhandleOnclick} /> 
                     </div>
                 </div>
                 {icon()}

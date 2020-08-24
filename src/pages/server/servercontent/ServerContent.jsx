@@ -1,6 +1,5 @@
 import React, { memo,useState,useRef,useEffect } from 'react';
 import {connect} from 'react-redux';
-import '../../../api/mock.js';
 import ContentCompont from './contentcomponent/ContentCompoent';
 import * as FunActionTypes from '../store/actionCreators'
 import  './servercontent.css';
@@ -12,12 +11,8 @@ function  ServerContentHSS (props) {
     //监听函数点事件
     const handleTabClick=(e)=>{
 
-        console.log(e);
-        console.log(e.target);
-        console.log(e.target.getAttribute("data-lefttab"));
     
         const  activeIndex=e.target.getAttribute("data-index")
-        console.log("activeIndex",activeIndex);
         setActiveIndex(parseInt(activeIndex))
         const ltab=e.target.getAttribute("data-lefttab")
         const rtab=document.querySelector(`[data-righttab="${ltab}"]`)
@@ -95,7 +90,6 @@ function  ServerContentHSS (props) {
                             !serverdata?"":
                             serverdata.map((item,index)=>{
                                 return (
-                                    // <a href={item.anchor} key={index} >
                                         <li key={index}
                                         data-index={index}
                                         data-lefttab={item.title}

@@ -3,7 +3,7 @@ import { OrderBox } from './Order.style'
 
 function OrderItem(props) {
     const {data}= props
-    console.log("data.data[0].size", '------',data)
+    // console.log("data.data[0].size", '------',data)
 
     return (
         <>

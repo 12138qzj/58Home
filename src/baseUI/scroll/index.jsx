@@ -105,7 +105,7 @@ const Scroll = forwardRef((props, ref) => {
                 bottom: bounceBottom
             }
         });
-        console.log("scroll----------",scroll);
+        // console.log("scroll----------",scroll);
         setBScroll(scroll);
         return () => {
             setBScroll(null);
@@ -125,7 +125,7 @@ const Scroll = forwardRef((props, ref) => {
         if (!bScroll || !pullUp) return;
         const handlePullUp = () => {
             //判断是否滑动到了底部
-            console.log("滚动高度", bScroll.y);
+            // console.log("滚动高度", bScroll.y);
             if (bScroll.y <= bScroll.maxScrollY + 100) {
                 pullUpDebounce();
             }

@@ -1,7 +1,8 @@
 import axios from 'axios';
-import './mock.js';
-
+axios.defaults.baseURL = 'http://101.37.116.167:9090';
 export default function Ajax(url, data = {}, type) {
+
+
     return new Promise((resolve, rejet) => {
         let Promise;
         if (type === 'GET') {
@@ -14,7 +15,6 @@ export default function Ajax(url, data = {}, type) {
             })
         }
         Promise.then((response) => {
-            // console.log("object数据response加载", response);
             resolve(response);
         }).catch((error) => {
             console.error("数据请求异常！", error)

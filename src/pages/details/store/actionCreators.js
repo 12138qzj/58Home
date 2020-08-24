@@ -11,9 +11,9 @@ export const changerecentNum = (data) => ({
 
 export const getrecentNum = () => {
     return (dispatch, getState) => {
-        
+
         let data = StorageUtils.getRecentNum() + 1;
-        console.log(data)
+        // console.log(data)
         StorageUtils.saveRecentNum(data)
         dispatch(changerecentNum(data))
     }
@@ -21,14 +21,14 @@ export const getrecentNum = () => {
 
 export const addorderData = () => {
     return (dispatch) => {
-        console.log("成功进去-----------");
+        // console.log("成功进去-----------");
         dispatch(changeorderData(init()))
     }
-}; 
+};
 
 export const initorderData = () => {
     return (dispatch) => {
-        console.log("成功进去-----------");
+        // console.log("成功进去-----------");
         dispatch(changeorderData(init()))
     }
 };
@@ -53,7 +53,7 @@ const init = () => {
 
 export const setorderdetailData = (data) => {
     return (dispatch) => {
-        console.log("成功进去-----------");
+        // console.log("成功进去-----------");
         dispatch(changeorderdetailData(data))
 
     }

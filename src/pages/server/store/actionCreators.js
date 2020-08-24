@@ -4,7 +4,6 @@ import * as actionType from './constants.js';
 export const getServerLeftRightData = () => {
     return (dispatch) => {
         reqserver().then((res) => {
-            console.log("----------eeeeeee",res)
             if (res.data.success) {
                 dispatch(changeServerLeftRightData(res.data.data))
             } else {

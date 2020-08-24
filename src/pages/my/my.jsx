@@ -82,7 +82,7 @@ function My(props) {
     ]
 
     const handleClick = (params) => {
-        console.log("params",params,props)
+        // console.log("params",params,props)
         if(params=='/order/comfirm'){
             props.history.push(`/order`)
         }else{
@@ -91,7 +91,7 @@ function My(props) {
         }
     }
     const handleClickRecent = (params) => {
-        console.log('params', params)
+        // console.log('params', params)
         props.history.push(`${params}`)
     }
     useEffect(() => {

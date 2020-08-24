@@ -8,9 +8,6 @@ const Detailhead=(props)=>{
     // console.log(props);
     const activeIndex=index;
     return (
-
-    
-        //style={activeIndex===0?{display:"none"}:{}}
         <Detail style={activeIndex===0?{display:"none"}:{}}>
             <li
             data-index="0"

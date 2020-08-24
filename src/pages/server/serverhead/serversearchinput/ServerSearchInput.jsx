@@ -7,12 +7,11 @@ import SearchBox from '../../../../common/searchbox/SearchBox'
 
 
 const ServerSearchInput=(props)=> {
-    const {handlenOnclick}=props;
+    const {handlenOnclick,SearchBoxhandleOnclick}=props;
     return (
         <>
          <SearchBox icon={()=>{
              return(
-                
                 <img   
                 style={
                     { marginLeft :".3889rem" , 
@@ -22,7 +21,7 @@ const ServerSearchInput=(props)=> {
                      onClick={()=>{handlenOnclick()}}/>
                
              )
-         }}/>
+         }} SearchBoxhandleOnclick={SearchBoxhandleOnclick}/>
         </>
     );
 

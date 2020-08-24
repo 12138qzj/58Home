@@ -35,14 +35,14 @@ function Order(props) {
         if(props.location.pathname==="/order/confirm"){
             handleOnclick(0);
         }
-        console.log(props);
+        // console.log(props);
     };
 
     useEffect(()=>{
         init();
     },[])
 
-    console.log(orderdata, '获取到detail的store啦',orderIndex)
+    // console.log(orderdata, '获取到detail的store啦',orderIndex)
 
     return (
         <>

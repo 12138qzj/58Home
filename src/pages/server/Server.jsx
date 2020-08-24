@@ -24,7 +24,7 @@ function Server(props){
             <div>
                 <ServerSearchInput handlenOnclick={
                     handleonclick
-                }/>
+                } SearchBoxhandleOnclick={() => props.history.push("/search")}/>
                 <ServerContent/>
                 <ServerPopup 
                 display={serverDisplay} 

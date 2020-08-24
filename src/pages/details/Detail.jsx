@@ -28,18 +28,18 @@ const Detail = (props) => {
     // 回退
     const handleback = (e) => {
         e.preventDefault();
-        console.log("hist", props);
+        // console.log("hist", props);
         props.history.goBack();
     }
 
     // 根据url的参数 请求数据 并存入store
     useEffect(() => {
 
-        console.log("详情页面数据props", props)
-        console.log("详情页面数据propsid", decodeURIComponent(props.location.search.split("=")[1]))
+        // console.log("详情页面数据props", props)
+        // console.log("详情页面数据propsid", decodeURIComponent(props.location.search.split("=")[1]))
 
         reqdetail(decodeURIComponent(props.location.search.split("=")[1])).then((res) => {
-            console.log("详情页面数据", res)
+            // console.log("详情页面数据", res)
             if (res.data.success) {
                 setdetailtitle(res.data.data[0].title);
                 setdetailprice(res.data.data[0].price);
@@ -93,14 +93,14 @@ const Detail = (props) => {
         let Dtime = time.current.value;
         let Dtell = tell.current.value;
         if (!Daddress) {
-            console.log("请输入地址！")
+            // console.log("请输入地址！")
             return;
         } else if (!Dsize) {
             // 自动弹出
             handleonclickchange();
             return;
         } else if (!Dtime) {
-            console.log("请输入时间！")
+            // console.log("请输入时间！")
             return;
         }
 
@@ -112,7 +112,7 @@ const Detail = (props) => {
             price: detailprice,
             tell: Dtell
         }
-        console.log(data,'111111111111')
+        // console.log(data,'111111111111')
         setdetailData(data);
         props.history.push(`/payment/${data}`)
 
@@ -339,21 +339,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Detail))
-
-// import React from 'react'
-// import PropTypes from 'prop-types'
-
-// const Detail = props => {
-//     return (
-//         <div>
-            
-//         </div>
-//     )
-// }
-
-// Detail.propTypes = {
-
-// }
-
-// export default Detail
 

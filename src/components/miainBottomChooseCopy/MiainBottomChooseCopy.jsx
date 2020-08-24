@@ -1,8 +1,7 @@
-import React , {useState} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-import PropTypes from 'prop-types';
 
 
 import {Top,TopItem} from '../mainbottomchoose/mainbottomchoose.style';

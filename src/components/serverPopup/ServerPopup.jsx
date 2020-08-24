@@ -61,10 +61,10 @@ const ServerPopup=(props)=>{
     const {display}=props;
     const {handleOnclick}=props;
 
-    console.log("props",props);
+    // console.log("props",props);
 
     const handleClick = (params) => {
-        console.log("params",params,props)
+        // console.log("params",params,props)
         if(params=='/order/comfirm'){
             props.history.push(`/order`)
         }else{

@@ -140,9 +140,6 @@ const SpecificationsPopup = (props) => {
     const numref = useRef();
 
     return (
-
-        // onClick={()=>{handleOnclick()}} 
-        // style={display?{}:{display:"none"}} 
         <Popupcontent style={display?{}:{display:"none"}} >
             <Popupcontentwarp>
                 <div className="popupbox-container">

@@ -8,7 +8,7 @@ import './MenuBarItem.css';
 class MenuBarItem extends Component {
     state = {  }
     handleclick(id) {
-        console.log("object",id)
+        // console.log("object",id)
         
         this.props.history.push(`/detail?data=${encodeURIComponent(id)}`)
         // console.log(this.props)

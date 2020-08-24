@@ -31,7 +31,7 @@ function Main(props) {
     const { classify, menuBarData, menuBarData2, rotationImg } = maindata;
     const [Display, setDisplay] = useState(0);
     const [Helpdisplay, setHelpdisplay] = useState(false);
-    console.log("****",classify)
+    
     useEffect(() => {
         changeIndexData(0);
     }, [index])
@@ -57,8 +57,8 @@ function Main(props) {
     const handleOnclick = () => {
         setHelpdisplay(!Helpdisplay)
     }
-    console.log("........", maindata.length)
-    console.log("........主页下面的数据", ListItemData, listOffset, uploading)
+    // console.log("........", maindata.length)
+    // console.log("........主页下面的数据", ListItemData, listOffset, uploading)
 
     return (
         <>

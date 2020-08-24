@@ -5,7 +5,7 @@ const Popupcontent=styled.div`
     height:100vh;
     width:100vw;
     background-color:rgba(0,0,0,0.1);
-    transform: translateY(-90%);
+    transform: translateY(-92%);
     z-index:99;
     .father{
         position:absolute;

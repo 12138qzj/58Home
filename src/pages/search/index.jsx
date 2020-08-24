@@ -10,7 +10,7 @@ import * as actionTypes  from './store/actionCreators'
 const Search = (props) => {
 
   const [query, setQuery] = useState('');
-  console.log('1',props)
+  // console.log('1',props)
 
   const {
     hotList,
@@ -38,9 +38,6 @@ const Search = (props) => {
           list.map((item,index) => {
             // console.log("000000",item)
             return (
-              // <li className="item" key={item.first} onClick={() => setQuery(item.first)}>
-              //   <span>{item.first}</span>
-              // </li>
               <li className="item" key={index} onClick={() => setQuery(item)}>
               <span>{item}</span>
             </li>
@@ -52,7 +49,7 @@ const Search = (props) => {
   };
   const renderSearchresult=()=>{
     let lists = searchList;
-    console.log("searchList",searchList);
+    // console.log("searchList",searchList);
     //判断store中的数据是否存在 
     if(!lists || !lists.length) return;
     return (

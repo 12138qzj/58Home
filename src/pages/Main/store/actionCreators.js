@@ -3,7 +3,7 @@ import * as actionType from './constants.js';
 
 //主页数据
 export const changeMainData = (data) => {
-    console.log("进去成功...............");
+    // console.log("进去成功...............");
     return {
         type: actionType.CHANGE_MAINDATA,
         data: data
@@ -39,7 +39,7 @@ export const getMainData = () => {
 //下标改变 访问的页面
 export const changeIndexData = (newIndex) => {
     return (dispatch) => {
-        console.log("成功进去changeIndexData-----------");
+        // console.log("成功进去changeIndexData-----------");
         dispatch(changeIndex(newIndex))
     }
 };
@@ -80,14 +80,14 @@ export const refreshMoreMainList = () => {
         const offset = getState().main.listOffset;
         const ListItemData = getState().main.ListItemData;
         reqgetmainListoffset(offset).then(res => {
-            console.log("进入了.........res", res, "ListItemData", ListItemData)
+            // console.log("进入了.........res", res, "ListItemData", ListItemData)
             const data = [...ListItemData, ...res.data.data];
-            console.log("进入了.........data", data)
+            // console.log("进入了.........data", data)
             dispatch(changeListItemData(data));
             dispatch(changePullUpLoading(false));
             dispatch(changeListOffset(data.length));
         }).catch(() => {
-            console.log('热门歌手数据获取失败');
+            console.log('热门数据获取失败');
             dispatch(changePullUpLoading(false));
 
         });
